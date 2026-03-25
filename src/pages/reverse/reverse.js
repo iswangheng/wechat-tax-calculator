@@ -23,6 +23,23 @@ Page({
     specialDeductions: 0,
     deductionItems: [],
 
+    // Month selector (different months have different tax due to cumulative withholding)
+    monthOptions: [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月",
+    ],
+    monthIndex: 0,
+
     // Result
     result: null,
   },
@@ -97,6 +114,11 @@ Page({
     this.setData({ fundRatio, result: null });
   },
 
+  // Month change
+  onMonthChange(e) {
+    this.setData({ monthIndex: parseInt(e.detail.value), result: null });
+  },
+
   // Edit special deductions
   onEditDeductions() {
     const app = getApp();
@@ -110,7 +132,9 @@ Page({
 
   // Start reverse calculation
   onCalculate() {
-    const { netSalary, cityName, fundRatio, specialDeductions } = this.data;
+    const { netSalary, cityName, fundRatio, specialDeductions, monthIndex } =
+      this.data;
+    const month = monthIndex + 1;
 
     const MAX_SALARY = 1000000;
     const MIN_SALARY = 1;
@@ -146,6 +170,7 @@ Page({
         netSalary: salaryValue,
         socialSecurity,
         specialDeductions,
+        month,
       });
 
       // Recalculate social security with actual gross salary
@@ -161,6 +186,7 @@ Page({
         netSalary: salaryValue,
         socialSecurity: actualSocial,
         specialDeductions,
+        month,
       });
 
       this.setData({

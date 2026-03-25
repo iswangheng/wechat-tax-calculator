@@ -88,8 +88,8 @@ Page({
     let content = "📊 数据来源\n\n";
     content += `• 税率表: ${metadata.dataSource.taxBrackets}\n`;
     content += `• 社保数据: ${metadata.dataSource.socialSecurity}\n`;
-    content += `• 公积金数据: ${metadata.dataSource.fundData}\n`;
-    content += `• 专项扣除: ${metadata.dataSource.deductions}\n\n`;
+    content += `• 公积金数据: ${metadata.dataSource.fundRates}\n`;
+    content += `• 专项扣除: ${metadata.dataSource.specialDeductions}\n\n`;
     content += `📅 数据版本: ${metadata.version}\n`;
     content += `📅 最后更新: ${metadata.lastUpdate}\n`;
     content += `📅 下次更新: ${metadata.nextScheduledUpdate}\n\n`;

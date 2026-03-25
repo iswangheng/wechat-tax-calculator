@@ -280,6 +280,7 @@ function calculateGrossFromNet(params) {
     netSalary, // 期望税后工资
     socialSecurity, // 社保公积金（需要提前计算）
     specialDeductions, // 专项附加扣除
+    month = 1, // 月份（不同月份税率可能不同）
   } = params;
 
   // 采用二分法逐步逼近
@@ -298,7 +299,7 @@ function calculateGrossFromNet(params) {
       grossSalary: mid,
       socialSecurity,
       specialDeductions,
-      month: 1,
+      month,
     });
 
     const diff = result.netSalary - netSalary;
@@ -324,7 +325,7 @@ function calculateGrossFromNet(params) {
     grossSalary,
     socialSecurity,
     specialDeductions,
-    month: 1,
+    month,
   });
 
   return {

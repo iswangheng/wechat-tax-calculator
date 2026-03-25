@@ -261,11 +261,19 @@ Page({
       plan.fundRatio,
     );
 
-    // Calculate 12 months tax schedule
+    // Calculate 12 months tax schedule (use global deductions if available)
+    const app = getApp();
+    const globalDeductions =
+      (app.globalData && app.globalData.deductionItems) || [];
+    const specialDeductions = globalDeductions.reduce(
+      (sum, item) => sum + (item.amount || 0),
+      0,
+    );
+
     const schedule = calculate12MonthsTax({
       monthlyGrossSalary: plan.grossSalary,
       socialSecurity,
-      specialDeductions: 0,
+      specialDeductions,
     });
 
     // Monthly averages from schedule

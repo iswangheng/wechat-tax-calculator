@@ -2,7 +2,7 @@
 
 /* ========== 数据更新时间横幅 ========== */
 .data-freshness-banner {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 20rpx 30rpx;
   display: flex;
   justify-content: space-between;
@@ -188,7 +188,7 @@
 .edit-btn {
   margin-left: auto;
   font-size: 24rpx;
-  color: #f093fb;
+  color: #07C160;
   padding: 8rpx 20rpx;
   background: #fff0fc;
   border-radius: 20rpx;
@@ -196,7 +196,7 @@
 
 /* ========== 城市选择 ========== */
 .city-section {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
 }
 
@@ -308,7 +308,7 @@
 }
 
 .detail-row.total {
-  background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+  background: linear-gradient(135deg, #07C16015 0%, #05904815 100%);
   padding: 20rpx;
   margin: 16rpx -24rpx 0;
   border-radius: 12rpx;
@@ -329,7 +329,7 @@
 .detail-row.total .detail-label,
 .detail-row.total .detail-value {
   font-weight: bold;
-  color: #f5576c;
+  color: #059048;
 }
 
 .tip-text {
@@ -407,7 +407,7 @@
 
 .btn-calculate {
   flex: 2;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-size: 32rpx;
   font-weight: bold;
@@ -443,7 +443,7 @@
 }
 
 .result-highlight {
-  background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+  background: linear-gradient(135deg, #07C16015 0%, #05904815 100%);
   padding: 32rpx;
   border-radius: 16rpx;
   margin-bottom: 30rpx;
@@ -507,7 +507,7 @@
 .breakdown-value {
   font-size: 28rpx;
   font-weight: bold;
-  color: #f5576c;
+  color: #059048;
   margin-right: 20rpx;
 }
 

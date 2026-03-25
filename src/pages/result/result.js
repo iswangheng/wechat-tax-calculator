@@ -133,7 +133,7 @@ Page({
     drawLineChart(ctx, width, height, {
       labels: labels,
       data: taxData,
-      lineColor: '#f093fb',
+      lineColor: '#07C160',
       fillColor: 'rgba(240, 147, 251, 0.15)',
       title: '每月应缴个税趋势',
       markers: markers
@@ -360,8 +360,8 @@ Page({
 
     // Background gradient
     const gradient = ctx.createLinearGradient(0, 0, W, H);
-    gradient.addColorStop(0, '#f093fb');
-    gradient.addColorStop(1, '#f5576c');
+    gradient.addColorStop(0, '#07C160');
+    gradient.addColorStop(1, '#059048');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, W, H);
 
@@ -394,7 +394,7 @@ Page({
     // Salary info section
     let y = 160;
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#f5576c';
+    ctx.fillStyle = '#059048';
     ctx.font = 'bold 18px sans-serif';
     ctx.fillText('工资明细', 60, y);
 
@@ -427,7 +427,7 @@ Page({
 
     // Current month tax
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#f5576c';
+    ctx.fillStyle = '#059048';
     ctx.font = 'bold 18px sans-serif';
     ctx.fillText('本月纳税', 60, y);
     y += 35;
@@ -465,7 +465,7 @@ Page({
 
     // Yearly summary
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#f5576c';
+    ctx.fillStyle = '#059048';
     ctx.font = 'bold 18px sans-serif';
     ctx.fillText('年度汇总 (' + params.currentMonth + '个月)', 60, y);
     y += 35;

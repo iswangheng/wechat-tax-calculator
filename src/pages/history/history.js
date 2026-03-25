@@ -138,7 +138,7 @@ Page({
     wx.showModal({
       title: '清空历史',
       content: '确定要清空所有计算记录吗？此操作不可撤销。',
-      confirmColor: '#f5576c',
+      confirmColor: '#059048',
       success: (res) => {
         if (res.confirm) {
           clearHistory();

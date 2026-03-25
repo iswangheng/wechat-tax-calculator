@@ -9,7 +9,7 @@
 
 /* ========== 头部 ========== */
 .header {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 60rpx 30rpx 40rpx;
   text-align: center;
   box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
@@ -31,7 +31,7 @@
 /* ========== 汇总卡片 ========== */
 .summary-card {
   margin: 20rpx 30rpx 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   border-radius: 20rpx;
   padding: 40rpx;
   text-align: center;
@@ -89,7 +89,7 @@
 
 .section-amount {
   font-size: 28rpx;
-  color: #f5576c;
+  color: #059048;
   font-weight: bold;
 }
 
@@ -228,7 +228,7 @@ checkbox-group {
 
 .btn-save {
   flex: 2;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-size: 32rpx;
   font-weight: bold;

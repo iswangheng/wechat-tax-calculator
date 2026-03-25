@@ -9,7 +9,7 @@
 
 /* ========== 头部 ========== */
 .header {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 60rpx 30rpx 40rpx;
   text-align: center;
   box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
@@ -161,7 +161,7 @@
 }
 
 .table-header {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   font-weight: bold;
 }
 
@@ -184,7 +184,7 @@
 .col-3 {
   flex: 1;
   font-size: 24rpx;
-  color: #f5576c;
+  color: #059048;
   text-align: right;
 }
 
@@ -197,7 +197,7 @@
 
 .btn-calculate {
   flex: 2;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-size: 32rpx;
   font-weight: bold;
@@ -236,7 +236,7 @@
 
 /* 核心结果高亮 */
 .result-highlight {
-  background: linear-gradient(135deg, #f093fb10 0%, #f5576c10 100%);
+  background: linear-gradient(135deg, #07C16010 0%, #05904810 100%);
   padding: 32rpx;
   border-radius: 16rpx;
   margin-bottom: 30rpx;
@@ -261,7 +261,7 @@
 }
 
 .highlight-value.red {
-  color: #f5576c;
+  color: #059048;
 }
 
 .highlight-value.green {
@@ -419,7 +419,7 @@
   padding: 20rpx;
   background: #ffffff;
   border-radius: 12rpx;
-  border-left: 4rpx solid #f093fb;
+  border-left: 4rpx solid #07C160;
 }
 
 .explain-title {
@@ -452,7 +452,7 @@
   color: #333333;
   margin-bottom: 12rpx;
   padding-left: 16rpx;
-  border-left: 6rpx solid #f093fb;
+  border-left: 6rpx solid #07C160;
 }
 
 .chart-desc {

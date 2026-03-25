@@ -1,6 +1,6 @@
 // Chart Drawing Utility for WeChat Mini Program
 // Uses Canvas 2D API (type="2d") for rendering pie and line charts
-// Color scheme: pink series (#f093fb as primary)
+// Color scheme: green finance series (#07C160 WeChat green as primary)
 
 /**
  * Draw a pie chart with center text and legend
@@ -121,7 +121,7 @@ function drawLineChart(ctx, width, height, config) {
 
   var labels = config.labels || [];
   var data = config.data || [];
-  var lineColor = config.lineColor || '#f093fb';
+  var lineColor = config.lineColor || '#07C160';
   var fillColor = config.fillColor || 'rgba(240, 147, 251, 0.15)';
   var title = config.title || '';
   var markers = config.markers || [];
@@ -244,7 +244,7 @@ function drawLineChart(ctx, width, height, config) {
       // Highlighted dot
       ctx.beginPath();
       ctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
-      ctx.fillStyle = '#f5576c';
+      ctx.fillStyle = '#059048';
       ctx.fill();
       ctx.strokeStyle = '#ffffff';
       ctx.lineWidth = 2;
@@ -253,7 +253,7 @@ function drawLineChart(ctx, width, height, config) {
       // Dashed vertical line
       ctx.beginPath();
       ctx.setLineDash([3, 3]);
-      ctx.strokeStyle = '#f5576c';
+      ctx.strokeStyle = '#059048';
       ctx.lineWidth = 1;
       ctx.moveTo(p.x, p.y + 6);
       ctx.lineTo(p.x, paddingTop + chartHeight);
@@ -262,7 +262,7 @@ function drawLineChart(ctx, width, height, config) {
 
       // Label
       if (marker.label) {
-        ctx.fillStyle = '#f5576c';
+        ctx.fillStyle = '#059048';
         ctx.font = '9px sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -283,7 +283,7 @@ function drawLineChart(ctx, width, height, config) {
 
     ctx.beginPath();
     ctx.arc(cp.x, cp.y, 4, 0, Math.PI * 2);
-    ctx.fillStyle = '#f093fb';
+    ctx.fillStyle = '#07C160';
     ctx.fill();
 
     // Label with background
@@ -295,7 +295,7 @@ function drawLineChart(ctx, width, height, config) {
       var bgX = cp.x - textWidth / 2 - bgPadding;
       var bgY = cp.y - 24;
 
-      ctx.fillStyle = '#f093fb';
+      ctx.fillStyle = '#07C160';
       roundRect(ctx, bgX, bgY, textWidth + bgPadding * 2, 16, 4);
       ctx.fill();
 
@@ -394,7 +394,7 @@ function drawBonusCliffChart(ctx, width, height, config) {
     ctx.save();
     ctx.translate(x, paddingTop + chartHeight + 6);
     ctx.rotate(-Math.PI / 6);
-    ctx.fillStyle = labelVal > 0 ? '#f5576c' : '#999999';
+    ctx.fillStyle = labelVal > 0 ? '#059048' : '#999999';
     ctx.font = '8px sans-serif';
     ctx.textAlign = 'right';
     ctx.fillText(formatShortNumber(labelVal), 0, 0);
@@ -433,7 +433,7 @@ function drawBonusCliffChart(ctx, width, height, config) {
     ctx.beginPath();
     ctx.moveTo(prev.x, prev.y);
     ctx.lineTo(curr.x, curr.y);
-    ctx.strokeStyle = isCliff ? '#ef4444' : '#f093fb';
+    ctx.strokeStyle = isCliff ? '#ef4444' : '#07C160';
     ctx.lineWidth = isCliff ? 2.5 : 1.5;
     ctx.stroke();
   }
@@ -465,7 +465,7 @@ function drawBonusCliffChart(ctx, width, height, config) {
     // Vertical dashed line
     ctx.beginPath();
     ctx.setLineDash([4, 3]);
-    ctx.strokeStyle = '#f093fb';
+    ctx.strokeStyle = '#07C160';
     ctx.lineWidth = 1.5;
     ctx.moveTo(userX, paddingTop);
     ctx.lineTo(userX, paddingTop + chartHeight);
@@ -480,7 +480,7 @@ function drawBonusCliffChart(ctx, width, height, config) {
 
     ctx.beginPath();
     ctx.arc(userX, userY, 4, 0, Math.PI * 2);
-    ctx.fillStyle = '#f093fb';
+    ctx.fillStyle = '#07C160';
     ctx.fill();
     ctx.strokeStyle = '#ffffff';
     ctx.lineWidth = 2;
@@ -494,7 +494,7 @@ function drawBonusCliffChart(ctx, width, height, config) {
     var uBgX = userX - uTextW / 2 - uBgPad;
     var uBgY = userY - 26;
 
-    ctx.fillStyle = '#f093fb';
+    ctx.fillStyle = '#07C160';
     roundRect(ctx, uBgX, uBgY, uTextW + uBgPad * 2, 18, 4);
     ctx.fill();
 
@@ -503,7 +503,7 @@ function drawBonusCliffChart(ctx, width, height, config) {
     ctx.moveTo(userX - 4, uBgY + 18);
     ctx.lineTo(userX, uBgY + 22);
     ctx.lineTo(userX + 4, uBgY + 18);
-    ctx.fillStyle = '#f093fb';
+    ctx.fillStyle = '#07C160';
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';

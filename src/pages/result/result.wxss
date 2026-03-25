@@ -9,7 +9,7 @@
 
 /* ========== 头部 ========== */
 .header {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 60rpx 30rpx 40rpx;
   text-align: center;
   box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
@@ -74,7 +74,7 @@
 }
 
 .summary-value.red {
-  color: #f5576c;
+  color: #059048;
 }
 
 .summary-value.green {
@@ -108,7 +108,7 @@
 }
 
 .tab-active {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-weight: bold;
   box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
@@ -135,7 +135,7 @@
 
 .table-header {
   display: flex;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   border-radius: 12rpx;
   padding: 20rpx 0;
   position: sticky;
@@ -189,7 +189,7 @@
 .cell-net { width: 150rpx; }
 
 .month-label {
-  background: #f093fb;
+  background: #07C160;
   color: #ffffff;
   padding: 4rpx 12rpx;
   border-radius: 20rpx;
@@ -197,7 +197,7 @@
 }
 
 .highlight-tax {
-  color: #f5576c;
+  color: #059048;
   font-weight: bold;
 }
 
@@ -268,7 +268,7 @@
   align-items: center;
   gap: 20rpx;
   padding: 24rpx;
-  background: linear-gradient(135deg, #f093fb10 0%, #f5576c10 100%);
+  background: linear-gradient(135deg, #07C16010 0%, #05904810 100%);
   border-radius: 16rpx;
   margin-bottom: 20rpx;
 }
@@ -302,7 +302,7 @@
 }
 
 .highlight-value.red {
-  color: #f5576c;
+  color: #059048;
 }
 
 .card-details {
@@ -363,7 +363,7 @@
 
 .edit-link {
   font-size: 26rpx;
-  color: #f093fb;
+  color: #07C160;
   font-weight: normal;
 }
 
@@ -392,7 +392,7 @@
   display: block;
   font-size: 36rpx;
   font-weight: bold;
-  color: #f5576c;
+  color: #059048;
 }
 
 .rate-brackets {
@@ -425,7 +425,7 @@
 }
 
 .bracket-active {
-  border-color: #f5576c;
+  border-color: #059048;
   background: linear-gradient(135deg, #fff8f9 0%, #ffe8ec 100%);
 }
 
@@ -439,7 +439,7 @@
   flex: 0.5;
   font-size: 28rpx;
   font-weight: bold;
-  color: #f5576c;
+  color: #059048;
   text-align: center;
 }
 
@@ -487,7 +487,7 @@
 .total-row .deduction-label,
 .total-row .deduction-value {
   font-weight: bold;
-  color: #f5576c;
+  color: #059048;
 }
 
 .deduction-label {
@@ -584,7 +584,7 @@
   padding: 20rpx;
   background: #f8f9fa;
   border-radius: 12rpx;
-  border-left: 4rpx solid #f093fb;
+  border-left: 4rpx solid #07C160;
 }
 
 .explain-label {
@@ -617,7 +617,7 @@
   color: #333333;
   margin-bottom: 20rpx;
   padding-left: 16rpx;
-  border-left: 6rpx solid #f093fb;
+  border-left: 6rpx solid #07C160;
 }
 
 .chart-container {

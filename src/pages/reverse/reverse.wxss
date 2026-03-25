@@ -28,7 +28,7 @@
 .edit-btn {
   margin-left: auto;
   font-size: 24rpx;
-  color: #f093fb;
+  color: #07C160;
   padding: 8rpx 20rpx;
   background: #fff0fc;
   border-radius: 20rpx;
@@ -36,7 +36,7 @@
 
 /* ========== City selection ========== */
 .city-section {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
 }
 
@@ -171,7 +171,7 @@
 
 .btn-calculate {
   flex: 2;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-size: 32rpx;
   font-weight: bold;
@@ -207,7 +207,7 @@
 }
 
 .result-highlight {
-  background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+  background: linear-gradient(135deg, #07C16015 0%, #05904815 100%);
   padding: 32rpx;
   border-radius: 16rpx;
   margin-bottom: 30rpx;
@@ -235,7 +235,7 @@
 }
 
 .highlight-value.red {
-  color: #f5576c;
+  color: #059048;
 }
 
 .highlight-desc {
@@ -294,7 +294,7 @@
 }
 
 .breakdown-value.red {
-  color: #f5576c;
+  color: #059048;
 }
 
 .breakdown-value.green {
@@ -333,7 +333,7 @@
 }
 
 .detail-row.total {
-  background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+  background: linear-gradient(135deg, #07C16015 0%, #05904815 100%);
   padding: 20rpx;
   margin: 16rpx -24rpx 0;
   border-radius: 12rpx;
@@ -354,5 +354,5 @@
 .detail-row.total .detail-label,
 .detail-row.total .detail-value {
   font-weight: bold;
-  color: #f5576c;
+  color: #059048;
 }

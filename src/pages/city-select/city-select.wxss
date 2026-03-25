@@ -9,7 +9,7 @@
 
 /* ========== 头部 ========== */
 .header {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 60rpx 30rpx 40rpx;
   text-align: center;
   box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
@@ -95,8 +95,8 @@
 }
 
 .city-item-active {
-  background: linear-gradient(135deg, #f093fb10 0%, #f5576c10 100%);
-  border-color: #f5576c;
+  background: linear-gradient(135deg, #07C16010 0%, #05904810 100%);
+  border-color: #059048;
 }
 
 .city-name {
@@ -113,12 +113,12 @@
 }
 
 .city-item-active .city-name {
-  color: #f5576c;
+  color: #059048;
   font-weight: bold;
 }
 
 .city-item-active .city-level {
-  color: #f5576c;
+  color: #059048;
 }
 
 /* ========== 城市列表 ========== */
@@ -159,7 +159,7 @@
 }
 
 .badge-tier1 {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
 }
 
 .badge-tier2 {
@@ -188,9 +188,9 @@
 }
 
 .city-list-item-active {
-  background: linear-gradient(135deg, #f093fb10 0%, #f5576c10 100%);
-  border-color: #f5576c;
-  color: #f5576c;
+  background: linear-gradient(135deg, #07C16010 0%, #05904810 100%);
+  border-color: #059048;
+  color: #059048;
   font-weight: bold;
 }
 
@@ -284,7 +284,7 @@
 
 .btn-confirm {
   width: 100%;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-size: 32rpx;
   font-weight: bold;
@@ -374,7 +374,7 @@
 }
 
 .index-item-active {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-weight: bold;
   transform: scale(1.2);

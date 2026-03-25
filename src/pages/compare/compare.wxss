@@ -9,7 +9,7 @@
 
 /* ========== Page header ========== */
 .page-header {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 40rpx 30rpx;
   text-align: center;
   border-radius: 0 0 30rpx 30rpx;
@@ -68,7 +68,7 @@
 
 .plan-city {
   font-size: 24rpx;
-  color: #f093fb;
+  color: #07C160;
   background: #fff0fc;
   padding: 6rpx 16rpx;
   border-radius: 20rpx;
@@ -114,12 +114,12 @@
 }
 
 .edit-btn {
-  color: #f093fb;
+  color: #07C160;
   background: #fff0fc;
 }
 
 .delete-btn {
-  color: #f5576c;
+  color: #059048;
   background: #fff0f0;
 }
 
@@ -159,20 +159,20 @@
   padding: 30rpx;
   background: #ffffff;
   border-radius: 20rpx;
-  border: 2rpx dashed #f093fb;
+  border: 2rpx dashed #07C160;
   margin-bottom: 20rpx;
 }
 
 .add-icon {
   font-size: 40rpx;
-  color: #f093fb;
+  color: #07C160;
   margin-right: 12rpx;
   font-weight: bold;
 }
 
 .add-text {
   font-size: 28rpx;
-  color: #f093fb;
+  color: #07C160;
   font-weight: 500;
 }
 
@@ -261,7 +261,7 @@
 
 .form-btn-save {
   flex: 1;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-size: 28rpx;
   font-weight: bold;
@@ -278,7 +278,7 @@
 
 .btn-compare {
   flex: 2;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-size: 32rpx;
   font-weight: bold;
@@ -402,7 +402,7 @@
 }
 
 .highlight-row {
-  background: linear-gradient(135deg, #f093fb08 0%, #f5576c08 100%);
+  background: linear-gradient(135deg, #07C16008 0%, #05904808 100%);
 }
 
 .highlight-row .table-cell {
@@ -421,7 +421,7 @@
 }
 
 .diff-red {
-  color: #f5576c;
+  color: #059048;
   font-weight: 500;
 }
 

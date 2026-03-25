@@ -55,7 +55,7 @@
 
   <!-- Add/Edit form modal -->
   <view class="form-overlay" wx:if="{{showAddForm}}" bindtap="onCancelForm">
-    <view class="form-modal" catchtap="">
+    <view class="form-modal" catchtap="onStopPropagation">
       <view class="form-title">
         {{editingIndex >= 0 ? '编辑方案' : '添加方案'}}
       </view>

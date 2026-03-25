@@ -245,6 +245,9 @@ Page({
 
       this.setData({ result });
 
+      // Save monthly salary for annual settlement quick fill
+      wx.setStorageSync('last_monthly_salary', parseFloat(grossSalary));
+
       // Save to history
       saveHistory({
         type: 'salary',

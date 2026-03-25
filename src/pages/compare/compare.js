@@ -127,6 +127,9 @@ Page({
     this.setData({ 'formData.fundRatioIndex': parseInt(e.detail.value) });
   },
 
+  // Prevent tap event propagation on modal
+  onStopPropagation() {},
+
   // Cancel form
   onCancelForm() {
     this.setData({ showAddForm: false, editingIndex: -1 });

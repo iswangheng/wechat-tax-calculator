@@ -63,20 +63,24 @@ Page({
 
   // Quick fill from monthly salary
   onQuickFill() {
+    const that = this;
     wx.showModal({
       title: '快速填写',
-      content: '请在下方输入月薪，系统将自动计算全年数据',
-      editable: true,
-      placeholderText: '请输入税前月薪',
+      content: '输入税前月薪后点确定，将自动计算全年工资总额',
+      confirmText: '确定',
+      cancelText: '取消',
       success: (res) => {
-        if (res.confirm && res.content) {
-          const monthlySalary = parseFloat(res.content);
-          if (monthlySalary > 0) {
-            this.setData({
-              totalSalary: (monthlySalary * 12).toString(),
+        if (res.confirm) {
+          // Use last salary from storage or prompt user to enter on the input field
+          const lastSalary = wx.getStorageSync('last_monthly_salary');
+          if (lastSalary && lastSalary > 0) {
+            that.setData({
+              totalSalary: (lastSalary * 12).toString(),
               result: null
             });
-            wx.showToast({ title: '已自动计算全年工资', icon: 'none' });
+            wx.showToast({ title: '已按月薪' + lastSalary + '元填入', icon: 'none' });
+          } else {
+            wx.showToast({ title: '请先在个税计算器中计算一次工资', icon: 'none' });
           }
         }
       }

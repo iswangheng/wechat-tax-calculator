@@ -1,5 +1,9 @@
 // History page - display and manage tax calculation records
-const { getHistoryList, deleteHistory, clearHistory } = require('../../utils/history-manager');
+const {
+  getHistoryList,
+  deleteHistory,
+  clearHistory,
+} = require("../../utils/history-manager");
 
 Page({
   data: {
@@ -7,7 +11,7 @@ Page({
     isEmpty: true,
     // Touch tracking for swipe-to-delete
     touchStartX: 0,
-    activeSwipeId: null
+    activeSwipeId: null,
   },
 
   onLoad() {
@@ -22,14 +26,14 @@ Page({
   loadHistory() {
     const list = getHistoryList();
     this.setData({
-      historyList: list.map(item => ({
+      historyList: list.map((item) => ({
         ...item,
         // Format createTime for display
         formattedTime: this.formatTime(item.createTime),
         // Track swipe state per item
-        swiped: false
+        swiped: false,
       })),
-      isEmpty: list.length === 0
+      isEmpty: list.length === 0,
     });
   },
 
@@ -40,17 +44,17 @@ Page({
    */
   formatTime(timestamp) {
     const date = new Date(timestamp);
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
     return `${month}-${day} ${hours}:${minutes}`;
   },
 
   // Touch start handler for swipe detection
   onTouchStart(e) {
     this.setData({
-      touchStartX: e.touches[0].clientX
+      touchStartX: e.touches[0].clientX,
     });
   },
 
@@ -63,12 +67,12 @@ Page({
     if (diff > 60) {
       // Left swipe - show delete button
       this.setData({
-        activeSwipeId: id
+        activeSwipeId: id,
       });
     } else if (diff < -30) {
       // Right swipe - hide delete button
       this.setData({
-        activeSwipeId: null
+        activeSwipeId: null,
       });
     }
   },
@@ -83,8 +87,15 @@ Page({
       return;
     }
 
-    const record = this.data.historyList.find(item => item.id === id);
+    const record = this.data.historyList.find((item) => item.id === id);
     if (!record) return;
+
+    // Analytics: track history restore
+    try {
+      wx.reportAnalytics("restore_history", { type: record.type });
+    } catch (e) {
+      /* ignore analytics error */
+    }
 
     // Store restored data in globalData
     const app = getApp();
@@ -93,7 +104,7 @@ Page({
 
     // Navigate back to index (switchTab for tabBar page)
     wx.switchTab({
-      url: '/pages/index/index'
+      url: "/pages/index/index",
     });
   },
 
@@ -102,16 +113,16 @@ Page({
     const id = e.currentTarget.dataset.id;
 
     wx.showModal({
-      title: '确认删除',
-      content: '确定要删除这条记录吗？',
+      title: "确认删除",
+      content: "确定要删除这条记录吗？",
       success: (res) => {
         if (res.confirm) {
           deleteHistory(id);
           this.setData({ activeSwipeId: null });
           this.loadHistory();
-          wx.showToast({ title: '已删除', icon: 'success' });
+          wx.showToast({ title: "已删除", icon: "success" });
         }
-      }
+      },
     });
   },
 
@@ -120,14 +131,14 @@ Page({
     const id = e.currentTarget.dataset.id;
 
     wx.showActionSheet({
-      itemList: ['删除此记录'],
+      itemList: ["删除此记录"],
       success: (res) => {
         if (res.tapIndex === 0) {
           deleteHistory(id);
           this.loadHistory();
-          wx.showToast({ title: '已删除', icon: 'success' });
+          wx.showToast({ title: "已删除", icon: "success" });
         }
-      }
+      },
     });
   },
 
@@ -136,23 +147,23 @@ Page({
     if (this.data.isEmpty) return;
 
     wx.showModal({
-      title: '清空历史',
-      content: '确定要清空所有计算记录吗？此操作不可撤销。',
-      confirmColor: '#059048',
+      title: "清空历史",
+      content: "确定要清空所有计算记录吗？此操作不可撤销。",
+      confirmColor: "#059048",
       success: (res) => {
         if (res.confirm) {
           clearHistory();
           this.loadHistory();
-          wx.showToast({ title: '已清空', icon: 'success' });
+          wx.showToast({ title: "已清空", icon: "success" });
         }
-      }
+      },
     });
   },
 
   // Navigate back
   onGoBack() {
     wx.switchTab({
-      url: '/pages/index/index'
+      url: "/pages/index/index",
     });
-  }
+  },
 });

@@ -1,19 +1,37 @@
 // Multi-plan comparison page
-const { getCitySocialConfig, getCityList } = require('../../config/cities-tax-2026');
+const {
+  getCitySocialConfig,
+  getCityList,
+} = require("../../config/cities-tax-2026");
 const {
   calculateSocialSecurity,
   calculateMonthlyTax,
   calculateBonusTax,
-  calculate12MonthsTax
-} = require('../../utils/tax-calculator');
+  calculate12MonthsTax,
+} = require("../../utils/tax-calculator");
 
 // Cost of living index (relative to national average = 1.0)
 const CITY_COST_INDEX = {
-  '北京': 1.45, '上海': 1.40, '深圳': 1.38, '广州': 1.20,
-  '杭州': 1.18, '南京': 1.12, '苏州': 1.10, '成都': 1.00,
-  '武汉': 0.98, '重庆': 0.95, '长沙': 0.92, '西安': 0.90,
-  '郑州': 0.88, '天津': 1.05, '青岛': 0.95, '宁波': 1.05,
-  '东莞': 1.08, '佛山': 1.02, '合肥': 0.90, '厦门': 1.15
+  北京: 1.45,
+  上海: 1.4,
+  深圳: 1.38,
+  广州: 1.2,
+  杭州: 1.18,
+  南京: 1.12,
+  苏州: 1.1,
+  成都: 1.0,
+  武汉: 0.98,
+  重庆: 0.95,
+  长沙: 0.92,
+  西安: 0.9,
+  郑州: 0.88,
+  天津: 1.05,
+  青岛: 0.95,
+  宁波: 1.05,
+  东莞: 1.08,
+  佛山: 1.02,
+  合肥: 0.9,
+  厦门: 1.15,
 };
 
 const MAX_PLANS = 5;
@@ -28,7 +46,7 @@ Page({
     cityList: [],
 
     // Fund ratio options
-    fundRatioOptions: ['5%', '6%', '7%', '8%', '9%', '10%', '11%', '12%'],
+    fundRatioOptions: ["5%", "6%", "7%", "8%", "9%", "10%", "11%", "12%"],
 
     // Comparison result
     comparisonResult: null,
@@ -40,12 +58,12 @@ Page({
 
     // Form data for adding/editing
     formData: {
-      name: '',
+      name: "",
       cityIndex: 0,
-      grossSalary: '',
-      bonus: '',
-      fundRatioIndex: 1
-    }
+      grossSalary: "",
+      bonus: "",
+      fundRatioIndex: 1,
+    },
   },
 
   onLoad() {
@@ -56,7 +74,7 @@ Page({
   // Show add plan form
   onAddPlan() {
     if (this.data.planCount >= MAX_PLANS) {
-      wx.showToast({ title: '最多添加5个方案', icon: 'none' });
+      wx.showToast({ title: "最多添加5个方案", icon: "none" });
       return;
     }
 
@@ -66,10 +84,10 @@ Page({
       formData: {
         name: `方案 ${this.data.planCount + 1}`,
         cityIndex: 0,
-        grossSalary: '',
-        bonus: '',
-        fundRatioIndex: 1
-      }
+        grossSalary: "",
+        bonus: "",
+        fundRatioIndex: 1,
+      },
     });
   },
 
@@ -86,9 +104,9 @@ Page({
         name: plan.name,
         cityIndex: cityIndex >= 0 ? cityIndex : 0,
         grossSalary: plan.grossSalary.toString(),
-        bonus: plan.bonus ? plan.bonus.toString() : '',
-        fundRatioIndex: plan.fundRatio - 5
-      }
+        bonus: plan.bonus ? plan.bonus.toString() : "",
+        fundRatioIndex: plan.fundRatio - 5,
+      },
     });
   },
 
@@ -102,29 +120,29 @@ Page({
       plans,
       planCount: plans.length,
       comparisonResult: null,
-      bestPlanIndex: -1
+      bestPlanIndex: -1,
     });
   },
 
   // Form input handlers
   onNameInput(e) {
-    this.setData({ 'formData.name': e.detail.value });
+    this.setData({ "formData.name": e.detail.value });
   },
 
   onCityChange(e) {
-    this.setData({ 'formData.cityIndex': parseInt(e.detail.value) });
+    this.setData({ "formData.cityIndex": parseInt(e.detail.value) });
   },
 
   onSalaryInput(e) {
-    this.setData({ 'formData.grossSalary': e.detail.value });
+    this.setData({ "formData.grossSalary": e.detail.value });
   },
 
   onBonusInput(e) {
-    this.setData({ 'formData.bonus': e.detail.value });
+    this.setData({ "formData.bonus": e.detail.value });
   },
 
   onFundRatioChange(e) {
-    this.setData({ 'formData.fundRatioIndex': parseInt(e.detail.value) });
+    this.setData({ "formData.fundRatioIndex": parseInt(e.detail.value) });
   },
 
   // Prevent tap event propagation on modal
@@ -141,13 +159,13 @@ Page({
 
     // Validate
     if (!formData.name.trim()) {
-      wx.showToast({ title: '请输入方案名称', icon: 'none' });
+      wx.showToast({ title: "请输入方案名称", icon: "none" });
       return;
     }
 
     const salary = parseFloat(formData.grossSalary);
     if (!salary || salary <= 0) {
-      wx.showToast({ title: '请输入有效月薪', icon: 'none' });
+      wx.showToast({ title: "请输入有效月薪", icon: "none" });
       return;
     }
 
@@ -160,7 +178,7 @@ Page({
       city,
       grossSalary: salary,
       bonus,
-      fundRatio
+      fundRatio,
     };
 
     const plans = [...this.data.plans];
@@ -177,10 +195,10 @@ Page({
       showAddForm: false,
       editingIndex: -1,
       comparisonResult: null,
-      bestPlanIndex: -1
+      bestPlanIndex: -1,
     });
 
-    wx.showToast({ title: '方案已保存', icon: 'success' });
+    wx.showToast({ title: "方案已保存", icon: "success" });
   },
 
   // Run comparison calculation
@@ -188,12 +206,12 @@ Page({
     const { plans } = this.data;
 
     if (plans.length < 2) {
-      wx.showToast({ title: '请至少添加2个方案', icon: 'none' });
+      wx.showToast({ title: "请至少添加2个方案", icon: "none" });
       return;
     }
 
     try {
-      const results = plans.map(plan => this.calculatePlanResult(plan));
+      const results = plans.map((plan) => this.calculatePlanResult(plan));
 
       // Find best plan (highest annual net income)
       let bestIndex = 0;
@@ -207,19 +225,27 @@ Page({
 
       // Calculate difference from best
       results.forEach((r, i) => {
-        r.diffFromBest = Math.round((maxIncome - r.annualNetIncome) * 100) / 100;
+        r.diffFromBest =
+          Math.round((maxIncome - r.annualNetIncome) * 100) / 100;
         r.isBest = i === bestIndex;
       });
 
       this.setData({
         comparisonResult: results,
-        bestPlanIndex: bestIndex
+        bestPlanIndex: bestIndex,
       });
 
-      wx.showToast({ title: '对比完成', icon: 'success' });
+      // Analytics: track comparison
+      try {
+        wx.reportAnalytics("compare", { plan_count: plans.length });
+      } catch (e) {
+        /* ignore analytics error */
+      }
+
+      wx.showToast({ title: "对比完成", icon: "success" });
     } catch (error) {
-      console.error('Comparison calculation error:', error);
-      wx.showToast({ title: '计算失败，请检查输入', icon: 'none' });
+      console.error("Comparison calculation error:", error);
+      wx.showToast({ title: "计算失败，请检查输入", icon: "none" });
     }
   },
 
@@ -232,14 +258,14 @@ Page({
       plan.grossSalary,
       cityConfig.socialBase,
       cityConfig.socialRate,
-      plan.fundRatio
+      plan.fundRatio,
     );
 
     // Calculate 12 months tax schedule
     const schedule = calculate12MonthsTax({
       monthlyGrossSalary: plan.grossSalary,
       socialSecurity,
-      specialDeductions: 0
+      specialDeductions: 0,
     });
 
     // Monthly averages from schedule
@@ -262,11 +288,12 @@ Page({
     // Annual totals
     const annualGross = plan.grossSalary * 12 + (plan.bonus || 0);
     const annualSocial = socialSecurity.total * 12;
-    const annualNetIncome = (plan.grossSalary * 12) - annualSocial - totalAnnualTax + bonusNet;
+    const annualNetIncome =
+      plan.grossSalary * 12 - annualSocial - totalAnnualTax + bonusNet;
 
     // Cost of living hint
     const costIndex = CITY_COST_INDEX[plan.city] || 1.0;
-    const costHint = costIndex > 1.1 ? '高' : (costIndex < 0.95 ? '低' : '中等');
+    const costHint = costIndex > 1.1 ? "高" : costIndex < 0.95 ? "低" : "中等";
 
     return {
       name: plan.name,
@@ -287,7 +314,7 @@ Page({
       costIndex,
       costHint,
       diffFromBest: 0,
-      isBest: false
+      isBest: false,
     };
   },
 
@@ -297,7 +324,7 @@ Page({
       plans: [],
       planCount: 0,
       comparisonResult: null,
-      bestPlanIndex: -1
+      bestPlanIndex: -1,
     });
-  }
+  },
 });

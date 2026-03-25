@@ -4,62 +4,69 @@ App({
     userInfo: null,
     taxCalculation: null,
     deductionItems: [],
-    selectedCity: '上海'
+    selectedCity: "上海",
   },
 
   onLaunch() {
     // 显示本地存储能力
-    const logs = wx.getStorageSync('logs') || [];
+    const logs = wx.getStorageSync("logs") || [];
     logs.unshift(Date.now());
-    wx.setStorageSync('logs', logs);
+    wx.setStorageSync("logs", logs);
 
     // 登录
     wx.login({
-      success: res => {
-        console.log('登录成功', res.code);
-      }
+      success: (res) => {
+        console.log("登录成功", res.code);
+      },
     });
 
     // 获取用户信息
     wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
+      success: (res) => {
+        if (res.authSetting["scope.userInfo"]) {
           wx.getUserInfo({
-            success: res => {
+            success: (res) => {
               this.globalData.userInfo = res.userInfo;
 
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res);
               }
-            }
+            },
           });
         }
-      }
+      },
     });
+
+    // Analytics: track app launch
+    try {
+      wx.reportAnalytics("app_launch", { timestamp: Date.now() });
+    } catch (e) {
+      /* ignore analytics error */
+    }
 
     // 获取系统信息
     const systemInfo = wx.getSystemInfoSync();
     this.globalData.systemInfo = systemInfo;
-    console.log('系统信息:', systemInfo);
+    console.log("系统信息:", systemInfo);
 
     // 加载上次选择的城市
-    const lastCity = wx.getStorageSync('lastSelectedCity');
+    const lastCity = wx.getStorageSync("lastSelectedCity");
     if (lastCity) {
       this.globalData.selectedCity = lastCity;
     }
 
     // 加载专项扣除配置
-    const savedDeductions = wx.getStorageSync('specialDeductions');
+    const savedDeductions = wx.getStorageSync("specialDeductions");
     if (savedDeductions) {
       this.globalData.deductionItems = savedDeductions;
     }
   },
 
   onShow() {
-    console.log('App Show');
+    console.log("App Show");
   },
 
   onHide() {
-    console.log('App Hide');
-  }
+    console.log("App Hide");
+  },
 });

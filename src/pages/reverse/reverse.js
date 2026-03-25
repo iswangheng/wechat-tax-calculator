@@ -1,30 +1,30 @@
 // Reverse calculation page: calculate gross salary from desired net salary
-const { getCitySocialConfig } = require('../../config/cities-tax-2026');
+const { getCitySocialConfig } = require("../../config/cities-tax-2026");
 const {
   calculateSocialSecurity,
-  calculateGrossFromNet
-} = require('../../utils/tax-calculator');
+  calculateGrossFromNet,
+} = require("../../utils/tax-calculator");
 
 Page({
   data: {
     // City info
-    cityName: '上海',
-    cityLevel: '一线',
+    cityName: "上海",
+    cityLevel: "一线",
     cityInfo: null,
 
     // Input
-    netSalary: '',          // desired net salary
+    netSalary: "", // desired net salary
 
     // Social insurance
-    fundRatio: 6,           // housing fund ratio
-    socialSecurity: null,   // social security breakdown
+    fundRatio: 6, // housing fund ratio
+    socialSecurity: null, // social security breakdown
 
     // Special deductions
     specialDeductions: 0,
     deductionItems: [],
 
     // Result
-    result: null
+    result: null,
   },
 
   onLoad() {
@@ -41,7 +41,7 @@ Page({
         this.setData({
           cityName,
           result: null,
-          socialSecurity: null
+          socialSecurity: null,
         });
         this.loadCityConfig();
       }
@@ -50,12 +50,15 @@ Page({
     // Update deductions if changed
     if (app.globalData && app.globalData.deductionItems) {
       const deductionItems = app.globalData.deductionItems;
-      const specialDeductions = deductionItems.reduce((sum, item) => sum + item.amount, 0);
+      const specialDeductions = deductionItems.reduce(
+        (sum, item) => sum + item.amount,
+        0,
+      );
 
       this.setData({
         deductionItems,
         specialDeductions,
-        result: null
+        result: null,
       });
     }
   },
@@ -68,15 +71,15 @@ Page({
       cityLevel: cityConfig.level,
       cityInfo: {
         socialBase: cityConfig.socialBase,
-        totalRate: (cityConfig.totalRate * 100).toFixed(1)
-      }
+        totalRate: (cityConfig.totalRate * 100).toFixed(1),
+      },
     });
   },
 
   // Navigate to city select page
   onCitySelect() {
     wx.navigateTo({
-      url: '/pages/city-select/city-select'
+      url: "/pages/city-select/city-select",
     });
   },
 
@@ -84,7 +87,7 @@ Page({
   onNetSalaryInput(e) {
     this.setData({
       netSalary: e.detail.value,
-      result: null
+      result: null,
     });
   },
 
@@ -101,7 +104,7 @@ Page({
     app.globalData.deductionItems = this.data.deductionItems;
 
     wx.navigateTo({
-      url: '/pages/deductions/deductions'
+      url: "/pages/deductions/deductions",
     });
   },
 
@@ -113,7 +116,7 @@ Page({
     const MIN_SALARY = 1;
 
     if (!netSalary || parseFloat(netSalary) <= 0) {
-      wx.showToast({ title: '请输入期望税后工资', icon: 'none' });
+      wx.showToast({ title: "请输入期望税后工资", icon: "none" });
       return;
     }
 
@@ -121,8 +124,8 @@ Page({
     if (salaryValue < MIN_SALARY || salaryValue > MAX_SALARY) {
       wx.showToast({
         title: `金额必须在${MIN_SALARY}-${MAX_SALARY}元之间`,
-        icon: 'none',
-        duration: 2000
+        icon: "none",
+        duration: 2000,
       });
       return;
     }
@@ -135,14 +138,14 @@ Page({
         estimatedGross,
         cityConfig.socialBase,
         cityConfig.socialRate,
-        fundRatio
+        fundRatio,
       );
 
       // Reverse calculate gross from net
       const result = calculateGrossFromNet({
         netSalary: salaryValue,
         socialSecurity,
-        specialDeductions
+        specialDeductions,
       });
 
       // Recalculate social security with actual gross salary
@@ -150,37 +153,43 @@ Page({
         result.grossSalary,
         cityConfig.socialBase,
         cityConfig.socialRate,
-        fundRatio
+        fundRatio,
       );
 
       // Run reverse calculation again with corrected social security
       const finalResult = calculateGrossFromNet({
         netSalary: salaryValue,
         socialSecurity: actualSocial,
-        specialDeductions
+        specialDeductions,
       });
 
       this.setData({
         socialSecurity: actualSocial,
-        result: finalResult
+        result: finalResult,
       });
 
-      wx.showToast({ title: '计算成功', icon: 'success' });
+      // Analytics: track reverse calculation
+      try {
+        wx.reportAnalytics("calculate", { type: "reverse" });
+      } catch (e) {
+        /* ignore analytics error */
+      }
 
+      wx.showToast({ title: "计算成功", icon: "success" });
     } catch (error) {
-      console.error('Reverse calculation error:', error);
-      wx.showToast({ title: '计算失败，请检查输入', icon: 'none' });
+      console.error("Reverse calculation error:", error);
+      wx.showToast({ title: "计算失败，请检查输入", icon: "none" });
     }
   },
 
   // Reset all inputs
   onReset() {
     this.setData({
-      netSalary: '',
+      netSalary: "",
       socialSecurity: null,
       specialDeductions: 0,
       deductionItems: [],
-      result: null
+      result: null,
     });
-  }
+  },
 });

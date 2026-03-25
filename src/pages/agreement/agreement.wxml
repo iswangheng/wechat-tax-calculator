@@ -2,7 +2,7 @@
 <view class="agreement-container">
   <view class="agreement-header">
     <text class="agreement-title">用户协议</text>
-    <text class="update-date">更新日期: 2026年3月24日</text>
+    <text class="update-date">更新日期: 2026年3月25日</text>
   </view>
 
   <scroll-view class="agreement-content" scroll-y>
@@ -108,14 +108,26 @@
     <view class="section">
       <text class="section-title">八、协议变更</text>
       <text class="section-text">
-        我们保留随时修改本协议的权利。更新后的协议将在小程序内公示，继续使用本服务即表示您同意更新后的协议条款。
+        我们保留随时修改本协议的权利。更新后的协议将在小程序内公示，如涉及重大变更将以弹窗等显著方式通知您。继续使用本服务即表示您同意更新后的协议条款。如您不同意变更内容，应立即停止使用本服务。
+      </text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">九、争议解决</text>
+      <text class="section-text">
+        本协议的签订、履行、解释及争议解决均适用中华人民共和国法律（不包括港澳台地区法律）。如双方就本协议内容或其执行发生争议，应首先协商解决；协商不成的，任何一方均可向本小程序开发者所在地有管辖权的人民法院提起诉讼。
       </text>
     </view>
 
     <view class="section last-section">
-      <text class="section-title">九、联系方式</text>
+      <text class="section-title">十、联系方式</text>
       <text class="section-text">
-        如您在使用过程中有任何问题或建议，欢迎通过小程序内的反馈功能联系我们。我们将竭诚为您服务。
+        如您在使用过程中有任何问题或建议，欢迎通过以下方式联系我们：
+      </text>
+      <text class="section-text indent">• 小程序内"意见反馈"功能</text>
+      <text class="section-text indent">• 微信公众平台留言</text>
+      <text class="section-text">
+        我们将竭诚为您服务，并在收到反馈后15个工作日内予以回复。
       </text>
     </view>
   </scroll-view>

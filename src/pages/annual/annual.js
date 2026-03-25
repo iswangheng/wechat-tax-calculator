@@ -1,18 +1,21 @@
 // Annual tax settlement simulation page
-const { calculateAnnualSettlement, calculateBonusTax } = require('../../utils/tax-calculator');
+const {
+  calculateAnnualSettlement,
+  calculateBonusTax,
+} = require("../../utils/tax-calculator");
 
 Page({
   data: {
     // Input fields
-    totalSalary: '',       // Total salary for the year
-    bonus: '',             // Annual bonus
-    otherIncome: '',       // Other income (freelance, royalties, etc.)
-    paidTax: '',           // Total tax already paid
-    totalSocial: '',       // Total social security paid
-    totalDeduction: '',    // Total special deductions
+    totalSalary: "", // Total salary for the year
+    bonus: "", // Annual bonus
+    otherIncome: "", // Other income (freelance, royalties, etc.)
+    paidTax: "", // Total tax already paid
+    totalSocial: "", // Total social security paid
+    totalDeduction: "", // Total special deductions
 
     // Bonus tax method toggle
-    bonusMerged: false,    // Whether to merge bonus into comprehensive income
+    bonusMerged: false, // Whether to merge bonus into comprehensive income
 
     // Calculation result
     result: null,
@@ -21,7 +24,7 @@ Page({
     optimization: null,
 
     // Show calculation process
-    showProcess: false
+    showProcess: false,
   },
 
   // Input handlers
@@ -52,7 +55,7 @@ Page({
   onBonusMergedChange(e) {
     this.setData({
       bonusMerged: e.detail.value.length > 0,
-      result: null
+      result: null,
     });
   },
 
@@ -65,46 +68,56 @@ Page({
   onQuickFill() {
     const that = this;
     wx.showModal({
-      title: '快速填写',
-      content: '输入税前月薪后点确定，将自动计算全年工资总额',
-      confirmText: '确定',
-      cancelText: '取消',
+      title: "快速填写",
+      content: "输入税前月薪后点确定，将自动计算全年工资总额",
+      confirmText: "确定",
+      cancelText: "取消",
       success: (res) => {
         if (res.confirm) {
           // Use last salary from storage or prompt user to enter on the input field
-          const lastSalary = wx.getStorageSync('last_monthly_salary');
+          const lastSalary = wx.getStorageSync("last_monthly_salary");
           if (lastSalary && lastSalary > 0) {
             that.setData({
               totalSalary: (lastSalary * 12).toString(),
-              result: null
+              result: null,
             });
-            wx.showToast({ title: '已按月薪' + lastSalary + '元填入', icon: 'none' });
+            wx.showToast({
+              title: "已按月薪" + lastSalary + "元填入",
+              icon: "none",
+            });
           } else {
-            wx.showToast({ title: '请先在个税计算器中计算一次工资', icon: 'none' });
+            wx.showToast({
+              title: "请先在个税计算器中计算一次工资",
+              icon: "none",
+            });
           }
         }
-      }
+      },
     });
   },
 
   // Start calculation
   onCalculate() {
     const {
-      totalSalary, bonus, otherIncome,
-      paidTax, totalSocial, totalDeduction,
-      bonusMerged
+      totalSalary,
+      bonus,
+      otherIncome,
+      paidTax,
+      totalSocial,
+      totalDeduction,
+      bonusMerged,
     } = this.data;
 
     // Validate required fields
     const salaryVal = parseFloat(totalSalary) || 0;
     if (salaryVal <= 0) {
-      wx.showToast({ title: '请输入全年工资总收入', icon: 'none' });
+      wx.showToast({ title: "请输入全年工资总收入", icon: "none" });
       return;
     }
 
     const paidTaxVal = parseFloat(paidTax) || 0;
     if (paidTaxVal < 0) {
-      wx.showToast({ title: '已缴个税不能为负数', icon: 'none' });
+      wx.showToast({ title: "已缴个税不能为负数", icon: "none" });
       return;
     }
 
@@ -122,30 +135,48 @@ Page({
         paidTax: paidTaxVal,
         totalSocial: totalSocialVal,
         totalDeduction: totalDeductionVal,
-        bonusMerged
+        bonusMerged,
       });
 
       // Generate optimization suggestion
       const optimization = this.generateOptimization(
-        salaryVal, bonusVal, otherIncomeVal,
-        paidTaxVal, totalSocialVal, totalDeductionVal
+        salaryVal,
+        bonusVal,
+        otherIncomeVal,
+        paidTaxVal,
+        totalSocialVal,
+        totalDeductionVal,
       );
 
       this.setData({ result, optimization });
 
-      wx.showToast({ title: '计算完成', icon: 'success' });
+      // Analytics: track annual settlement calculation
+      try {
+        wx.reportAnalytics("calculate", { type: "annual" });
+      } catch (e) {
+        /* ignore analytics error */
+      }
+
+      wx.showToast({ title: "计算完成", icon: "success" });
     } catch (error) {
-      console.error('Annual settlement calculation error:', error);
-      wx.showToast({ title: '计算失败，请检查输入', icon: 'none' });
+      console.error("Annual settlement calculation error:", error);
+      wx.showToast({ title: "计算失败，请检查输入", icon: "none" });
     }
   },
 
   // Generate optimization suggestion by comparing two bonus methods
-  generateOptimization(totalSalary, bonus, otherIncome, paidTax, totalSocial, totalDeduction) {
+  generateOptimization(
+    totalSalary,
+    bonus,
+    otherIncome,
+    paidTax,
+    totalSocial,
+    totalDeduction,
+  ) {
     if (!bonus || bonus <= 0) {
       return {
         hasSuggestion: false,
-        text: '无年终奖，无需比较计税方式'
+        text: "无年终奖，无需比较计税方式",
       };
     }
 
@@ -157,7 +188,7 @@ Page({
       paidTax,
       totalSocial,
       totalDeduction,
-      bonusMerged: false
+      bonusMerged: false,
     });
 
     // Method 2: Merge bonus into comprehensive income
@@ -168,7 +199,7 @@ Page({
       paidTax,
       totalSocial,
       totalDeduction,
-      bonusMerged: true
+      bonusMerged: true,
     });
 
     const separateTax = separateResult.totalAnnualTax;
@@ -182,7 +213,7 @@ Page({
         text: `建议选择"年终奖单独计税"，可少缴 ${Math.round(diff * 100) / 100} 元`,
         separateTax: Math.round(separateTax * 100) / 100,
         mergedTax: Math.round(mergedTax * 100) / 100,
-        savedAmount: Math.round(diff * 100) / 100
+        savedAmount: Math.round(diff * 100) / 100,
       };
     } else if (mergedTax < separateTax) {
       return {
@@ -191,32 +222,32 @@ Page({
         text: `建议选择"年终奖并入综合所得"，可少缴 ${Math.round(diff * 100) / 100} 元`,
         separateTax: Math.round(separateTax * 100) / 100,
         mergedTax: Math.round(mergedTax * 100) / 100,
-        savedAmount: Math.round(diff * 100) / 100
+        savedAmount: Math.round(diff * 100) / 100,
       };
     }
 
     return {
       hasSuggestion: false,
-      text: '两种计税方式税额相同',
+      text: "两种计税方式税额相同",
       separateTax: Math.round(separateTax * 100) / 100,
       mergedTax: Math.round(mergedTax * 100) / 100,
-      savedAmount: 0
+      savedAmount: 0,
     };
   },
 
   // Reset all fields
   onReset() {
     this.setData({
-      totalSalary: '',
-      bonus: '',
-      otherIncome: '',
-      paidTax: '',
-      totalSocial: '',
-      totalDeduction: '',
+      totalSalary: "",
+      bonus: "",
+      otherIncome: "",
+      paidTax: "",
+      totalSocial: "",
+      totalDeduction: "",
       bonusMerged: false,
       result: null,
       optimization: null,
-      showProcess: false
+      showProcess: false,
     });
-  }
+  },
 });

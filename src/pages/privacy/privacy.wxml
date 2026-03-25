@@ -2,22 +2,32 @@
 <view class="privacy-container">
   <view class="privacy-header">
     <text class="privacy-title">隐私政策</text>
-    <text class="update-date">更新日期: 2026年3月24日</text>
+    <text class="update-date">更新日期: 2026年3月25日</text>
   </view>
 
   <scroll-view class="privacy-content" scroll-y>
     <view class="section">
-      <text class="section-title">一、信息收集说明</text>
+      <text class="section-title">一、运营主体</text>
       <text class="section-text">
-        我们非常重视您的隐私保护。本小程序在运营过程中：
+        本小程序由"个税计算器 2026"开发者（以下简称"我们"）运营和维护。我们深知个人信息对您的重要性，将严格遵守法律法规要求，保护您的个人信息安全。
       </text>
-      <text class="highlight-text">• 不收集任何用户个人信息</text>
-      <text class="highlight-text">• 不获取用户手机号、微信昵称等敏感信息</text>
-      <text class="highlight-text">• 不上传或存储用户输入的任何计算数据</text>
     </view>
 
     <view class="section">
-      <text class="section-title">二、本地计算</text>
+      <text class="section-title">二、信息收集说明</text>
+      <text class="section-text">
+        本小程序为纯工具类应用，在运营过程中：
+      </text>
+      <text class="highlight-text">• 不收集任何用户个人身份信息</text>
+      <text class="highlight-text">• 不获取用户手机号、微信昵称等敏感信息</text>
+      <text class="highlight-text">• 不要求用户注册或登录</text>
+      <text class="section-text">
+        本小程序可能使用微信平台提供的统计分析服务，该服务会以匿名、聚合的方式收集基础使用数据（如页面访问次数），用于改进产品体验，不涉及个人身份识别。
+      </text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">三、本地数据存储</text>
       <text class="section-text">
         所有个税计算功能均在您的设备本地完成，包括但不限于：
       </text>
@@ -25,70 +35,55 @@
       <text class="section-text indent">• 应纳税额、实发工资等计算结果</text>
       <text class="section-text indent">• 年终奖优化、税后反推等数据</text>
       <text class="section-text">
-        这些数据仅保存在您的设备缓存中，不会上传到任何服务器。
+        上述数据仅通过微信小程序本地缓存（Storage）保存在您的设备中，不会上传到任何服务器。本地缓存数据将在您主动清除小程序数据或卸载小程序时自动删除，无固定存储期限。
       </text>
     </view>
 
     <view class="section">
-      <text class="section-title">三、数据来源</text>
+      <text class="section-title">四、用户权利</text>
       <text class="section-text">
-        本小程序使用的税率、起征点等基础数据来源于：
+        您对自己的数据享有以下权利：
       </text>
-      <text class="section-text indent">• 国家税务总局公开发布的税法规定</text>
-      <text class="section-text indent">• 《中华人民共和国个人所得税法》</text>
-      <text class="section-text indent">• 各地税务机关公开发布的政策文件</text>
-      <text class="section-text">
-        我们会定期更新这些数据，以确保计算结果的准确性。
-      </text>
+      <text class="section-text indent">• 查看权：您可以随时在小程序中查看已保存的计算记录</text>
+      <text class="section-text indent">• 删除权：您可以通过微信"设置 - 小程序管理"中清除本小程序的缓存数据，或直接删除本小程序以清除所有本地数据</text>
+      <text class="section-text indent">• 撤回同意权：您可以随时停止使用本小程序，停止后我们不会继续以任何方式处理您的信息</text>
     </view>
 
     <view class="section">
-      <text class="section-title">四、第三方服务</text>
+      <text class="section-title">五、第三方信息共享</text>
       <text class="section-text">
-        本小程序可能使用以下第三方服务：
+        我们不会将您的任何信息与第三方共享、出售或交换。本小程序可能使用以下微信平台提供的服务：
       </text>
       <text class="section-text indent">• 微信广告服务（用于展示广告）</text>
       <text class="section-text indent">• 微信统计分析（用于改进产品体验）</text>
       <text class="section-text">
-        这些服务遵循微信平台的隐私政策，不会获取您的个人身份信息。
+        上述服务由微信平台直接提供和管理，遵循微信平台的隐私政策，我们无法通过这些服务获取您的个人身份信息。
       </text>
     </view>
 
     <view class="section">
-      <text class="section-title">五、权限使用</text>
+      <text class="section-title">六、信息安全</text>
       <text class="section-text">
-        本小程序不会申请以下权限：
-      </text>
-      <text class="section-text indent">• 地理位置</text>
-      <text class="section-text indent">• 摄像头和相册</text>
-      <text class="section-text indent">• 通讯录</text>
-      <text class="section-text indent">• 麦克风</text>
-      <text class="section-text">
-        我们仅使用微信平台必要的基础功能。
+        本小程序不申请地理位置、摄像头、相册、通讯录、麦克风等敏感权限，仅使用微信平台必要的基础功能。由于所有数据均在本地处理和存储，不存在网络传输带来的数据泄露风险。
       </text>
     </view>
 
     <view class="section">
-      <text class="section-title">六、法律依据</text>
+      <text class="section-title">七、隐私政策变更</text>
       <text class="section-text">
-        本隐私政策遵循以下法律法规：
-      </text>
-      <text class="section-text indent">• 《中华人民共和国个人信息保护法》</text>
-      <text class="section-text indent">• 《中华人民共和国网络安全法》</text>
-      <text class="section-text indent">• 《微信小程序平台服务条款》</text>
-    </view>
-
-    <view class="section">
-      <text class="section-title">七、政策变更</text>
-      <text class="section-text">
-        我们可能会适时更新本隐私政策。更新后的政策将在小程序内公示，请您定期查看。继续使用本小程序即表示您同意更新后的隐私政策。
+        我们可能会适时更新本隐私政策。更新后的政策将在小程序内公示，请您定期查看。如果涉及对您权利的重大变更，我们将在小程序中以弹窗等显著方式通知您。继续使用本小程序即表示您同意更新后的隐私政策。
       </text>
     </view>
 
     <view class="section last-section">
       <text class="section-title">八、联系我们</text>
       <text class="section-text">
-        如果您对本隐私政策有任何疑问或建议，可以通过小程序内的反馈功能联系我们。
+        如果您对本隐私政策有任何疑问、意见或建议，可以通过以下方式联系我们：
+      </text>
+      <text class="section-text indent">• 小程序内"意见反馈"功能</text>
+      <text class="section-text indent">• 微信公众平台留言</text>
+      <text class="section-text">
+        我们将在收到反馈后15个工作日内予以回复。
       </text>
     </view>
   </scroll-view>

@@ -124,31 +124,29 @@ function calculateMonthlyTax(params) {
   // 查找适用税率
   const bracket = TAX_CONFIG_2026.taxBrackets.find(b => taxableIncome >= b.min && taxableIncome < b.max);
 
-  // 使用累计预扣法计算本月税额
-  // Step 1: 计算累计应纳税额
+  // Cumulative withholding method:
+  // Step 1: Calculate cumulative tax up to current month
   const cumulativeTax = taxableIncome * (bracket.rate / 100) - bracket.deduction;
 
-  // Step 2: 计算前几个月已缴税额
-  let previousTax = 0;
+  // Step 2: Calculate cumulative tax up to previous month (month - 1)
+  let previousCumulativeTax = 0;
   if (month > 1) {
-    for (let m = 1; m < month; m++) {
-      const prevIncome = grossSalary * m;
-      const prevSocial = socialSecurity.total * m;
-      const prevDeduction = specialDeductions * m;
-      const prevThreshold = TAX_CONFIG_2026.taxThreshold * m;
-      const prevTaxable = prevIncome - prevSocial - prevDeduction - prevThreshold;
+    const prevIncome = grossSalary * (month - 1);
+    const prevSocial = socialSecurity.total * (month - 1);
+    const prevDeduction = specialDeductions * (month - 1);
+    const prevThreshold = TAX_CONFIG_2026.taxThreshold * (month - 1);
+    const prevTaxable = prevIncome - prevSocial - prevDeduction - prevThreshold;
 
-      if (prevTaxable > 0) {
-        const prevBracket = TAX_CONFIG_2026.taxBrackets.find(b => prevTaxable >= b.min && prevTaxable < b.max);
-        if (prevBracket) {
-          previousTax = prevTaxable * (prevBracket.rate / 100) - prevBracket.deduction;
-        }
+    if (prevTaxable > 0) {
+      const prevBracket = TAX_CONFIG_2026.taxBrackets.find(b => prevTaxable >= b.min && prevTaxable < b.max);
+      if (prevBracket) {
+        previousCumulativeTax = prevTaxable * (prevBracket.rate / 100) - prevBracket.deduction;
       }
     }
   }
 
-  // Step 3: 本月应缴税额 = 累计应纳税额 - 前几个月已缴税额
-  const monthlyTax = Math.max(0, cumulativeTax - previousTax);
+  // Step 3: Current month tax = cumulative tax (current) - cumulative tax (previous)
+  const monthlyTax = Math.max(0, cumulativeTax - previousCumulativeTax);
 
   // 税后工资
   const netSalary = grossSalary - socialSecurity.total - monthlyTax;
@@ -382,7 +380,8 @@ function calculate12MonthsTax(params) {
       cumulativeIncome,
       cumulativeSocial,
       cumulativeDeduction,
-      cumulativePaidTax
+      cumulativePaidTax,
+      month
     );
 
     cumulativePaidTax += monthlyTax;
@@ -425,11 +424,11 @@ function calculateYearlyTotal(monthlyDetails, totalMonths = 12) {
   }, 0);
 
   const totalTax = months.reduce((sum, m) => {
-    return sum + parseFloat(m.currentMonthTax || 0);
+    return sum + parseFloat(m.tax || m.currentMonthTax || 0);
   }, 0);
 
   const totalSocial = months.reduce((sum, m) => {
-    return sum + parseFloat(m.socialInsurance || 0);
+    return sum + parseFloat(m.socialSecurity || m.socialInsurance || 0);
   }, 0);
 
   const netIncome = grossIncome - totalSocial - totalTax;

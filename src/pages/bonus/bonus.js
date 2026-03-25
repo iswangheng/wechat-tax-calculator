@@ -130,6 +130,16 @@ Page({
     });
   },
 
+  // Show tip explaining bonus tax calculation method
+  onShowTip() {
+    wx.showModal({
+      title: '年终奖计税说明',
+      content: '年终奖可选择单独计税或并入综合所得计税。单独计税：将年终奖除以12个月，按月度税率表确定适用税率和速算扣除数，单独计算纳税。注意临界点附近可能出现"多发1元，多扣千元"的情况。',
+      showCancel: false,
+      confirmText: '知道了'
+    });
+  },
+
   onLoad() {
     // 预加载临界点数据
     this.setData({

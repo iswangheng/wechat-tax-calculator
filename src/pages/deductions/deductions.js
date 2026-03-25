@@ -253,6 +253,21 @@ Page({
     try {
       wx.setStorageSync('specialDeductions', deductionData);
 
+      // Build deductionItems array for index.wxml / reverse.wxml display
+      const { deductions } = this.data;
+      const deductionItems = [];
+      if (deductions.childEducation > 0) deductionItems.push({ name: '子女教育', amount: deductions.childEducation });
+      if (deductions.infantCare > 0) deductionItems.push({ name: '婴幼儿照护', amount: deductions.infantCare });
+      if (deductions.continuingEducation > 0) deductionItems.push({ name: '继续教育', amount: deductions.continuingEducation });
+      if (deductions.housingLoanInterest > 0) deductionItems.push({ name: '住房贷款利息', amount: deductions.housingLoanInterest });
+      if (deductions.housingRent > 0) deductionItems.push({ name: '住房租金', amount: deductions.housingRent });
+      if (deductions.elderCare > 0) deductionItems.push({ name: '赡养老人', amount: deductions.elderCare });
+
+      // Store deductionItems in globalData for consuming pages
+      const app = getApp();
+      app.globalData = app.globalData || {};
+      app.globalData.deductionItems = deductionItems;
+
       wx.showToast({
         title: '保存成功',
         icon: 'success',

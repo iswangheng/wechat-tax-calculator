@@ -1,0 +1,470 @@
+/* Multi-plan comparison page styles */
+
+/* ========== Container ========== */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%);
+  padding-bottom: 60rpx;
+}
+
+/* ========== Page header ========== */
+.page-header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 40rpx 30rpx;
+  text-align: center;
+  border-radius: 0 0 30rpx 30rpx;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.3);
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 8rpx;
+  display: block;
+}
+
+/* ========== Plans section ========== */
+.plans-section {
+  margin: 30rpx;
+}
+
+.plans-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+
+/* ========== Plan card ========== */
+.plan-card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.plan-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.plan-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.plan-city {
+  font-size: 24rpx;
+  color: #f093fb;
+  background: #fff0fc;
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.plan-card-body {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.plan-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.plan-info-label {
+  font-size: 22rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.plan-info-value {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.plan-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.action-btn {
+  font-size: 24rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 20rpx;
+}
+
+.edit-btn {
+  color: #f093fb;
+  background: #fff0fc;
+}
+
+.delete-btn {
+  color: #f5576c;
+  background: #fff0f0;
+}
+
+/* ========== Empty state ========== */
+.empty-state {
+  text-align: center;
+  padding: 60rpx 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #666666;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #999999;
+  display: block;
+}
+
+/* ========== Add plan button ========== */
+.add-plan-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  border: 2rpx dashed #f093fb;
+  margin-bottom: 20rpx;
+}
+
+.add-icon {
+  font-size: 40rpx;
+  color: #f093fb;
+  margin-right: 12rpx;
+  font-weight: bold;
+}
+
+.add-text {
+  font-size: 28rpx;
+  color: #f093fb;
+  font-weight: 500;
+}
+
+/* ========== Form overlay ========== */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-modal {
+  width: 85%;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.form-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.form-group {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.form-input {
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border: 2rpx solid #e9ecef;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.form-picker {
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border: 2rpx solid #e9ecef;
+  font-size: 28rpx;
+  color: #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.picker-arrow {
+  color: #cccccc;
+  font-size: 28rpx;
+}
+
+.form-btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 30rpx;
+}
+
+.form-btn-cancel {
+  flex: 1;
+  background: #f5f7fa;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+}
+
+.form-btn-save {
+  flex: 1;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+}
+
+/* ========== Compare button group ========== */
+.compare-btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin: 20rpx 30rpx;
+}
+
+.btn-compare {
+  flex: 2;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+}
+
+.btn-reset {
+  flex: 1;
+  background: #f5f7fa;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+}
+
+/* ========== Result section ========== */
+.result-section {
+  margin: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.result-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.best-badge {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: #ffffff;
+  font-size: 22rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: bold;
+}
+
+/* ========== Comparison table ========== */
+.compare-table-scroll {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.compare-table {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 100%;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  min-width: 200rpx;
+  padding: 20rpx 16rpx;
+  font-size: 24rpx;
+  color: #333333;
+  text-align: center;
+  flex-shrink: 0;
+  white-space: normal;
+  word-break: break-all;
+}
+
+.label-cell {
+  min-width: 180rpx;
+  text-align: left;
+  color: #666666;
+  font-weight: 500;
+  background: #fafafa;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.table-header .table-cell {
+  font-weight: bold;
+  background: #f8f9fa;
+  padding: 24rpx 16rpx;
+}
+
+.table-header .label-cell {
+  background: #f0f0f0;
+}
+
+.best-cell {
+  background: rgba(76, 175, 80, 0.06) !important;
+}
+
+.cell-plan-name {
+  display: block;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.best-tag {
+  display: inline-block;
+  background: #4caf50;
+  color: #ffffff;
+  font-size: 18rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 10rpx;
+  margin-top: 6rpx;
+}
+
+.highlight-row {
+  background: linear-gradient(135deg, #f093fb08 0%, #f5576c08 100%);
+}
+
+.highlight-row .table-cell {
+  font-weight: bold;
+  font-size: 26rpx;
+}
+
+.highlight-green {
+  color: #4caf50 !important;
+  font-weight: bold;
+}
+
+.highlight-value {
+  font-weight: bold;
+  color: #333333;
+}
+
+.diff-red {
+  color: #f5576c;
+  font-weight: 500;
+}
+
+/* ========== Cost of living hints ========== */
+.cost-hint {
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 10rpx;
+}
+
+.cost-hint.cost-高 {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.cost-hint.cost-中等 {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.cost-hint.cost-低 {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.cost-notice {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: #fff8e1;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #ffa726;
+}
+
+.notice-icon {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.notice-text {
+  font-size: 22rpx;
+  color: #795548;
+  line-height: 1.6;
+}

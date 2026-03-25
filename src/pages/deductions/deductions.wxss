@@ -1,0 +1,278 @@
+/* 专项附加扣除编辑页面样式 */
+
+/* ========== 容器 ========== */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%);
+  padding-bottom: 40rpx;
+}
+
+/* ========== 头部 ========== */
+.header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 60rpx 30rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
+}
+
+.header-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 12rpx;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 2rpx;
+}
+
+/* ========== 汇总卡片 ========== */
+.summary-card {
+  margin: 20rpx 30rpx 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(102, 126, 234, 0.3);
+}
+
+.summary-label {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16rpx;
+}
+
+.summary-value {
+  font-size: 64rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 12rpx;
+}
+
+.summary-value::after {
+  content: ' 元/月';
+  font-size: 28rpx;
+  font-weight: normal;
+}
+
+.summary-desc {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ========== 分区样式 ========== */
+.section {
+  margin: 30rpx 30rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+  transition: opacity 0.3s;
+}
+
+.section-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-amount {
+  font-size: 28rpx;
+  color: #f5576c;
+  font-weight: bold;
+}
+
+.section-desc {
+  padding: 16rpx 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.section-desc text {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* ========== 输入行 ========== */
+.input-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx dashed #e9ecef;
+}
+
+.input-row:last-child {
+  border-bottom: none;
+}
+
+.input-label {
+  font-size: 28rpx;
+  color: #666666;
+  margin-right: 20rpx;
+  white-space: nowrap;
+}
+
+/* ========== 步进器 ========== */
+stepper {
+  margin-left: auto;
+}
+
+/* ========== 单选框组 ========== */
+.radio-group {
+  display: flex;
+  gap: 30rpx;
+  margin-left: auto;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.radio-item radio {
+  transform: scale(0.9);
+}
+
+.radio-item text {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+/* ========== 多选框组 ========== */
+checkbox-group {
+  width: 100%;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.checkbox-item checkbox {
+  transform: scale(0.9);
+}
+
+.checkbox-item text {
+  font-size: 26rpx;
+  color: #333333;
+  flex: 1;
+}
+
+/* ========== 选择器 ========== */
+.picker {
+  flex: 1;
+  padding: 16rpx 24rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #333333;
+  text-align: right;
+  border: 1rpx solid #e9ecef;
+}
+
+/* ========== 输入框 ========== */
+.input-number {
+  flex: 1;
+  padding: 16rpx 24rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333333;
+  text-align: right;
+  border: 1rpx solid #e9ecef;
+  margin-left: auto;
+  margin-right: 12rpx;
+  max-width: 200rpx;
+}
+
+.unit {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+/* ========== 提示框 ========== */
+.notice {
+  padding: 16rpx 20rpx;
+  background: #fff3e0;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #ff9800;
+  margin-top: 16rpx;
+}
+
+.notice text {
+  font-size: 24rpx;
+  color: #f57c00;
+}
+
+/* ========== 按钮组 ========== */
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin: 40rpx 30rpx 0;
+}
+
+.btn-save {
+  flex: 2;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  border: none;
+}
+
+.btn-cancel {
+  flex: 1;
+  background: #f5f7fa;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+  border: none;
+}
+
+/* ========== 提示说明 ========== */
+.tips-section {
+  margin: 30rpx;
+  padding: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.tips-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+
+.tips-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.tip-item {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.8;
+  padding-left: 8rpx;
+}

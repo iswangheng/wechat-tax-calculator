@@ -1,0 +1,236 @@
+<!-- 专项附加扣除编辑页面 -->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="header-title">专项附加扣除</view>
+    <view class="header-subtitle">2026年标准 · 依法减税</view>
+  </view>
+
+  <!-- 扣除总额 -->
+  <view class="summary-card">
+    <view class="summary-label">当前扣除总额</view>
+    <view class="summary-value">{{totalDeduction}}</view>
+    <view class="summary-desc">每月可减少应纳税所得额 {{totalDeduction}} 元</view>
+  </view>
+
+  <!-- 子女教育 -->
+  <view class="section">
+    <view class="section-title">
+      <text>👶 子女教育</text>
+      <text class="section-amount">{{deductions.childEducation}} 元/月</text>
+    </view>
+    <view class="section-desc">
+      <text>3岁至博士研究生教育，每个子女1000元/月</text>
+    </view>
+
+    <view class="input-row">
+      <text class="input-label">子女人数</text>
+      <stepper value="{{childCount}}" min="0" max="5" bindchange="onChildCountChange" />
+    </view>
+
+    <view class="input-row">
+      <text class="input-label">扣除比例</text>
+      <radio-group class="radio-group" bindchange="onChildRatioChange">
+        <label class="radio-item">
+          <radio value="100" checked="{{childRatio === 100}}" />
+          <text>本人100%</text>
+        </label>
+        <label class="radio-item">
+          <radio value="50" checked="{{childRatio === 50}}" />
+          <text>夫妻各50%</text>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <!-- 3岁以下婴幼儿照护 -->
+  <view class="section">
+    <view class="section-title">
+      <text>🍼 3岁以下婴幼儿照护</text>
+      <text class="section-amount">{{deductions.infantCare}} 元/月</text>
+    </view>
+    <view class="section-desc">
+      <text>每个婴幼儿1000元/月</text>
+    </view>
+
+    <view class="input-row">
+      <text class="input-label">婴幼儿人数</text>
+      <stepper value="{{infantCount}}" min="0" max="5" bindchange="onInfantCountChange" />
+    </view>
+
+    <view class="input-row">
+      <text class="input-label">扣除比例</text>
+      <radio-group class="radio-group" bindchange="onInfantRatioChange">
+        <label class="radio-item">
+          <radio value="100" checked="{{infantRatio === 100}}" />
+          <text>本人100%</text>
+        </label>
+        <label class="radio-item">
+          <radio value="50" checked="{{infantRatio === 50}}" />
+          <text>夫妻各50%</text>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <!-- 继续教育 -->
+  <view class="section">
+    <view class="section-title">
+      <text>📚 继续教育</text>
+      <text class="section-amount">{{deductions.continuingEducation}} 元/月</text>
+    </view>
+    <view class="section-desc">
+      <text>学历教育400元/月，职业资格3600元/年</text>
+    </view>
+
+    <view class="input-row">
+      <checkbox-group bindchange="onContinuingEducationChange">
+        <label class="checkbox-item">
+          <checkbox value="academic" checked="{{hasContinuingEducation}}" />
+          <text>正在接受学历（学位）继续教育</text>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+
+  <!-- 住房贷款利息 -->
+  <view class="section">
+    <view class="section-title">
+      <text>🏠 住房贷款利息</text>
+      <text class="section-amount">{{deductions.housingLoanInterest}} 元/月</text>
+    </view>
+    <view class="section-desc">
+      <text>首套房贷款利息1000元/月，最多扣除240个月</text>
+    </view>
+
+    <view class="input-row">
+      <checkbox-group bindchange="onHousingLoanChange">
+        <label class="checkbox-item">
+          <checkbox value="loan" checked="{{hasHousingLoan}}" />
+          <text>有首套房贷款利息支出</text>
+        </label>
+      </checkbox-group>
+    </view>
+
+    <view class="input-row" wx:if="{{hasHousingLoan}}">
+      <text class="input-label">扣除比例</text>
+      <radio-group class="radio-group" bindchange="onLoanRatioChange">
+        <label class="radio-item">
+          <radio value="100" checked="{{loanRatio === 100}}" />
+          <text>本人100%</text>
+        </label>
+        <label class="radio-item">
+          <radio value="50" checked="{{loanRatio === 50}}" />
+          <text>夫妻各50%</text>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <!-- 住房租金 -->
+  <view class="section {{hasHousingLoan ? 'section-disabled' : ''}}">
+    <view class="section-title">
+      <text>🏘️ 住房租金</text>
+      <text class="section-amount">{{deductions.housingRent}} 元/月</text>
+    </view>
+    <view class="section-desc">
+      <text>与房贷利息二选一，根据城市级别800-1500元/月</text>
+    </view>
+
+    <view class="input-row">
+      <checkbox-group bindchange="onHousingRentChange">
+        <label class="checkbox-item">
+          <checkbox value="rent" checked="{{hasHousingRent}}" disabled="{{hasHousingLoan}}" />
+          <text>有住房租金支出{{hasHousingLoan ? '（已选房贷利息）' : ''}}</text>
+        </label>
+      </checkbox-group>
+    </view>
+
+    <view class="input-row" wx:if="{{hasHousingRent && !hasHousingLoan}}">
+      <text class="input-label">城市类型</text>
+      <picker mode="selector" range="{{rentCities}}" value="{{rentCityIndex}}" bindchange="onRentCityChange">
+        <view class="picker">
+          {{rentCities[rentCityIndex]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 赡养老人 -->
+  <view class="section">
+    <view class="section-title">
+      <text>👴 赡养老人</text>
+      <text class="section-amount">{{deductions.elderCare}} 元/月</text>
+    </view>
+    <view class="section-desc">
+      <text>被赡养人年满60岁，独生子女2000元/月，非独生子女分摊不超过1000元/月</text>
+    </view>
+
+    <view class="input-row">
+      <checkbox-group bindchange="onElderCareChange">
+        <label class="checkbox-item">
+          <checkbox value="elder" checked="{{hasElderCare}}" />
+          <text>有赡养60岁以上老人</text>
+        </label>
+      </checkbox-group>
+    </view>
+
+    <view class="input-row" wx:if="{{hasElderCare}}">
+      <text class="input-label">子女类型</text>
+      <radio-group class="radio-group" bindchange="onElderTypeChange">
+        <label class="radio-item">
+          <radio value="only" checked="{{elderType === 'only'}}" />
+          <text>独生子女（2000元）</text>
+        </label>
+        <label class="radio-item">
+          <radio value="shared" checked="{{elderType === 'shared'}}" />
+          <text>非独生子女（≤1000元）</text>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class="input-row" wx:if="{{hasElderCare && elderType === 'shared'}}">
+      <text class="input-label">分摊金额</text>
+      <input
+        class="input-number"
+        type="number"
+        placeholder="不超过1000"
+        value="{{elderShareAmount}}"
+        bindinput="onElderShareInput"
+        maxlength="4"
+      />
+      <text class="unit">元/月</text>
+    </view>
+  </view>
+
+  <!-- 大病医疗 -->
+  <view class="section">
+    <view class="section-title">
+      <text>💊 大病医疗</text>
+      <text class="section-amount">年度汇算</text>
+    </view>
+    <view class="section-desc">
+      <text>年度汇算时扣除，超过15000元部分，最高80000元/年</text>
+    </view>
+    <view class="notice">
+      <text>此项需在年度个税汇算清缴时申报</text>
+    </view>
+  </view>
+
+  <!-- 按钮组 -->
+  <view class="btn-group">
+    <button class="btn-save" bindtap="onSave">保存设置</button>
+    <button class="btn-cancel" bindtap="onCancel">取消</button>
+  </view>
+
+  <!-- 说明提示 -->
+  <view class="tips-section">
+    <view class="tips-title">💡 注意事项</view>
+    <view class="tips-content">
+      <view class="tip-item">• 住房贷款利息和住房租金只能选择其中一项扣除</view>
+      <view class="tip-item">• 夫妻双方扣除比例确定后，一个纳税年度内不能变更</view>
+      <view class="tip-item">• 大病医疗需在年度汇算时申报，月度预扣预缴不扣除</view>
+      <view class="tip-item">• 扣除信息需在个税APP或单位进行申报后方可生效</view>
+    </view>
+  </view>
+</view>

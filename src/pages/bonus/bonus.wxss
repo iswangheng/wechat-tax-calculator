@@ -1,0 +1,473 @@
+/* 年终奖计算页面样式 */
+
+/* ========== 容器 ========== */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%);
+  padding-bottom: 40rpx;
+}
+
+/* ========== 头部 ========== */
+.header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 60rpx 30rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
+}
+
+.header-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 12rpx;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 2rpx;
+}
+
+/* ========== 分区样式 ========== */
+.section {
+  margin: 30rpx 30rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tip-btn {
+  font-size: 28rpx;
+  color: #999999;
+  background: #f5f7fa;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== 输入区域 ========== */
+.input-section {
+  margin-top: 20rpx;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  border: 2rpx solid #e9ecef;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666666;
+  margin-right: 20rpx;
+  white-space: nowrap;
+}
+
+.input-number {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333333;
+  text-align: right;
+}
+
+.unit {
+  font-size: 28rpx;
+  color: #999999;
+  margin-left: 16rpx;
+}
+
+.info-tip {
+  margin-top: 16rpx;
+  padding: 16rpx 20rpx;
+  background: #e8f4fd;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #1890ff;
+}
+
+.info-tip text {
+  font-size: 24rpx;
+  color: #0066cc;
+  line-height: 1.6;
+}
+
+/* ========== 临界点区域 ========== */
+.critical-section {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
+  border: 2rpx solid #ffb74d;
+}
+
+.critical-desc {
+  padding: 16rpx 20rpx;
+  background: rgba(255, 152, 0, 0.1);
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.critical-desc text {
+  font-size: 26rpx;
+  color: #f57c00;
+  font-weight: 500;
+}
+
+.arrow {
+  font-size: 24rpx;
+  color: #f57c00;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.arrow-up {
+  transform: rotate(180deg);
+}
+
+.arrow-down {
+  transform: rotate(0deg);
+}
+
+/* 临界点表格 */
+.critical-table {
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 16rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  font-weight: bold;
+}
+
+.table-header text {
+  color: #ffffff;
+}
+
+.col-1 {
+  flex: 1.2;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.col-2 {
+  flex: 1.5;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.col-3 {
+  flex: 1;
+  font-size: 24rpx;
+  color: #f5576c;
+  text-align: right;
+}
+
+/* ========== 按钮组 ========== */
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin: 40rpx 30rpx 0;
+}
+
+.btn-calculate {
+  flex: 2;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  border: none;
+}
+
+.btn-reset {
+  flex: 1;
+  background: #f5f7fa;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+  border: none;
+}
+
+/* ========== 结果区域 ========== */
+.result-section {
+  margin: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.result-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+/* 核心结果高亮 */
+.result-highlight {
+  background: linear-gradient(135deg, #f093fb10 0%, #f5576c10 100%);
+  padding: 32rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.highlight-item {
+  text-align: center;
+}
+
+.highlight-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+}
+
+.highlight-value {
+  display: block;
+  font-size: 52rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.highlight-value.red {
+  color: #f5576c;
+}
+
+.highlight-value.green {
+  color: #4caf50;
+}
+
+.highlight-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.divider {
+  height: 1rpx;
+  background: #e9ecef;
+  margin: 24rpx 0;
+}
+
+/* 详细信息 */
+.result-detail {
+  padding: 24rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx dashed #e9ecef;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* ========== 警告框 ========== */
+.warning-box {
+  padding: 24rpx;
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border-radius: 16rpx;
+  border-left: 4rpx solid #ff9800;
+  margin-bottom: 30rpx;
+}
+
+.warning-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #e65100;
+  margin-bottom: 12rpx;
+}
+
+.warning-content {
+  font-size: 26rpx;
+  color: #ef6c00;
+  line-height: 1.6;
+  margin-bottom: 12rpx;
+}
+
+.warning-suggestion {
+  font-size: 24rpx;
+  color: #f57c00;
+  padding: 12rpx 16rpx;
+  background: rgba(255, 152, 0, 0.1);
+  border-radius: 8rpx;
+}
+
+/* ========== 优化建议 ========== */
+.optimization-box {
+  padding: 24rpx;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 16rpx;
+  border-left: 4rpx solid #4caf50;
+  margin-bottom: 30rpx;
+}
+
+.optimization-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 20rpx;
+}
+
+.optimization-content {
+  background: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.optimization-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+  border-bottom: 1rpx dashed #e0e0e0;
+}
+
+.optimization-item:last-child {
+  border-bottom: none;
+}
+
+.opt-label {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.opt-value {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.opt-value.green {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.btn-use-optimization {
+  width: 100%;
+  background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  border: none;
+}
+
+/* ========== 说明区域 ========== */
+.explain-section {
+  background: #f8f9fa;
+}
+
+.explain-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.explain-item {
+  padding: 20rpx;
+  background: #ffffff;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #f093fb;
+}
+
+.explain-title {
+  display: block;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.explain-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* ========== Chart Section ========== */
+.chart-section {
+  margin: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.chart-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 12rpx;
+  padding-left: 16rpx;
+  border-left: 6rpx solid #f093fb;
+}
+
+.chart-desc {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 20rpx;
+  padding-left: 22rpx;
+}
+
+.chart-box {
+  width: 100%;
+  height: 500rpx;
+}
+
+.cvs-cliff {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,300 @@
+<!-- Annual tax settlement simulation page -->
+<view class="container">
+
+  <!-- Header -->
+  <view class="page-header">
+    <view class="header-title">年度汇算清缴模拟</view>
+    <view class="header-subtitle">模拟年度个税汇算，看看能退多少税</view>
+  </view>
+
+  <!-- Quick fill hint -->
+  <view class="quick-fill-bar" bindtap="onQuickFill">
+    <text class="quick-icon">⚡</text>
+    <text class="quick-text">快速填写：输入月薪自动计算全年</text>
+    <text class="quick-arrow">></text>
+  </view>
+
+  <!-- Input section -->
+  <view class="section">
+    <view class="section-title">💰 收入信息</view>
+
+    <!-- Total salary -->
+    <view class="input-group">
+      <text class="input-label">全年工资总收入（税前）</text>
+      <view class="input-row">
+        <input
+          type="digit"
+          placeholder="如：360000"
+          value="{{totalSalary}}"
+          bindinput="onTotalSalaryInput"
+          class="input-number"
+        />
+        <text class="unit">元</text>
+      </view>
+    </view>
+
+    <!-- Annual bonus -->
+    <view class="input-group">
+      <text class="input-label">年终奖金额</text>
+      <view class="input-row">
+        <input
+          type="digit"
+          placeholder="可选，不填则为0"
+          value="{{bonus}}"
+          bindinput="onBonusInput"
+          class="input-number"
+        />
+        <text class="unit">元</text>
+      </view>
+    </view>
+
+    <!-- Other income -->
+    <view class="input-group">
+      <text class="input-label">其他收入（劳务报酬、稿酬等，可选）</text>
+      <view class="input-row">
+        <input
+          type="digit"
+          placeholder="可选，不填则为0"
+          value="{{otherIncome}}"
+          bindinput="onOtherIncomeInput"
+          class="input-number"
+        />
+        <text class="unit">元</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Deductions section -->
+  <view class="section">
+    <view class="section-title">📋 扣除信息</view>
+
+    <!-- Paid tax -->
+    <view class="input-group">
+      <text class="input-label">全年已缴个税总额</text>
+      <view class="input-row">
+        <input
+          type="digit"
+          placeholder="查看工资条或个税APP"
+          value="{{paidTax}}"
+          bindinput="onPaidTaxInput"
+          class="input-number"
+        />
+        <text class="unit">元</text>
+      </view>
+    </view>
+
+    <!-- Total social -->
+    <view class="input-group">
+      <text class="input-label">全年五险一金总额</text>
+      <view class="input-row">
+        <input
+          type="digit"
+          placeholder="12个月五险一金合计"
+          value="{{totalSocial}}"
+          bindinput="onTotalSocialInput"
+          class="input-number"
+        />
+        <text class="unit">元</text>
+      </view>
+    </view>
+
+    <!-- Total deduction -->
+    <view class="input-group">
+      <text class="input-label">全年专项附加扣除总额</text>
+      <view class="input-row">
+        <input
+          type="digit"
+          placeholder="子女教育、房贷等全年合计"
+          value="{{totalDeduction}}"
+          bindinput="onTotalDeductionInput"
+          class="input-number"
+        />
+        <text class="unit">元</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Bonus method section -->
+  <view class="section">
+    <view class="section-title">🎯 年终奖计税方式</view>
+    <view class="bonus-method">
+      <checkbox-group bindchange="onBonusMergedChange">
+        <label class="method-option">
+          <checkbox value="merged" checked="{{bonusMerged}}" />
+          <view class="method-text">
+            <text class="method-name">年终奖并入综合所得</text>
+            <text class="method-desc">适合年终奖较少或收入较低的情况</text>
+          </view>
+        </label>
+      </checkbox-group>
+      <view class="method-hint">
+        <text>不勾选 = 年终奖单独计税（默认）</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Action buttons -->
+  <view class="btn-group">
+    <button class="btn-calculate" bindtap="onCalculate">开始模拟</button>
+    <button class="btn-reset" bindtap="onReset">重置</button>
+  </view>
+
+  <!-- Result section -->
+  <view class="result-section" wx:if="{{result}}">
+
+    <!-- Main result: refund or supplement -->
+    <view class="main-result {{result.isRefund ? 'refund' : (result.settlement === 0 ? 'balanced' : 'supplement')}}">
+      <view class="result-icon">
+        {{result.isRefund ? '🎉' : (result.settlement === 0 ? '✅' : '⚠️')}}
+      </view>
+      <view class="result-amount">
+        <text wx:if="{{result.isRefund}}" class="amount-text refund-text">
+          应退税 {{result.refundAmount}} 元
+        </text>
+        <text wx:elif="{{result.settlement === 0}}" class="amount-text balanced-text">
+          不补不退
+        </text>
+        <text wx:else class="amount-text supplement-text">
+          应补税 {{result.supplementAmount}} 元
+        </text>
+      </view>
+      <view class="result-note" wx:if="{{result.isRefund}}">
+        <text>这笔钱可以退回你的银行账户</text>
+      </view>
+      <view class="result-note" wx:elif="{{result.supplementAmount > 0 && result.supplementAmount <= 400}}">
+        <text>补税金额不超过400元，可免于补税</text>
+      </view>
+    </view>
+
+    <!-- Calculation process (collapsible) -->
+    <view class="process-section">
+      <view class="process-header" bindtap="onToggleProcess">
+        <text class="process-title">📝 计算过程明细</text>
+        <text class="process-toggle">{{showProcess ? '收起' : '展开'}}</text>
+      </view>
+
+      <view class="process-detail" wx:if="{{showProcess}}">
+        <!-- Income breakdown -->
+        <view class="detail-group">
+          <view class="detail-group-title">收入汇总</view>
+          <view class="detail-item">
+            <text class="detail-label">工资薪金收入</text>
+            <text class="detail-value">{{result.breakdown.totalSalary}} 元</text>
+          </view>
+          <view class="detail-item" wx:if="{{result.breakdown.bonus > 0}}">
+            <text class="detail-label">年终奖</text>
+            <text class="detail-value">
+              {{result.breakdown.bonus}} 元
+              {{result.breakdown.bonusMerged ? '(已并入)' : '(单独计税)'}}
+            </text>
+          </view>
+          <view class="detail-item" wx:if="{{result.breakdown.otherIncome > 0}}">
+            <text class="detail-label">其他收入</text>
+            <text class="detail-value">{{result.breakdown.otherIncome}} 元</text>
+          </view>
+          <view class="detail-item total-item">
+            <text class="detail-label">综合所得合计</text>
+            <text class="detail-value">{{result.totalIncome}} 元</text>
+          </view>
+        </view>
+
+        <!-- Deduction breakdown -->
+        <view class="detail-group">
+          <view class="detail-group-title">扣除项目</view>
+          <view class="detail-item">
+            <text class="detail-label">基本减除费用（起征点）</text>
+            <text class="detail-value">- {{result.breakdown.threshold}} 元</text>
+          </view>
+          <view class="detail-item">
+            <text class="detail-label">五险一金</text>
+            <text class="detail-value">- {{result.breakdown.totalSocial}} 元</text>
+          </view>
+          <view class="detail-item">
+            <text class="detail-label">专项附加扣除</text>
+            <text class="detail-value">- {{result.breakdown.totalDeduction}} 元</text>
+          </view>
+        </view>
+
+        <!-- Tax calculation -->
+        <view class="detail-group">
+          <view class="detail-group-title">税额计算</view>
+          <view class="detail-item">
+            <text class="detail-label">应纳税所得额</text>
+            <text class="detail-value">{{result.taxableIncome}} 元</text>
+          </view>
+          <view class="detail-item" wx:if="{{result.bracket}}">
+            <text class="detail-label">适用税率</text>
+            <text class="detail-value">{{result.bracket.rate}}%</text>
+          </view>
+          <view class="detail-item" wx:if="{{result.bracket}}">
+            <text class="detail-label">速算扣除数</text>
+            <text class="detail-value">{{result.bracket.deduction}} 元</text>
+          </view>
+          <view class="detail-item">
+            <text class="detail-label">综合所得应纳税额</text>
+            <text class="detail-value">{{result.annualTax}} 元</text>
+          </view>
+          <view class="detail-item" wx:if="{{result.bonusTax > 0}}">
+            <text class="detail-label">年终奖单独计税</text>
+            <text class="detail-value">{{result.bonusTax}} 元</text>
+          </view>
+          <view class="detail-item total-item">
+            <text class="detail-label">全年应纳税额合计</text>
+            <text class="detail-value">{{result.totalAnnualTax}} 元</text>
+          </view>
+          <view class="detail-item">
+            <text class="detail-label">全年已预缴税额</text>
+            <text class="detail-value">{{result.paidTax}} 元</text>
+          </view>
+        </view>
+
+        <!-- Final settlement -->
+        <view class="detail-group">
+          <view class="detail-group-title">汇算结果</view>
+          <view class="detail-item settlement-item">
+            <text class="detail-label">应纳税额 - 已预缴税额</text>
+            <text class="detail-value {{result.isRefund ? 'refund-text' : 'supplement-text'}}">
+              {{result.settlement}} 元
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Optimization suggestion -->
+    <view class="optimization-section" wx:if="{{optimization}}">
+      <view class="optimization-title">💡 优化建议</view>
+      <view class="optimization-content">
+        <text class="optimization-text {{optimization.hasSuggestion ? 'has-suggestion' : ''}}">
+          {{optimization.text}}
+        </text>
+        <view class="optimization-compare" wx:if="{{optimization.hasSuggestion}}">
+          <view class="compare-item">
+            <text class="compare-label">单独计税：</text>
+            <text class="compare-value">{{optimization.separateTax}} 元</text>
+          </view>
+          <view class="compare-item">
+            <text class="compare-label">并入综合所得：</text>
+            <text class="compare-value">{{optimization.mergedTax}} 元</text>
+          </view>
+          <view class="compare-item saved">
+            <text class="compare-label">可节省：</text>
+            <text class="compare-value highlight-green">{{optimization.savedAmount}} 元</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Tips -->
+    <view class="tips-section">
+      <view class="tips-title">📌 注意事项</view>
+      <view class="tips-content">
+        <view class="tip-item">• 年度汇算时间：每年3月1日至6月30日</view>
+        <view class="tip-item">• 可通过"个人所得税"APP完成汇算</view>
+        <view class="tip-item">• 补税金额不超过400元可免于补税</view>
+        <view class="tip-item">• 本计算仅供参考，以税务机关核算为准</view>
+      </view>
+    </view>
+  </view>
+
+</view>

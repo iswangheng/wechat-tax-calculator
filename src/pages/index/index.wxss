@@ -1,0 +1,560 @@
+/* 个税计算器主页面样式 */
+
+/* ========== 数据更新时间横幅 ========== */
+.data-freshness-banner {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(240, 147, 251, 0.3);
+}
+
+.freshness-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.freshness-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.freshness-text {
+  font-size: 24rpx;
+  color: #ffffff;
+  opacity: 0.95;
+  margin-right: 12rpx;
+}
+
+.freshness-tag {
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.freshness-tag.fresh {
+  background-color: rgba(76, 217, 100, 0.3);
+  border: 1rpx solid rgba(76, 217, 100, 0.6);
+}
+
+.freshness-tag.warning {
+  background-color: rgba(255, 204, 0, 0.3);
+  border: 1rpx solid rgba(255, 204, 0, 0.6);
+}
+
+.freshness-tag.outdated {
+  background-color: rgba(255, 59, 48, 0.3);
+  border: 1rpx solid rgba(255, 59, 48, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.data-source-btn {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 20rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+  margin-left: 20rpx;
+}
+
+.source-icon {
+  font-size: 24rpx;
+  margin-right: 6rpx;
+}
+
+.source-text {
+  font-size: 22rpx;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* ========== History entry ========== */
+.history-entry {
+  display: flex;
+  align-items: center;
+  margin: 20rpx 30rpx 0;
+  padding: 20rpx 30rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.history-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.history-text {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+  flex: 1;
+}
+
+.history-entry .arrow {
+  font-size: 28rpx;
+  color: #cccccc;
+}
+
+/* ========== Feature entries ========== */
+.feature-entries {
+  display: flex;
+  gap: 20rpx;
+  margin: 20rpx 30rpx 0;
+}
+
+.feature-entry {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 16rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.feature-icon {
+  font-size: 40rpx;
+  margin-bottom: 8rpx;
+}
+
+.feature-text {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.feature-desc {
+  font-size: 20rpx;
+  color: #999999;
+  margin-top: 4rpx;
+}
+
+/* ========== 容器 ========== */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%);
+  padding-bottom: 40rpx;
+}
+
+/* ========== 分区样式 ========== */
+.section {
+  margin: 30rpx 30rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.tip-btn {
+  margin-left: 12rpx;
+  font-size: 28rpx;
+  color: #999999;
+  background: #f5f7fa;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn {
+  margin-left: auto;
+  font-size: 24rpx;
+  color: #f093fb;
+  padding: 8rpx 20rpx;
+  background: #fff0fc;
+  border-radius: 20rpx;
+}
+
+/* ========== 城市选择 ========== */
+.city-section {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+}
+
+.city-selector {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16rpx;
+  margin-top: 20rpx;
+}
+
+.city-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-right: 16rpx;
+}
+
+.city-level {
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20rpx;
+  margin-right: auto;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #ffffff;
+}
+
+.city-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.info-item {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+/* ========== 输入框 ========== */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  padding: 24rpx 30rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  border: 2rpx solid #e9ecef;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666666;
+  margin-right: 20rpx;
+  white-space: nowrap;
+}
+
+.input-number {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333333;
+  text-align: right;
+}
+
+.unit {
+  font-size: 28rpx;
+  color: #999999;
+  margin-left: 16rpx;
+}
+
+/* ========== 五险一金明细 ========== */
+.slider {
+  flex: 1;
+  margin: 0 20rpx;
+}
+
+.social-detail {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx dashed #e9ecef;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row.highlight {
+  padding-top: 20rpx;
+  border-top: 2rpx solid #e9ecef;
+  border-bottom: 2rpx solid #e9ecef;
+}
+
+.detail-row.total {
+  background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+  padding: 20rpx;
+  margin: 16rpx -24rpx 0;
+  border-radius: 12rpx;
+  border: none;
+}
+
+.detail-label {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.detail-row.total .detail-label,
+.detail-row.total .detail-value {
+  font-weight: bold;
+  color: #f5576c;
+}
+
+.tip-text {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999999;
+  text-align: center;
+}
+
+/* ========== 专项扣除 ========== */
+.deduction-summary {
+  padding: 24rpx;
+  background: #fff8e1;
+  border-radius: 16rpx;
+  border-left: 4rpx solid #ffa726;
+}
+
+.summary-text {
+  font-size: 28rpx;
+  color: #f57c00;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.deduction-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.deduction-items .item {
+  font-size: 24rpx;
+  color: #ef6c00;
+  background: #ffffff;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid #ffb74d;
+}
+
+/* ========== 月份选择 ========== */
+.month-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.picker {
+  padding: 24rpx 30rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  border: 2rpx solid #e9ecef;
+  font-size: 28rpx;
+  color: #333333;
+  text-align: center;
+}
+
+.month-tip {
+  padding: 16rpx 20rpx;
+  background: #e3f2fd;
+  border-radius: 12rpx;
+}
+
+.month-tip text {
+  font-size: 24rpx;
+  color: #1976d2;
+}
+
+/* ========== 按钮组 ========== */
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin: 40rpx 30rpx 0;
+}
+
+.btn-calculate {
+  flex: 2;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+}
+
+.btn-reset {
+  flex: 1;
+  background: #f5f7fa;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+}
+
+/* ========== 结果展示 ========== */
+.result-section {
+  margin: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.result-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.result-highlight {
+  background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+  padding: 32rpx;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.highlight-label {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.highlight-value {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.highlight-value.green {
+  color: #4caf50;
+}
+
+.highlight-desc {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.deduction-breakdown {
+  margin-bottom: 30rpx;
+}
+
+.breakdown-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.breakdown-item:last-child {
+  border-bottom: none;
+}
+
+.breakdown-label {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.breakdown-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #f5576c;
+  margin-right: 20rpx;
+}
+
+.breakdown-value.green {
+  color: #4caf50;
+}
+
+.breakdown-tip {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.tax-info {
+  padding: 24rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx dashed #e9ecef;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.info-value {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.btn-detail {
+  background: linear-gradient(135deg, #ffa726 0%, #fb8c00 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+}

@@ -1,0 +1,126 @@
+<!-- User Agreement Page -->
+<view class="agreement-container">
+  <view class="agreement-header">
+    <text class="agreement-title">用户协议</text>
+    <text class="update-date">更新日期: 2026年3月24日</text>
+  </view>
+
+  <scroll-view class="agreement-content" scroll-y>
+    <view class="section">
+      <text class="section-title">一、服务说明</text>
+      <text class="section-text">
+        欢迎使用个税计算器 2026！本小程序致力于为您提供专业、便捷的个人所得税计算服务。
+      </text>
+      <text class="section-text">
+        本服务包括但不限于：
+      </text>
+      <text class="section-text indent">• 工资薪金个人所得税计算</text>
+      <text class="section-text indent">• 年终奖个税计算与优化方案</text>
+      <text class="section-text indent">• 税后工资反推税前收入</text>
+      <text class="section-text indent">• 专项附加扣除项目计算</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">二、使用规则</text>
+      <text class="section-text">
+        在使用本服务时，您需要遵守以下规则：
+      </text>
+      <text class="section-text indent">1. 提供真实、准确的收入信息用于计算</text>
+      <text class="section-text indent">2. 不得利用本服务从事违法违规活动</text>
+      <text class="section-text indent">3. 不得恶意破坏或干扰本服务的正常运行</text>
+      <text class="section-text indent">4. 遵守微信小程序平台的相关规定</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">三、计算结果说明</text>
+      <text class="warning-box">
+        <text class="warning-icon">⚠️</text>
+        <text class="warning-text">重要提示</text>
+      </text>
+      <text class="section-text">
+        本小程序提供的所有计算结果<text class="bold-text">仅供参考</text>，不构成任何纳税申报或法律承诺。
+      </text>
+      <text class="section-text">
+        实际应纳税额、扣除项目等信息，请以以下机构为准：
+      </text>
+      <text class="highlight-text">• 国家税务总局及各地税务机关</text>
+      <text class="highlight-text">• 单位财务部门实际扣缴结果</text>
+      <text class="highlight-text">• 个人所得税 APP 官方计算结果</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">四、数据准确性</text>
+      <text class="section-text">
+        我们承诺：
+      </text>
+      <text class="section-text indent">• 严格遵循《个人所得税法》及实施条例</text>
+      <text class="section-text indent">• 定期更新税率表和起征点数据</text>
+      <text class="section-text indent">• 采用国家标准的计算公式和算法</text>
+      <text class="section-text">
+        但由于以下因素可能导致实际结果与计算结果存在差异：
+      </text>
+      <text class="section-text indent">• 各地专项附加扣除政策可能存在差异</text>
+      <text class="section-text indent">• 特殊收入类型（如股权激励）计算规则复杂</text>
+      <text class="section-text indent">• 税收优惠政策适用条件不同</text>
+      <text class="section-text indent">• 税法调整导致的计算规则变化</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">五、免责声明</text>
+      <text class="section-text">
+        在以下情况下，本服务不承担任何责任：
+      </text>
+      <text class="section-text indent">1. 用户输入错误导致的计算结果偏差</text>
+      <text class="section-text indent">2. 网络故障、设备问题等不可抗力因素</text>
+      <text class="section-text indent">3. 国家税收政策调整导致的规则变化</text>
+      <text class="section-text indent">4. 单位扣缴结果与计算结果的差异</text>
+      <text class="section-text indent">5. 因用户依据计算结果做出决策产生的任何损失</text>
+      <text class="section-text indent">6. 因税务申报错误导致的法律责任</text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">六、知识产权</text>
+      <text class="section-text">
+        本小程序的所有内容，包括但不限于：
+      </text>
+      <text class="section-text indent">• 软件代码和计算算法</text>
+      <text class="section-text indent">• 界面设计和图标素材</text>
+      <text class="section-text indent">• 文字说明和帮助文档</text>
+      <text class="section-text">
+        均为开发者合法拥有或获得授权使用。未经许可，不得复制、修改或用于商业用途。
+      </text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">七、政策变更</text>
+      <text class="section-text">
+        由于国家税收政策调整、税率变化等原因，本小程序可能会不定期更新：
+      </text>
+      <text class="section-text indent">• 税率表和起征点数据</text>
+      <text class="section-text indent">• 专项附加扣除项目和标准</text>
+      <text class="section-text indent">• 计算规则和公式</text>
+      <text class="section-text indent">• 功能特性和使用体验</text>
+      <text class="section-text">
+        我们会在小程序内及时公告重大更新，请您关注。
+      </text>
+    </view>
+
+    <view class="section">
+      <text class="section-title">八、协议变更</text>
+      <text class="section-text">
+        我们保留随时修改本协议的权利。更新后的协议将在小程序内公示，继续使用本服务即表示您同意更新后的协议条款。
+      </text>
+    </view>
+
+    <view class="section last-section">
+      <text class="section-title">九、联系方式</text>
+      <text class="section-text">
+        如您在使用过程中有任何问题或建议，欢迎通过小程序内的反馈功能联系我们。我们将竭诚为您服务。
+      </text>
+    </view>
+  </scroll-view>
+
+  <view class="agreement-footer">
+    <button class="agree-btn" bindtap="handleAgree">我已阅读并同意</button>
+  </view>
+</view>

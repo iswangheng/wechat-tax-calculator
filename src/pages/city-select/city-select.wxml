@@ -1,0 +1,110 @@
+<!-- City selection page -->
+<view class="container">
+
+  <!-- Header -->
+  <view class="header">
+    <view class="header-title">选择城市</view>
+    <view class="header-subtitle">不同城市社保基数和费率不同</view>
+  </view>
+
+  <!-- Search bar -->
+  <view class="search-container">
+    <text class="search-icon">🔍</text>
+    <input
+      class="search-input"
+      placeholder="搜索城市名称"
+      value="{{searchKeyword}}"
+      bindinput="onSearchInput"
+      confirm-type="search"/>
+    <text
+      class="clear-btn"
+      wx:if="{{searchKeyword}}"
+      bindtap="onClearSearch">✕</text>
+  </view>
+
+  <!-- Search results -->
+  <view class="search-results" wx:if="{{isSearching}}">
+    <view class="section-title">
+      <text class="title-icon">🔍</text>
+      <text>搜索结果</text>
+    </view>
+
+    <block wx:if="{{searchResults.length > 0}}">
+      <view
+        class="result-item"
+        wx:for="{{searchResults}}"
+        wx:key="name"
+        data-city="{{item.name}}"
+        bindtap="onSelectSearchResult">
+        <view class="result-name">{{item.name}}</view>
+        <view class="result-info">{{item.level}} · 社保基数 {{item.socialBase}}元</view>
+      </view>
+    </block>
+
+    <view class="no-result" wx:else>
+      <view class="no-result-icon">🏙️</view>
+      <view class="no-result-text">未找到匹配的城市</view>
+    </view>
+  </view>
+
+  <!-- Hot cities (shown when not searching) -->
+  <block wx:if="{{!isSearching}}">
+    <view class="hot-cities-section">
+      <view class="section-title">
+        <text class="title-icon">🔥</text>
+        <text>热门城市</text>
+      </view>
+      <view class="cities-grid">
+        <view
+          class="city-item {{currentCity === item.name ? 'city-item-active' : ''}}"
+          wx:for="{{hotCities}}"
+          wx:key="name"
+          data-city="{{item.name}}"
+          bindtap="onSelectHotCity">
+          <text class="city-name">{{item.name}}</text>
+          <text class="city-level">{{item.level}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- All cities grouped by level -->
+    <view class="cities-list-section">
+      <view class="section-title">
+        <text class="title-icon">🏙️</text>
+        <text>全部城市</text>
+      </view>
+
+      <view
+        class="level-group"
+        wx:for="{{cityGroups}}"
+        wx:key="level">
+        <view class="level-title">
+          <text class="level-badge {{item.badgeClass}}">{{item.level}}</text>
+          <text>{{item.cities.length}}个城市</text>
+        </view>
+        <view class="cities-row">
+          <view
+            class="city-list-item {{currentCity === city ? 'city-list-item-active' : ''}}"
+            wx:for="{{item.cities}}"
+            wx:for-item="city"
+            wx:key="*this"
+            data-city="{{city}}"
+            bindtap="onSelectCity">
+            {{city}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- Footer tip -->
+  <view class="footer-tip">
+    <view class="tip-title">💡 说明</view>
+    <view class="tip-content">
+      <view class="tip-item">· 社保基数和费率按各城市最新政策计算</view>
+      <view class="tip-item">· 一线城市数据精度最高，三四线城市基于省份模板</view>
+      <view class="tip-item">· 选择城市后将影响五险一金的计算结果</view>
+    </view>
+  </view>
+
+</view>

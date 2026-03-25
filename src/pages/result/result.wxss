@@ -1,0 +1,643 @@
+/* 12个月工资明细页面样式 */
+
+/* ========== 容器 ========== */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%);
+  padding-bottom: 40rpx;
+}
+
+/* ========== 头部 ========== */
+.header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 60rpx 30rpx 40rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
+}
+
+.header-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 12rpx;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 2rpx;
+}
+
+/* ========== 年度汇总卡片 ========== */
+.summary-card {
+  margin: 20rpx 30rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 24rpx;
+}
+
+.summary-row:last-child {
+  margin-bottom: 0;
+}
+
+.summary-item {
+  flex: 1;
+  text-align: center;
+}
+
+.summary-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: #e9ecef;
+}
+
+.summary-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 12rpx;
+}
+
+.summary-value {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.summary-value.red {
+  color: #f5576c;
+}
+
+.summary-value.green {
+  color: #4caf50;
+}
+
+.summary-value::after {
+  content: ' 元';
+  font-size: 24rpx;
+  font-weight: normal;
+  color: #999999;
+}
+
+/* ========== 选项卡 ========== */
+.tabs {
+  display: flex;
+  gap: 20rpx;
+  margin: 30rpx 30rpx 0;
+}
+
+.tab-item {
+  flex: 1;
+  padding: 20rpx 0;
+  background: #ffffff;
+  border-radius: 16rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666666;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+}
+
+.tab-active {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+}
+
+/* ========== 表格模式 ========== */
+.table-container {
+  margin: 30rpx 30rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.table-scroll {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.table {
+  display: inline-block;
+  min-width: 100%;
+}
+
+.table-header {
+  display: flex;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1rpx solid #f0f0f0;
+  padding: 20rpx 0;
+  transition: background 0.3s;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.row-current {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 50%);
+  border-left: 4rpx solid #ff9800;
+  border-radius: 8rpx;
+}
+
+.table-cell {
+  padding: 0 12rpx;
+  font-size: 24rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-header .table-cell {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.table-row .table-cell {
+  color: #333333;
+}
+
+.cell-month { width: 100rpx; }
+.cell-salary { width: 150rpx; }
+.cell-social { width: 150rpx; }
+.cell-deduction { width: 150rpx; }
+.cell-taxable { width: 150rpx; }
+.cell-tax { width: 150rpx; }
+.cell-paid { width: 150rpx; }
+.cell-this-month { width: 150rpx; }
+.cell-net { width: 150rpx; }
+
+.month-label {
+  background: #f093fb;
+  color: #ffffff;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.highlight-tax {
+  color: #f5576c;
+  font-weight: bold;
+}
+
+.highlight-net {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.table-tip {
+  margin-top: 16rpx;
+  padding: 16rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  text-align: center;
+}
+
+.table-tip text {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* ========== 卡片模式 ========== */
+.cards-container {
+  padding: 0 30rpx;
+  margin-top: 30rpx;
+}
+
+.month-card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+}
+
+.card-current {
+  border: 2rpx solid #ff9800;
+  box-shadow: 0 8rpx 24rpx rgba(255, 152, 0, 0.2);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.card-month {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.card-badge {
+  padding: 6rpx 20rpx;
+  background: linear-gradient(135deg, #ff9800 0%, #fb8c00 100%);
+  color: #ffffff;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+}
+
+.card-highlight {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #f093fb10 0%, #f5576c10 100%);
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.highlight-item {
+  flex: 1;
+  text-align: center;
+}
+
+.card-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: #e9ecef;
+}
+
+.highlight-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.highlight-value {
+  display: block;
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+.highlight-value.green {
+  color: #4caf50;
+}
+
+.highlight-value.red {
+  color: #f5576c;
+}
+
+.card-details {
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+  border-bottom: 1rpx dashed #e9ecef;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.highlight-row {
+  background: rgba(245, 87, 108, 0.05);
+  padding: 12rpx 16rpx;
+  margin: 8rpx -20rpx;
+  border-radius: 8rpx;
+  border: none;
+}
+
+.detail-label {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* ========== 分析区域 ========== */
+.analysis-section {
+  margin: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-link {
+  font-size: 26rpx;
+  color: #f093fb;
+  font-weight: normal;
+}
+
+.analysis-card {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.analysis-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.analysis-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.analysis-value {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #f5576c;
+}
+
+.rate-brackets {
+  padding: 24rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+}
+
+.bracket-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.bracket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.bracket-item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  background: #ffffff;
+  border-radius: 12rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.bracket-active {
+  border-color: #f5576c;
+  background: linear-gradient(135deg, #fff8f9 0%, #ffe8ec 100%);
+}
+
+.bracket-range {
+  flex: 1.5;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.bracket-rate {
+  flex: 0.5;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #f5576c;
+  text-align: center;
+}
+
+.bracket-status {
+  flex: 1;
+  font-size: 22rpx;
+  color: #4caf50;
+  text-align: right;
+}
+
+/* ========== 扣除区域 ========== */
+.deduction-section {
+  margin: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.deduction-card {
+  padding: 24rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.deduction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+  border-bottom: 1rpx dashed #e9ecef;
+}
+
+.deduction-row:last-child {
+  border-bottom: none;
+}
+
+.total-row {
+  padding-top: 16rpx;
+  border-top: 2rpx solid #e9ecef;
+  margin-top: 12rpx;
+}
+
+.total-row .deduction-label,
+.total-row .deduction-value {
+  font-weight: bold;
+  color: #f5576c;
+}
+
+.deduction-label {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.deduction-value {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.deduction-breakdown {
+  padding: 20rpx;
+  background: #fff8e1;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #ffa726;
+}
+
+.breakdown-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #f57c00;
+  margin-bottom: 12rpx;
+}
+
+.breakdown-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.tag {
+  padding: 8rpx 16rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: #ef6c00;
+  border: 1rpx solid #ffb74d;
+}
+
+/* ========== 操作按钮 ========== */
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+  margin: 30rpx;
+}
+
+.btn-export {
+  flex: 1;
+  background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+  border: none;
+}
+
+.btn-back {
+  flex: 1;
+  background: #f5f7fa;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+  border: none;
+}
+
+/* ========== 说明区域 ========== */
+.explain-section {
+  margin: 30rpx;
+  padding: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.explain-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+
+.explain-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.explain-item {
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #f093fb;
+}
+
+.explain-label {
+  display: block;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.explain-text {
+  display: block;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* ========== Chart Section ========== */
+.chart-section {
+  margin: 20rpx 30rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.chart-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  padding-left: 16rpx;
+  border-left: 6rpx solid #f093fb;
+}
+
+.chart-container {
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-line-container {
+  height: 450rpx;
+}
+
+.cvs-donut {
+  width: 100%;
+  height: 100%;
+}
+
+.cvs-trend {
+  width: 100%;
+  height: 100%;
+}

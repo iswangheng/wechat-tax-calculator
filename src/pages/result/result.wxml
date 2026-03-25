@@ -1,0 +1,270 @@
+<!-- 12个月工资明细页面 -->
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="header-title">全年工资明细</view>
+    <view class="header-subtitle">{{params.currentMonth}}个月累计 · 2026年个税</view>
+  </view>
+
+  <!-- 年度汇总 -->
+  <view class="summary-card">
+    <view class="summary-row">
+      <view class="summary-item">
+        <text class="summary-label">年度总收入</text>
+        <text class="summary-value">{{yearlyTotal.grossIncome}}</text>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <text class="summary-label">年度纳税</text>
+        <text class="summary-value red">{{yearlyTotal.totalTax}}</text>
+      </view>
+    </view>
+    <view class="summary-row">
+      <view class="summary-item">
+        <text class="summary-label">年度到手</text>
+        <text class="summary-value green">{{yearlyTotal.netIncome}}</text>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-item">
+        <text class="summary-label">实际税率</text>
+        <text class="summary-value">{{yearlyTotal.effectiveRate}}%</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Chart: Salary composition donut chart -->
+  <view class="chart-section">
+    <view class="chart-title">工资构成饼图</view>
+    <view class="chart-container">
+      <canvas type="2d" id="pieCanvas" class="cvs-donut"></canvas>
+    </view>
+  </view>
+
+  <!-- Chart: Monthly tax trend line chart -->
+  <view class="chart-section">
+    <view class="chart-title">年度月税趋势图</view>
+    <view class="chart-container chart-line-container">
+      <canvas type="2d" id="lineCanvas" class="cvs-trend"></canvas>
+    </view>
+  </view>
+
+  <!-- 月度明细选项卡 -->
+  <view class="tabs">
+    <view
+      class="tab-item {{viewMode === 'table' ? 'tab-active' : ''}}"
+      bindtap="switchViewMode"
+      data-mode="table"
+    >
+      表格模式
+    </view>
+    <view
+      class="tab-item {{viewMode === 'card' ? 'tab-active' : ''}}"
+      bindtap="switchViewMode"
+      data-mode="card"
+    >
+      卡片模式
+    </view>
+  </view>
+
+  <!-- 表格模式 -->
+  <view class="table-container" wx:if="{{viewMode === 'table'}}">
+    <scroll-view scroll-x="true" class="table-scroll">
+      <view class="table">
+        <!-- 表头 -->
+        <view class="table-header">
+          <view class="table-cell cell-month">月份</view>
+          <view class="table-cell cell-salary">应发工资</view>
+          <view class="table-cell cell-social">五险一金</view>
+          <view class="table-cell cell-deduction">专项扣除</view>
+          <view class="table-cell cell-taxable">应纳税额</view>
+          <view class="table-cell cell-tax">应纳税款</view>
+          <view class="table-cell cell-paid">已缴税款</view>
+          <view class="table-cell cell-this-month">本月应缴</view>
+          <view class="table-cell cell-net">实发工资</view>
+        </view>
+
+        <!-- 数据行 -->
+        <view
+          class="table-row {{item.month === params.currentMonth ? 'row-current' : ''}}"
+          wx:for="{{monthlyDetails}}"
+          wx:key="month"
+        >
+          <view class="table-cell cell-month">
+            <text class="month-label">{{item.month}}月</text>
+          </view>
+          <view class="table-cell cell-salary">{{item.grossSalary}}</view>
+          <view class="table-cell cell-social">{{item.socialInsurance}}</view>
+          <view class="table-cell cell-deduction">{{item.specialDeduction}}</view>
+          <view class="table-cell cell-taxable">{{item.taxableIncome}}</view>
+          <view class="table-cell cell-tax">{{item.cumulativeTax}}</view>
+          <view class="table-cell cell-paid">{{item.paidTax}}</view>
+          <view class="table-cell cell-this-month">
+            <text class="highlight-tax">{{item.currentMonthTax}}</text>
+          </view>
+          <view class="table-cell cell-net">
+            <text class="highlight-net">{{item.netSalary}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="table-tip">
+      <text>横向滑动查看完整数据 · 高亮行为当前月份</text>
+    </view>
+  </view>
+
+  <!-- 卡片模式 -->
+  <view class="cards-container" wx:if="{{viewMode === 'card'}}">
+    <view
+      class="month-card {{item.month === params.currentMonth ? 'card-current' : ''}}"
+      wx:for="{{monthlyDetails}}"
+      wx:key="month"
+    >
+      <!-- 月份标题 -->
+      <view class="card-header">
+        <view class="card-month">{{item.month}}月</view>
+        <view class="card-badge" wx:if="{{item.month === params.currentMonth}}">当前月</view>
+      </view>
+
+      <!-- 核心数据 -->
+      <view class="card-highlight">
+        <view class="highlight-item">
+          <text class="highlight-label">实发工资</text>
+          <text class="highlight-value green">{{item.netSalary}}</text>
+        </view>
+        <view class="card-divider"></view>
+        <view class="highlight-item">
+          <text class="highlight-label">本月应缴</text>
+          <text class="highlight-value red">{{item.currentMonthTax}}</text>
+        </view>
+      </view>
+
+      <!-- 详细信息 -->
+      <view class="card-details">
+        <view class="detail-row">
+          <text class="detail-label">应发工资</text>
+          <text class="detail-value">{{item.grossSalary}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">五险一金</text>
+          <text class="detail-value">-{{item.socialInsurance}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">专项扣除</text>
+          <text class="detail-value">-{{item.specialDeduction}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">应纳税所得额</text>
+          <text class="detail-value">{{item.taxableIncome}}</text>
+        </view>
+        <view class="detail-row highlight-row">
+          <text class="detail-label">累计应纳税额</text>
+          <text class="detail-value">{{item.cumulativeTax}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">累计已缴</text>
+          <text class="detail-value">{{item.paidTax}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 税率分析 -->
+  <view class="analysis-section">
+    <view class="section-title">税率分析</view>
+
+    <view class="analysis-card">
+      <view class="analysis-item">
+        <text class="analysis-label">当前适用税率</text>
+        <text class="analysis-value">{{analysis.currentRate}}%</text>
+      </view>
+      <view class="analysis-item">
+        <text class="analysis-label">实际税率</text>
+        <text class="analysis-value">{{analysis.effectiveRate}}%</text>
+      </view>
+      <view class="analysis-item">
+        <text class="analysis-label">月均税款</text>
+        <text class="analysis-value">{{analysis.avgMonthlyTax}}</text>
+      </view>
+    </view>
+
+    <view class="rate-brackets">
+      <view class="bracket-title">全年税率档次</view>
+      <view class="bracket-list">
+        <view
+          class="bracket-item {{item.active ? 'bracket-active' : ''}}"
+          wx:for="{{analysis.brackets}}"
+          wx:key="rate"
+        >
+          <view class="bracket-range">{{item.range}}</view>
+          <view class="bracket-rate">{{item.rate}}%</view>
+          <view class="bracket-status" wx:if="{{item.active}}">当前档次</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 扣除明细 -->
+  <view class="deduction-section">
+    <view class="section-title">
+      <text>扣除明细</text>
+      <text class="edit-link" bindtap="onEditDeductions">编辑</text>
+    </view>
+
+    <view class="deduction-card">
+      <view class="deduction-row">
+        <text class="deduction-label">起征点</text>
+        <text class="deduction-value">{{deductions.threshold}} 元/月</text>
+      </view>
+      <view class="deduction-row">
+        <text class="deduction-label">五险一金</text>
+        <text class="deduction-value">{{deductions.socialInsurance}} 元/月</text>
+      </view>
+      <view class="deduction-row">
+        <text class="deduction-label">专项附加扣除</text>
+        <text class="deduction-value">{{deductions.specialDeduction}} 元/月</text>
+      </view>
+      <view class="deduction-row total-row">
+        <text class="deduction-label">月度扣除合计</text>
+        <text class="deduction-value">{{deductions.total}} 元</text>
+      </view>
+    </view>
+
+    <view class="deduction-breakdown" wx:if="{{deductions.items.length > 0}}">
+      <view class="breakdown-title">专项扣除明细</view>
+      <view class="breakdown-tags">
+        <view class="tag" wx:for="{{deductions.items}}" wx:key="name">
+          {{item.name}} {{item.amount}}元
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Hidden offscreen canvas for export -->
+  <canvas
+    type="2d"
+    id="exportCanvas"
+    style="position: fixed; left: -9999px; top: -9999px; width: 600px; height: 800px;"
+  ></canvas>
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="btn-export" bindtap="onExport">导出报表</button>
+    <button class="btn-back" bindtap="onBack">返回首页</button>
+  </view>
+
+  <!-- 说明 -->
+  <view class="explain-section">
+    <view class="explain-title">计算说明</view>
+    <view class="explain-content">
+      <view class="explain-item">
+        <text class="explain-label">累计预扣法：</text>
+        <text class="explain-text">每月预扣预缴税款 = (累计收入 - 累计扣除 - 起征点x月数) x 税率 - 速算扣除数 - 累计已缴税款</text>
+      </view>
+      <view class="explain-item">
+        <text class="explain-label">年度汇算：</text>
+        <text class="explain-text">次年3-6月进行汇算清缴，多退少补</text>
+      </view>
+    </view>
+  </view>
+</view>

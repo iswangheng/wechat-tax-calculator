@@ -1,0 +1,82 @@
+<!-- History page - display tax calculation records -->
+<view class="container">
+
+  <!-- Header -->
+  <view class="header">
+    <view class="header-title">计算历史</view>
+    <view class="header-action" wx:if="{{!isEmpty}}" bindtap="onClearAll">
+      <text class="clear-text">清空</text>
+    </view>
+  </view>
+
+  <!-- Empty state -->
+  <view class="empty-state" wx:if="{{isEmpty}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-title">暂无计算记录</text>
+    <text class="empty-desc">计算个税后会自动保存到这里</text>
+    <button class="btn-go-calculate" bindtap="onGoBack">去计算</button>
+  </view>
+
+  <!-- History list -->
+  <view class="history-list" wx:if="{{!isEmpty}}">
+    <view
+      class="history-card {{activeSwipeId === item.id ? 'swiped' : ''}}"
+      wx:for="{{historyList}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtouchstart="onTouchStart"
+      bindtouchend="onTouchEnd"
+      bindtap="onTapRecord"
+      bindlongpress="onLongPressRecord"
+    >
+      <!-- Card content -->
+      <view class="card-content">
+        <!-- Type badge and time -->
+        <view class="card-header">
+          <text class="type-badge {{item.type}}">
+            {{item.type === 'salary' ? '工资' : '年终奖'}}
+          </text>
+          <text class="card-city">{{item.city}}</text>
+          <text class="card-time">{{item.formattedTime}}</text>
+        </view>
+
+        <!-- Title -->
+        <view class="card-title">{{item.title}}</view>
+
+        <!-- Key data -->
+        <view class="card-data">
+          <view class="data-item">
+            <text class="data-label">税后到手</text>
+            <text class="data-value green">
+              {{item.type === 'salary' ? item.result.netSalary : item.result.netBonus}}
+            </text>
+          </view>
+          <view class="data-item">
+            <text class="data-label">个税</text>
+            <text class="data-value red">{{item.result.tax}}</text>
+          </view>
+          <view class="data-item" wx:if="{{item.type === 'salary'}}">
+            <text class="data-label">五险一金</text>
+            <text class="data-value">{{item.result.socialSecurity}}</text>
+          </view>
+        </view>
+
+        <!-- Tap hint -->
+        <view class="card-hint">
+          <text class="hint-text">点击恢复参数 | 左滑删除</text>
+        </view>
+      </view>
+
+      <!-- Swipe delete button -->
+      <view class="delete-btn" catchtap="onDeleteRecord" data-id="{{item.id}}">
+        <text class="delete-text">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Record count -->
+  <view class="record-count" wx:if="{{!isEmpty}}">
+    <text class="count-text">共 {{historyList.length}} 条记录（最多保留20条）</text>
+  </view>
+
+</view>

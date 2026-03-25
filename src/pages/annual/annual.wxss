@@ -1,0 +1,424 @@
+/* Annual tax settlement page styles */
+
+/* ========== Container ========== */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%);
+  padding-bottom: 60rpx;
+}
+
+/* ========== Page header ========== */
+.page-header {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 40rpx 30rpx;
+  text-align: center;
+  border-radius: 0 0 30rpx 30rpx;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.3);
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ffffff;
+  display: block;
+}
+
+.header-subtitle {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 8rpx;
+  display: block;
+}
+
+/* ========== Quick fill bar ========== */
+.quick-fill-bar {
+  display: flex;
+  align-items: center;
+  margin: 20rpx 30rpx 0;
+  padding: 20rpx 30rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.quick-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.quick-text {
+  font-size: 26rpx;
+  color: #f093fb;
+  font-weight: 500;
+  flex: 1;
+}
+
+.quick-arrow {
+  font-size: 28rpx;
+  color: #cccccc;
+}
+
+/* ========== Section ========== */
+.section {
+  margin: 20rpx 30rpx 0;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 24rpx;
+}
+
+/* ========== Input group ========== */
+.input-group {
+  margin-bottom: 20rpx;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-label {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border: 2rpx solid #e9ecef;
+}
+
+.input-number {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333333;
+  text-align: right;
+}
+
+.unit {
+  font-size: 26rpx;
+  color: #999999;
+  margin-left: 12rpx;
+}
+
+/* ========== Bonus method ========== */
+.bonus-method {
+  padding: 16rpx 0;
+}
+
+.method-option {
+  display: flex;
+  align-items: flex-start;
+  padding: 16rpx 0;
+}
+
+.method-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12rpx;
+}
+
+.method-name {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.method-desc {
+  font-size: 22rpx;
+  color: #999999;
+  margin-top: 6rpx;
+}
+
+.method-hint {
+  margin-top: 12rpx;
+  padding: 16rpx 20rpx;
+  background: #e3f2fd;
+  border-radius: 12rpx;
+}
+
+.method-hint text {
+  font-size: 22rpx;
+  color: #1976d2;
+}
+
+/* ========== Button group ========== */
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin: 30rpx;
+}
+
+.btn-calculate {
+  flex: 2;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+}
+
+.btn-reset {
+  flex: 1;
+  background: #f5f7fa;
+  color: #666666;
+  font-size: 28rpx;
+  border-radius: 16rpx;
+  padding: 28rpx 0;
+}
+
+/* ========== Result section ========== */
+.result-section {
+  margin: 0 30rpx;
+}
+
+/* ========== Main result ========== */
+.main-result {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.main-result.refund {
+  border-top: 6rpx solid #4caf50;
+}
+
+.main-result.supplement {
+  border-top: 6rpx solid #f5576c;
+}
+
+.main-result.balanced {
+  border-top: 6rpx solid #ffa726;
+}
+
+.result-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.amount-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  display: block;
+}
+
+.refund-text {
+  color: #4caf50;
+}
+
+.supplement-text {
+  color: #f5576c;
+}
+
+.balanced-text {
+  color: #ffa726;
+}
+
+.result-note {
+  margin-top: 16rpx;
+}
+
+.result-note text {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* ========== Process section ========== */
+.process-section {
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.process-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 30rpx;
+  background: #fafafa;
+}
+
+.process-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.process-toggle {
+  font-size: 24rpx;
+  color: #f093fb;
+  font-weight: 500;
+}
+
+.process-detail {
+  padding: 0 30rpx 30rpx;
+}
+
+/* ========== Detail groups ========== */
+.detail-group {
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.detail-group:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.detail-group-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 16rpx;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12rpx 0;
+}
+
+.detail-label {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.detail-value {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.total-item {
+  padding-top: 16rpx;
+  margin-top: 8rpx;
+  border-top: 1rpx dashed #e0e0e0;
+}
+
+.total-item .detail-label,
+.total-item .detail-value {
+  font-weight: bold;
+  color: #333333;
+}
+
+.settlement-item {
+  padding: 20rpx 0;
+}
+
+.settlement-item .detail-label {
+  font-weight: bold;
+}
+
+.settlement-item .detail-value {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/* ========== Optimization section ========== */
+.optimization-section {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  border-left: 6rpx solid #ffa726;
+}
+
+.optimization-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.optimization-text {
+  font-size: 26rpx;
+  color: #666666;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.optimization-text.has-suggestion {
+  color: #f093fb;
+  font-weight: 500;
+}
+
+.optimization-compare {
+  padding: 16rpx 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.compare-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8rpx 0;
+}
+
+.compare-label {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.compare-value {
+  font-size: 24rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.compare-item.saved {
+  padding-top: 12rpx;
+  margin-top: 8rpx;
+  border-top: 1rpx dashed #e0e0e0;
+}
+
+.highlight-green {
+  color: #4caf50 !important;
+  font-weight: bold !important;
+}
+
+/* ========== Tips section ========== */
+.tips-section {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.tips-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.tips-content {
+  padding: 0;
+}
+
+.tip-item {
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 2;
+}

@@ -1,0 +1,171 @@
+<!-- 年终奖个税计算页面 -->
+<view class="container">
+  <!-- 顶部渐变头部 -->
+  <view class="header">
+    <view class="header-title">年终奖个税计算器</view>
+    <view class="header-subtitle">2026年最新税率 · 自动优化建议</view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="section input-section">
+    <view class="section-title">
+      <text>💰 年终奖金额</text>
+      <text class="tip-btn" bindtap="onShowTip">?</text>
+    </view>
+
+    <view class="input-group">
+      <text class="label">年终奖</text>
+      <input
+        class="input-number"
+        type="digit"
+        placeholder="请输入年终奖金额"
+        value="{{bonus}}"
+        bindinput="onBonusInput"
+      />
+      <text class="unit">元</text>
+    </view>
+
+    <view class="info-tip">
+      <text>💡 提示：年终奖可选择单独计税或并入综合所得，本计算器按单独计税方式计算</text>
+    </view>
+  </view>
+
+  <!-- 临界点提醒 -->
+  <view class="section critical-section">
+    <view class="section-title" bindtap="onShowCriticalPoints">
+      <text>⚠️ 年终奖临界点</text>
+      <text class="arrow {{showCriticalPoints ? 'arrow-up' : 'arrow-down'}}">▼</text>
+    </view>
+
+    <view class="critical-desc">
+      <text>年终奖存在"多发1元,少拿数千"的临界点陷阱</text>
+    </view>
+
+    <view class="critical-table" wx:if="{{showCriticalPoints}}">
+      <view class="table-row table-header">
+        <text class="col-1">临界点</text>
+        <text class="col-2">避免区间</text>
+        <text class="col-3">税率跳档</text>
+      </view>
+      <view class="table-row" wx:for="{{criticalPoints}}" wx:key="point">
+        <text class="col-1">{{item.point}}</text>
+        <text class="col-2">{{item.avoid}}</text>
+        <text class="col-3">{{item.rateJump}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 按钮组 -->
+  <view class="btn-group">
+    <button class="btn-calculate" bindtap="onCalculate">开始计算</button>
+    <button class="btn-reset" bindtap="onReset">重置</button>
+  </view>
+
+  <!-- 计算结果 -->
+  <view class="result-section" wx:if="{{result}}">
+    <view class="result-title">📊 计算结果</view>
+
+    <!-- 核心结果 -->
+    <view class="result-highlight">
+      <view class="highlight-item">
+        <text class="highlight-label">应纳税额</text>
+        <text class="highlight-value red">{{result.tax}}</text>
+        <text class="highlight-desc">税率 {{result.rate}}% · 速算扣除 {{result.quickDeduction}}</text>
+      </view>
+
+      <view class="divider"></view>
+
+      <view class="highlight-item">
+        <text class="highlight-label">实际到手</text>
+        <text class="highlight-value green">{{result.netIncome}}</text>
+        <text class="highlight-desc">年终奖 {{bonus}} - 个税 {{result.tax}}</text>
+      </view>
+    </view>
+
+    <!-- 详细信息 -->
+    <view class="result-detail">
+      <view class="detail-row">
+        <text class="detail-label">月平均金额</text>
+        <text class="detail-value">{{result.monthlyAvg}} 元</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">适用税率</text>
+        <text class="detail-value">{{result.rate}}%</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">速算扣除数</text>
+        <text class="detail-value">{{result.quickDeduction}} 元</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">实际税率</text>
+        <text class="detail-value">{{result.effectiveRate}}%</text>
+      </view>
+    </view>
+
+    <!-- 临界点警告 -->
+    <view class="warning-box" wx:if="{{result.isCritical}}">
+      <view class="warning-title">⚠️ 临界点警告</view>
+      <view class="warning-content">
+        <text>{{result.criticalWarning.suggestion}}</text>
+      </view>
+    </view>
+
+    <!-- 优化建议 -->
+    <view class="optimization-box" wx:if="{{optimization && optimization.saved > 0}}">
+      <view class="optimization-title">🎯 优化建议</view>
+      <view class="optimization-content">
+        <view class="optimization-item">
+          <text class="opt-label">建议年终奖</text>
+          <text class="opt-value">{{optimization.optimized.bonus}} 元</text>
+        </view>
+        <view class="optimization-item">
+          <text class="opt-label">优化后个税</text>
+          <text class="opt-value">{{optimization.optimized.tax}} 元</text>
+        </view>
+        <view class="optimization-item">
+          <text class="opt-label">节省税款</text>
+          <text class="opt-value green">{{optimization.saved}} 元</text>
+        </view>
+        <view class="optimization-item">
+          <text class="opt-label">差额处理</text>
+          <text class="opt-value">{{optimization.difference}} 元可作为其他奖金发放</text>
+        </view>
+      </view>
+      <button class="btn-use-optimization" bindtap="onUseOptimization">
+        使用优化方案
+      </button>
+    </view>
+  </view>
+
+  <!-- Chart: Bonus cliff visualization -->
+  <view class="chart-section" wx:if="{{result}}">
+    <view class="chart-title">年终奖临界点可视化</view>
+    <view class="chart-desc">红色区域为断崖区间，紫色标记为您的年终奖位置</view>
+    <view class="chart-box">
+      <canvas type="2d" id="cliffCanvas" class="cvs-cliff"></canvas>
+    </view>
+  </view>
+
+  <!-- 计算说明 -->
+  <view class="section explain-section">
+    <view class="section-title">📖 计算说明</view>
+    <view class="explain-content">
+      <view class="explain-item">
+        <text class="explain-title">1. 计税方式</text>
+        <text class="explain-desc">年终奖单独计税：将年终奖除以12个月，按月度税率表计算</text>
+      </view>
+      <view class="explain-item">
+        <text class="explain-title">2. 税率档次</text>
+        <text class="explain-desc">月均 ≤3000元(3%)、≤12000元(10%)、≤25000元(20%)、≤35000元(25%)、≤55000元(30%)、≤80000元(35%)、>80000元(45%)</text>
+      </view>
+      <view class="explain-item">
+        <text class="explain-title">3. 临界点陷阱</text>
+        <text class="explain-desc">在36000、144000、300000等临界点,多发1元可能导致税后少拿数千元</text>
+      </view>
+      <view class="explain-item">
+        <text class="explain-title">4. 优化建议</text>
+        <text class="explain-desc">系统自动检测临界点,并给出最优方案,帮您合法节税</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,264 @@
+<!-- Multi-plan comparison page -->
+<view class="container">
+
+  <!-- Header -->
+  <view class="page-header">
+    <view class="header-title">方案对比</view>
+    <view class="header-subtitle">最多对比5个方案，找到最优选择</view>
+  </view>
+
+  <!-- Plan cards -->
+  <view class="plans-section">
+    <view class="plans-title">
+      <text>已添加方案 ({{planCount}}/5)</text>
+    </view>
+
+    <!-- Existing plans -->
+    <view class="plan-card" wx:for="{{plans}}" wx:key="index">
+      <view class="plan-card-header">
+        <text class="plan-name">{{item.name}}</text>
+        <text class="plan-city">{{item.city}}</text>
+      </view>
+      <view class="plan-card-body">
+        <view class="plan-info-item">
+          <text class="plan-info-label">月薪</text>
+          <text class="plan-info-value">{{item.grossSalary}}元</text>
+        </view>
+        <view class="plan-info-item">
+          <text class="plan-info-label">年终奖</text>
+          <text class="plan-info-value">{{item.bonus || 0}}元</text>
+        </view>
+        <view class="plan-info-item">
+          <text class="plan-info-label">公积金</text>
+          <text class="plan-info-value">{{item.fundRatio}}%</text>
+        </view>
+      </view>
+      <view class="plan-card-actions">
+        <text class="action-btn edit-btn" bindtap="onEditPlan" data-index="{{index}}">编辑</text>
+        <text class="action-btn delete-btn" bindtap="onDeletePlan" data-index="{{index}}">删除</text>
+      </view>
+    </view>
+
+    <!-- Empty state -->
+    <view class="empty-state" wx:if="{{planCount === 0}}">
+      <text class="empty-icon">📊</text>
+      <text class="empty-text">还没有添加方案</text>
+      <text class="empty-hint">点击下方按钮添加对比方案</text>
+    </view>
+
+    <!-- Add plan button -->
+    <view class="add-plan-btn" bindtap="onAddPlan" wx:if="{{planCount < 5}}">
+      <text class="add-icon">+</text>
+      <text class="add-text">添加方案</text>
+    </view>
+  </view>
+
+  <!-- Add/Edit form modal -->
+  <view class="form-overlay" wx:if="{{showAddForm}}" bindtap="onCancelForm">
+    <view class="form-modal" catchtap="">
+      <view class="form-title">
+        {{editingIndex >= 0 ? '编辑方案' : '添加方案'}}
+      </view>
+
+      <!-- Plan name -->
+      <view class="form-group">
+        <text class="form-label">方案名称</text>
+        <input
+          class="form-input"
+          placeholder="如：Offer A - 阿里"
+          value="{{formData.name}}"
+          bindinput="onNameInput"
+          maxlength="20"
+        />
+      </view>
+
+      <!-- City -->
+      <view class="form-group">
+        <text class="form-label">城市</text>
+        <picker mode="selector" range="{{cityList}}" value="{{formData.cityIndex}}" bindchange="onCityChange">
+          <view class="form-picker">
+            {{cityList[formData.cityIndex]}}
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- Monthly salary -->
+      <view class="form-group">
+        <text class="form-label">税前月薪（元）</text>
+        <input
+          class="form-input"
+          type="digit"
+          placeholder="请输入税前月薪"
+          value="{{formData.grossSalary}}"
+          bindinput="onSalaryInput"
+        />
+      </view>
+
+      <!-- Annual bonus -->
+      <view class="form-group">
+        <text class="form-label">年终奖（元，可选）</text>
+        <input
+          class="form-input"
+          type="digit"
+          placeholder="不填则为0"
+          value="{{formData.bonus}}"
+          bindinput="onBonusInput"
+        />
+      </view>
+
+      <!-- Fund ratio -->
+      <view class="form-group">
+        <text class="form-label">公积金比例</text>
+        <picker mode="selector" range="{{fundRatioOptions}}" value="{{formData.fundRatioIndex}}" bindchange="onFundRatioChange">
+          <view class="form-picker">
+            {{fundRatioOptions[formData.fundRatioIndex]}}
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- Form buttons -->
+      <view class="form-btn-group">
+        <button class="form-btn-cancel" bindtap="onCancelForm">取消</button>
+        <button class="form-btn-save" bindtap="onSavePlan">保存</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- Compare button -->
+  <view class="compare-btn-group" wx:if="{{planCount >= 2}}">
+    <button class="btn-compare" bindtap="onCompare">开始对比</button>
+    <button class="btn-reset" bindtap="onReset">清空全部</button>
+  </view>
+
+  <!-- Comparison result -->
+  <view class="result-section" wx:if="{{comparisonResult}}">
+    <view class="result-header">
+      <text class="result-title">对比结果</text>
+      <view class="best-badge">
+        <text>综合最优: {{comparisonResult[bestPlanIndex].name}}</text>
+      </view>
+    </view>
+
+    <!-- Horizontal scroll comparison table -->
+    <scroll-view scroll-x class="compare-table-scroll">
+      <view class="compare-table">
+        <!-- Header row -->
+        <view class="table-row table-header">
+          <view class="table-cell label-cell">对比维度</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text class="cell-plan-name">{{item.name}}</text>
+            <text class="best-tag" wx:if="{{item.isBest}}">最优</text>
+          </view>
+        </view>
+
+        <!-- City row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">城市</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.city}}</text>
+          </view>
+        </view>
+
+        <!-- Gross salary row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">税前月薪</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.grossSalary}}元</text>
+          </view>
+        </view>
+
+        <!-- Social security row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">五险一金/月</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.socialTotal}}元</text>
+          </view>
+        </view>
+
+        <!-- Monthly tax row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">月度个税(1月)</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.monthlyTax}}元</text>
+          </view>
+        </view>
+
+        <!-- Monthly net row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">税后月薪(1月)</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text class="{{item.isBest ? 'highlight-green' : ''}}">{{item.monthlyNet}}元</text>
+          </view>
+        </view>
+
+        <!-- Bonus net row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">年终奖税后</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.bonusNet}}元</text>
+          </view>
+        </view>
+
+        <!-- Annual gross row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">年度税前总计</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.annualGross}}元</text>
+          </view>
+        </view>
+
+        <!-- Annual social row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">年度五险一金</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.annualSocial}}元</text>
+          </view>
+        </view>
+
+        <!-- Annual tax row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">年度个税合计</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text>{{item.annualTax}}元</text>
+          </view>
+        </view>
+
+        <!-- Annual net income row (key metric) -->
+        <view class="table-row highlight-row">
+          <view class="table-cell label-cell">年度到手总收入</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text class="{{item.isBest ? 'highlight-green' : 'highlight-value'}}">{{item.annualNetIncome}}元</text>
+          </view>
+        </view>
+
+        <!-- Diff from best row -->
+        <view class="table-row">
+          <view class="table-cell label-cell">与最优差距</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text class="{{item.isBest ? 'highlight-green' : 'diff-red'}}">
+              {{item.isBest ? '最优' : '-' + item.diffFromBest + '元'}}
+            </text>
+          </view>
+        </view>
+
+        <!-- Cost of living hint -->
+        <view class="table-row">
+          <view class="table-cell label-cell">生活成本</view>
+          <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
+            <text class="cost-hint cost-{{item.costHint}}">{{item.costHint}}</text>
+          </view>
+        </view>
+
+      </view>
+    </scroll-view>
+
+    <!-- Cost of living notice -->
+    <view class="cost-notice">
+      <text class="notice-icon">💡</text>
+      <text class="notice-text">生活成本参考：一线城市普遍偏高，同等收入在二三线城市购买力更强。建议综合考虑职业发展和生活质量。</text>
+    </view>
+  </view>
+
+</view>

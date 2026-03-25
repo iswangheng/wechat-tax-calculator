@@ -1,0 +1,215 @@
+<!-- 个税计算器主页面 -->
+<view class="container">
+
+  <!-- 数据更新时间提示 -->
+  <view class="data-freshness-banner">
+    <view class="freshness-content">
+      <text class="freshness-icon">📅</text>
+      <text class="freshness-text">数据更新于: {{dataUpdateTime}}</text>
+      <text class="freshness-tag {{dataFreshness.status}}">{{dataFreshness.label}}</text>
+    </view>
+    <view class="data-source-btn" bindtap="onShowDataSource">
+      <text class="source-icon">ℹ️</text>
+      <text class="source-text">数据来源</text>
+    </view>
+  </view>
+
+  <!-- History entry -->
+  <view class="history-entry" bindtap="onGoToHistory">
+    <text class="history-icon">📋</text>
+    <text class="history-text">计算历史</text>
+    <text class="arrow">></text>
+  </view>
+
+  <!-- Feature entries -->
+  <view class="feature-entries">
+    <view class="feature-entry" bindtap="onGoToCompare">
+      <text class="feature-icon">📊</text>
+      <text class="feature-text">方案对比</text>
+      <text class="feature-desc">多个Offer横向对比</text>
+    </view>
+    <view class="feature-entry" bindtap="onGoToAnnual">
+      <text class="feature-icon">📅</text>
+      <text class="feature-text">年度汇算</text>
+      <text class="feature-desc">模拟退税/补税</text>
+    </view>
+  </view>
+
+  <!-- 城市选择 -->
+  <view class="section city-section">
+    <view class="section-title">📍 选择城市</view>
+    <view class="city-selector" bindtap="onCitySelect">
+      <text class="city-name">{{cityName}}</text>
+      <text class="city-level">{{cityLevel}}</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="city-info" wx:if="{{cityInfo}}">
+      <text class="info-item">社保基数: {{cityInfo.socialBase.min}}-{{cityInfo.socialBase.max}}元</text>
+      <text class="info-item">总费率: {{cityInfo.totalRate}}%</text>
+    </view>
+  </view>
+
+  <!-- 税前工资 -->
+  <view class="section">
+    <view class="section-title">💰 税前工资（月薪）</view>
+    <view class="input-group">
+      <input
+        type="digit"
+        placeholder="请输入税前月薪"
+        value="{{grossSalary}}"
+        bindinput="onGrossSalaryInput"
+        class="input-number"/>
+      <text class="unit">元</text>
+    </view>
+  </view>
+
+  <!-- 五险一金 -->
+  <view class="section">
+    <view class="section-title">
+      🏦 五险一金
+      <text class="tip-btn" bindtap="onShowSocialInfo">？</text>
+    </view>
+
+    <!-- 公积金比例 -->
+    <view class="input-group">
+      <text class="label">公积金比例</text>
+      <slider
+        value="{{fundRatio}}"
+        min="5"
+        max="12"
+        step="1"
+        show-value
+        bindchange="onFundRatioChange"
+        class="slider"/>
+      <text class="unit">%</text>
+    </view>
+
+    <!-- 社保公积金明细 -->
+    <view class="social-detail" wx:if="{{socialSecurity}}">
+      <view class="detail-row">
+        <text class="detail-label">养老保险 (8%)</text>
+        <text class="detail-value">¥{{socialSecurity.pension}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">医疗保险 (2%)</text>
+        <text class="detail-value">¥{{socialSecurity.medical}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">失业保险</text>
+        <text class="detail-value">¥{{socialSecurity.unemployment}}</text>
+      </view>
+      <view class="detail-row highlight">
+        <text class="detail-label">社保小计</text>
+        <text class="detail-value">¥{{socialSecurity.totalSocial}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">公积金 ({{fundRatio}}%)</text>
+        <text class="detail-value">¥{{socialSecurity.fund}}</text>
+      </view>
+      <view class="detail-row total">
+        <text class="detail-label">五险一金合计</text>
+        <text class="detail-value">¥{{socialSecurity.total}}</text>
+      </view>
+      <view class="tip-text">
+        💡 五险一金为未来投资，不是白扣！
+      </view>
+    </view>
+  </view>
+
+  <!-- 专项附加扣除 -->
+  <view class="section">
+    <view class="section-title">
+      📋 专项附加扣除
+      <text class="tip-btn" bindtap="onShowDeductionInfo">？</text>
+      <text class="edit-btn" bindtap="onEditDeductions">编辑</text>
+    </view>
+    <view class="deduction-summary">
+      <text class="summary-text">本月可扣除: ¥{{specialDeductions}}</text>
+      <view class="deduction-items" wx:if="{{deductionItems && deductionItems.length > 0}}">
+        <text class="item" wx:for="{{deductionItems}}" wx:key="name">
+          {{item.name}} ¥{{item.amount}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 计算月份（累计预扣法） -->
+  <view class="section">
+    <view class="section-title">
+      📅 计算月份
+      <text class="tip-btn" bindtap="onShowMonthInfo">？</text>
+    </view>
+    <view class="month-selector">
+      <picker mode="selector" range="{{monthOptions}}" value="{{monthIndex}}" bindchange="onMonthChange">
+        <view class="picker">
+          {{monthOptions[monthIndex]}}
+        </view>
+      </picker>
+      <view class="month-tip">
+        <text>💡 1月税少，12月税多（累计预扣法）</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 计算按钮 -->
+  <view class="btn-group">
+    <button class="btn-calculate" bindtap="onCalculate">开始计算</button>
+    <button class="btn-reset" bindtap="onReset">重置</button>
+  </view>
+
+  <!-- 结果展示 -->
+  <view class="result-section" wx:if="{{result}}">
+    <view class="result-title">📈 计算结果</view>
+
+    <!-- 核心数据 -->
+    <view class="result-highlight">
+      <view class="highlight-item">
+        <text class="highlight-label">税后到手</text>
+        <text class="highlight-value green">¥{{result.netSalary}}</text>
+      </view>
+      <view class="highlight-desc">
+        比税前少了 ¥{{(result.grossSalary - result.netSalary).toFixed(2)}}
+      </view>
+    </view>
+
+    <!-- 扣除明细 -->
+    <view class="deduction-breakdown">
+      <view class="breakdown-title">扣除明细</view>
+      <view class="breakdown-item">
+        <text class="breakdown-label">五险一金</text>
+        <text class="breakdown-value">- ¥{{result.socialSecurity}}</text>
+        <text class="breakdown-tip">为未来投资 💰</text>
+      </view>
+      <view class="breakdown-item">
+        <text class="breakdown-label">个人所得税</text>
+        <text class="breakdown-value">- ¥{{result.tax}}</text>
+        <text class="breakdown-tip">贡献国家建设 🏛️</text>
+      </view>
+      <view class="breakdown-item" wx:if="{{result.specialDeductions > 0}}">
+        <text class="breakdown-label">专项扣除</text>
+        <text class="breakdown-value green">- ¥{{result.specialDeductions}}</text>
+        <text class="breakdown-tip">减免税款 ✅</text>
+      </view>
+    </view>
+
+    <!-- 税率信息 -->
+    <view class="tax-info">
+      <view class="info-row">
+        <text class="info-label">应纳税所得额</text>
+        <text class="info-value">¥{{result.taxableIncome}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">适用税率</text>
+        <text class="info-value">{{result.breakdown.applicableRate}}%</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">速算扣除数</text>
+        <text class="info-value">¥{{result.breakdown.quickDeduction}}</text>
+      </view>
+    </view>
+
+    <!-- 查看全年明细 -->
+    <button class="btn-detail" bindtap="onView12Months">查看全年12个月明细</button>
+  </view>
+
+</view>

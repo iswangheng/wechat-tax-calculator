@@ -1,0 +1,23 @@
+# WeChat MiniProgram
+.DS_Store
+node_modules/
+dist/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# Build
+build/
+*.zip
+
+# Test
+coverage/
+
+# Cloud Function
+cloud/functions/node_modules/

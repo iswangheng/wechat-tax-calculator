@@ -240,6 +240,9 @@ Page({
         month: monthIndex + 1
       });
 
+      // Pre-calculate total deduction for display (avoid expression in wxml)
+      result.totalDeduction = (result.grossSalary - result.netSalary).toFixed(2);
+
       this.setData({ result });
 
       // Save to history

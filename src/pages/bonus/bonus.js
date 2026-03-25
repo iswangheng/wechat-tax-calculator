@@ -141,9 +141,15 @@ Page({
   },
 
   onLoad() {
-    // 预加载临界点数据
+    // Pre-process critical points data for display
+    const criticalPoints = BONUS_CRITICAL_POINTS.map(cp => ({
+      point: cp.point.toLocaleString() + '元',
+      avoid: cp.point.toLocaleString() + ' ~ ' + (cp.point + cp.diff).toLocaleString() + '元',
+      rateJump: '多缴' + cp.diff.toLocaleString() + '元'
+    }));
+
     this.setData({
-      criticalPoints: BONUS_CRITICAL_POINTS
+      criticalPoints
     });
   }
 });

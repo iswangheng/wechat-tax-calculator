@@ -134,7 +134,7 @@ Page({
       labels: labels,
       data: taxData,
       lineColor: '#07C160',
-      fillColor: 'rgba(240, 147, 251, 0.15)',
+      fillColor: 'rgba(7, 193, 96, 0.15)',
       title: '每月应缴个税趋势',
       markers: markers
     });

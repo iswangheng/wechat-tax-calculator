@@ -116,10 +116,21 @@ Page({
     });
   },
 
-  // Child count change
-  onChildCountChange(e) {
+  // Child count increase
+  onChildCountIncrease() {
+    if (this.data.childCount >= 5) return;
     this.setData({
-      childCount: parseInt(e.detail.value)
+      childCount: this.data.childCount + 1
+    }, () => {
+      this.calculateDeductions();
+    });
+  },
+
+  // Child count decrease
+  onChildCountDecrease() {
+    if (this.data.childCount <= 0) return;
+    this.setData({
+      childCount: this.data.childCount - 1
     }, () => {
       this.calculateDeductions();
     });
@@ -134,10 +145,21 @@ Page({
     });
   },
 
-  // Infant count change
-  onInfantCountChange(e) {
+  // Infant count increase
+  onInfantCountIncrease() {
+    if (this.data.infantCount >= 5) return;
     this.setData({
-      infantCount: parseInt(e.detail.value)
+      infantCount: this.data.infantCount + 1
+    }, () => {
+      this.calculateDeductions();
+    });
+  },
+
+  // Infant count decrease
+  onInfantCountDecrease() {
+    if (this.data.infantCount <= 0) return;
+    this.setData({
+      infantCount: this.data.infantCount - 1
     }, () => {
       this.calculateDeductions();
     });

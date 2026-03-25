@@ -9,7 +9,7 @@
   align-items: center;
   border-radius: 16rpx;
   margin: 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(240, 147, 251, 0.3);
+  box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
 }
 
 .freshness-content {
@@ -190,7 +190,7 @@
   font-size: 24rpx;
   color: #07C160;
   padding: 8rpx 20rpx;
-  background: #fff0fc;
+  background: #e8f5e9;
   border-radius: 20rpx;
 }
 
@@ -413,7 +413,7 @@
   font-weight: bold;
   border-radius: 16rpx;
   padding: 28rpx 0;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.4);
 }
 
 .btn-reset {

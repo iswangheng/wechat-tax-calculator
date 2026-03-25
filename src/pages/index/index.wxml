@@ -168,7 +168,7 @@
         <text class="highlight-value green">¥{{result.netSalary}}</text>
       </view>
       <view class="highlight-desc">
-        比税前少了 ¥{{(result.grossSalary - result.netSalary).toFixed(2)}}
+        比税前少了 ¥{{result.totalDeduction}}
       </view>
     </view>
 

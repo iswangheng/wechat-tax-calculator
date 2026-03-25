@@ -122,7 +122,7 @@ function drawLineChart(ctx, width, height, config) {
   var labels = config.labels || [];
   var data = config.data || [];
   var lineColor = config.lineColor || '#07C160';
-  var fillColor = config.fillColor || 'rgba(240, 147, 251, 0.15)';
+  var fillColor = config.fillColor || 'rgba(7, 193, 96, 0.15)';
   var title = config.title || '';
   var markers = config.markers || [];
   var currentMarker = config.currentMarker || null;
@@ -203,7 +203,7 @@ function drawLineChart(ctx, width, height, config) {
   // Draw gradient fill
   var gradient = ctx.createLinearGradient(0, paddingTop, 0, paddingTop + chartHeight);
   gradient.addColorStop(0, fillColor);
-  gradient.addColorStop(1, 'rgba(240, 147, 251, 0.02)');
+  gradient.addColorStop(1, 'rgba(7, 193, 96, 0.02)');
 
   ctx.beginPath();
   ctx.moveTo(points[0].x, paddingTop + chartHeight);
@@ -278,7 +278,7 @@ function drawLineChart(ctx, width, height, config) {
     // Large highlight circle
     ctx.beginPath();
     ctx.arc(cp.x, cp.y, 7, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(240, 147, 251, 0.3)';
+    ctx.fillStyle = 'rgba(7, 193, 96, 0.3)';
     ctx.fill();
 
     ctx.beginPath();
@@ -413,8 +413,8 @@ function drawBonusCliffChart(ctx, width, height, config) {
 
   // Draw gradient fill
   var gradient = ctx.createLinearGradient(0, paddingTop, 0, paddingTop + chartHeight);
-  gradient.addColorStop(0, 'rgba(240, 147, 251, 0.2)');
-  gradient.addColorStop(1, 'rgba(240, 147, 251, 0.02)');
+  gradient.addColorStop(0, 'rgba(7, 193, 96, 0.2)');
+  gradient.addColorStop(1, 'rgba(7, 193, 96, 0.02)');
 
   ctx.beginPath();
   ctx.moveTo(points[0].x, paddingTop + chartHeight);
@@ -475,7 +475,7 @@ function drawBonusCliffChart(ctx, width, height, config) {
     // Large marker
     ctx.beginPath();
     ctx.arc(userX, userY, 8, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(240, 147, 251, 0.3)';
+    ctx.fillStyle = 'rgba(7, 193, 96, 0.3)';
     ctx.fill();
 
     ctx.beginPath();

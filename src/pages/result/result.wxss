@@ -12,7 +12,7 @@
   background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 60rpx 30rpx 40rpx;
   text-align: center;
-  box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.3);
 }
 
 .header-title {
@@ -74,7 +74,7 @@
 }
 
 .summary-value.red {
-  color: #059048;
+  color: #e65100;
 }
 
 .summary-value.green {
@@ -111,7 +111,7 @@
   background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   color: #ffffff;
   font-weight: bold;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.4);
 }
 
 /* ========== 表格模式 ========== */
@@ -197,7 +197,7 @@
 }
 
 .highlight-tax {
-  color: #059048;
+  color: #e65100;
   font-weight: bold;
 }
 
@@ -302,7 +302,7 @@
 }
 
 .highlight-value.red {
-  color: #059048;
+  color: #e65100;
 }
 
 .card-details {
@@ -324,7 +324,7 @@
 }
 
 .highlight-row {
-  background: rgba(245, 87, 108, 0.05);
+  background: rgba(7, 193, 96, 0.06);
   padding: 12rpx 16rpx;
   margin: 8rpx -20rpx;
   border-radius: 8rpx;
@@ -426,7 +426,7 @@
 
 .bracket-active {
   border-color: #059048;
-  background: linear-gradient(135deg, #fff8f9 0%, #ffe8ec 100%);
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
 }
 
 .bracket-range {

@@ -23,13 +23,13 @@
 
 .header-action {
   padding: 12rpx 28rpx;
-  background: rgba(245, 87, 108, 0.1);
+  background: rgba(230, 81, 0, 0.1);
   border-radius: 20rpx;
 }
 
 .clear-text {
   font-size: 26rpx;
-  color: #059048;
+  color: #e65100;
   font-weight: 500;
 }
 
@@ -67,7 +67,7 @@
   font-weight: bold;
   border-radius: 16rpx;
   padding: 24rpx 80rpx;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.4);
 }
 
 /* ========== History list ========== */
@@ -174,7 +174,7 @@
 }
 
 .data-value.red {
-  color: #059048;
+  color: #e65100;
 }
 
 /* ========== Card hint ========== */
@@ -197,7 +197,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #059048;
+  background: #e65100;
   border-radius: 0 20rpx 20rpx 0;
   z-index: 0;
 }

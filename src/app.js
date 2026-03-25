@@ -8,14 +8,6 @@ App({
   },
 
   onLaunch() {
-    // Check if onboarding is done, redirect to onboarding page if first time
-    const onboardingDone = wx.getStorageSync('onboarding_done');
-    if (!onboardingDone) {
-      wx.redirectTo({
-        url: '/pages/onboarding/onboarding'
-      });
-    }
-
     // 显示本地存储能力
     const logs = wx.getStorageSync('logs') || [];
     logs.unshift(Date.now());

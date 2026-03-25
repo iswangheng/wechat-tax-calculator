@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/onboarding/onboarding",
     "pages/index/index",
     "pages/bonus/bonus",
     "pages/reverse/reverse",

@@ -25,7 +25,11 @@
 
     <view class="input-row">
       <text class="input-label">子女人数</text>
-      <stepper value="{{childCount}}" min="0" max="5" bindchange="onChildCountChange" />
+      <view class="stepper">
+        <view class="stepper-btn {{childCount <= 0 ? 'stepper-disabled' : ''}}" bindtap="onChildCountDecrease">-</view>
+        <text class="stepper-value">{{childCount}}</text>
+        <view class="stepper-btn {{childCount >= 5 ? 'stepper-disabled' : ''}}" bindtap="onChildCountIncrease">+</view>
+      </view>
     </view>
 
     <view class="input-row">
@@ -55,7 +59,11 @@
 
     <view class="input-row">
       <text class="input-label">婴幼儿人数</text>
-      <stepper value="{{infantCount}}" min="0" max="5" bindchange="onInfantCountChange" />
+      <view class="stepper">
+        <view class="stepper-btn {{infantCount <= 0 ? 'stepper-disabled' : ''}}" bindtap="onInfantCountDecrease">-</view>
+        <text class="stepper-value">{{infantCount}}</text>
+        <view class="stepper-btn {{infantCount >= 5 ? 'stepper-disabled' : ''}}" bindtap="onInfantCountIncrease">+</view>
+      </view>
     </view>
 
     <view class="input-row">

@@ -12,7 +12,7 @@
   background: linear-gradient(135deg, #07C160 0%, #059048 100%);
   padding: 60rpx 30rpx 40rpx;
   text-align: center;
-  box-shadow: 0 8rpx 24rpx rgba(240, 147, 251, 0.3);
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.3);
 }
 
 .header-title {
@@ -203,7 +203,7 @@
   font-weight: bold;
   border-radius: 16rpx;
   padding: 28rpx 0;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.4);
   border: none;
 }
 
@@ -261,7 +261,7 @@
 }
 
 .highlight-value.red {
-  color: #059048;
+  color: #e65100;
 }
 
 .highlight-value.green {

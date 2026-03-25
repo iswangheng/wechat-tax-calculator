@@ -13,7 +13,7 @@
   padding: 40rpx 30rpx;
   text-align: center;
   border-radius: 0 0 30rpx 30rpx;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.3);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.3);
 }
 
 .header-title {
@@ -69,7 +69,7 @@
 .plan-city {
   font-size: 24rpx;
   color: #07C160;
-  background: #fff0fc;
+  background: #e8f5e9;
   padding: 6rpx 16rpx;
   border-radius: 20rpx;
 }
@@ -115,12 +115,12 @@
 
 .edit-btn {
   color: #07C160;
-  background: #fff0fc;
+  background: #e8f5e9;
 }
 
 .delete-btn {
-  color: #059048;
-  background: #fff0f0;
+  color: #e65100;
+  background: #fff3e0;
 }
 
 /* ========== Empty state ========== */
@@ -284,7 +284,7 @@
   font-weight: bold;
   border-radius: 16rpx;
   padding: 28rpx 0;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.4);
 }
 
 .btn-reset {
@@ -421,7 +421,7 @@
 }
 
 .diff-red {
-  color: #059048;
+  color: #e65100;
   font-weight: 500;
 }
 

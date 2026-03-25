@@ -13,7 +13,7 @@
   padding: 40rpx 30rpx;
   text-align: center;
   border-radius: 0 0 30rpx 30rpx;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.3);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.3);
 }
 
 .header-title {
@@ -168,7 +168,7 @@
   font-weight: bold;
   border-radius: 16rpx;
   padding: 28rpx 0;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.4);
 }
 
 .btn-reset {
@@ -200,7 +200,7 @@
 }
 
 .main-result.supplement {
-  border-top: 6rpx solid #059048;
+  border-top: 6rpx solid #e65100;
 }
 
 .main-result.balanced {
@@ -223,7 +223,7 @@
 }
 
 .supplement-text {
-  color: #059048;
+  color: #e65100;
 }
 
 .balanced-text {

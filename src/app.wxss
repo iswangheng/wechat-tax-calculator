@@ -82,7 +82,7 @@ input, textarea {
 }
 
 .text-error {
-  color: #059048;
+  color: #e65100;
 }
 
 /* Loading 样式 */
@@ -100,4 +100,19 @@ input, textarea {
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Global button press feedback */
+button[class*="btn-"]:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+/* Global hover class for tappable elements */
+.history-entry:active,
+.feature-entry:active,
+.city-selector:active,
+.plan-card:active,
+.quick-fill-bar:active {
+  opacity: 0.85;
 }

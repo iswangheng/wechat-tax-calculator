@@ -30,7 +30,7 @@
   font-size: 24rpx;
   color: #07C160;
   padding: 8rpx 20rpx;
-  background: #fff0fc;
+  background: #e8f5e9;
   border-radius: 20rpx;
 }
 
@@ -177,7 +177,7 @@
   font-weight: bold;
   border-radius: 16rpx;
   padding: 28rpx 0;
-  box-shadow: 0 8rpx 20rpx rgba(240, 147, 251, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.4);
 }
 
 .btn-reset {
@@ -235,7 +235,7 @@
 }
 
 .highlight-value.red {
-  color: #059048;
+  color: #e65100;
 }
 
 .highlight-desc {
@@ -294,7 +294,7 @@
 }
 
 .breakdown-value.red {
-  color: #059048;
+  color: #e65100;
 }
 
 .breakdown-value.green {

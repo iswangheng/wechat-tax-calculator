@@ -2,7 +2,11 @@
 // 支持：工资薪金所得税、年终奖计算、税后反推税前、专项附加扣除
 // 计税方式：累计预扣法（中国特色）
 
-const { TAX_CONFIG_2026, BONUS_CRITICAL_POINTS } = require('../config/cities-tax-2026');
+const {
+  TAX_CONFIG_2026,
+  BONUS_TAX_BRACKETS,
+  BONUS_CRITICAL_POINTS,
+} = require("../config/cities-tax-2026");
 
 /**
  * 计算社保公积金
@@ -12,17 +16,19 @@ const { TAX_CONFIG_2026, BONUS_CRITICAL_POINTS } = require('../config/cities-tax
  * @param {number} fundRatio - 公积金比例（5-12%）
  * @returns {object} 社保公积金明细
  */
-function calculateSocialSecurity(salary, socialBase, socialRate, fundRatio = 6) {
+function calculateSocialSecurity(
+  salary,
+  socialBase,
+  socialRate,
+  fundRatio = 6,
+) {
   // 社保基数取值范围
-  const base = Math.max(
-    socialBase.min,
-    Math.min(salary, socialBase.max)
-  );
+  const base = Math.max(socialBase.min, Math.min(salary, socialBase.max));
 
   // 各项社保
-  const pension = base * socialRate.pension;                    // 养老保险
-  const medical = base * socialRate.medical + (socialRate.medicalExtra || 0);  // 医疗保险
-  const unemployment = base * socialRate.unemployment;          // 失业保险
+  const pension = base * socialRate.pension; // 养老保险
+  const medical = base * socialRate.medical + (socialRate.medicalExtra || 0); // 医疗保险
+  const unemployment = base * socialRate.unemployment; // 失业保险
 
   // 公积金
   const fundBase = base; // 公积金基数同社保基数
@@ -38,7 +44,7 @@ function calculateSocialSecurity(salary, socialBase, socialRate, fundRatio = 6) 
     unemployment: Math.round(unemployment * 100) / 100,
     totalSocial: Math.round(totalSocial * 100) / 100,
     fund: Math.round(fund * 100) / 100,
-    total: Math.round(total * 100) / 100
+    total: Math.round(total * 100) / 100,
   };
 }
 
@@ -50,24 +56,37 @@ function calculateSocialSecurity(salary, socialBase, socialRate, fundRatio = 6) 
  * @param {number} cumulativePaidTax - 前几个月已缴税额
  * @returns {number} 本月应缴税额
  */
-function calculateCumulativeTax(cumulativeIncome, cumulativeSocial, cumulativeDeduction, cumulativePaidTax, month) {
+function calculateCumulativeTax(
+  cumulativeIncome,
+  cumulativeSocial,
+  cumulativeDeduction,
+  cumulativePaidTax,
+  month,
+) {
   // 累计应纳税所得额 = 累计收入 - 累计社保公积金 - 累计专项扣除 - 累计起征点
   // 累计起征点 = 月起征点(5000) × 月数
   const cumulativeThreshold = TAX_CONFIG_2026.taxThreshold * month;
-  const taxableIncome = cumulativeIncome - cumulativeSocial - cumulativeDeduction - cumulativeThreshold;
+  const taxableIncome =
+    cumulativeIncome -
+    cumulativeSocial -
+    cumulativeDeduction -
+    cumulativeThreshold;
 
   if (taxableIncome <= 0) {
     return 0;
   }
 
   // 查找适用税率
-  const bracket = TAX_CONFIG_2026.taxBrackets.find(b => taxableIncome >= b.min && taxableIncome < b.max);
+  const bracket = TAX_CONFIG_2026.taxBrackets.find(
+    (b) => taxableIncome >= b.min && taxableIncome < b.max,
+  );
   if (!bracket) {
     return 0;
   }
 
   // 本月应纳税额 = (累计应纳税所得额 × 税率 - 速算扣除数) - 前几个月已缴税额
-  const cumulativeTax = taxableIncome * (bracket.rate / 100) - bracket.deduction;
+  const cumulativeTax =
+    taxableIncome * (bracket.rate / 100) - bracket.deduction;
   const currentMonthTax = Math.max(0, cumulativeTax - cumulativePaidTax);
 
   return Math.round(currentMonthTax * 100) / 100;
@@ -80,10 +99,10 @@ function calculateCumulativeTax(cumulativeIncome, cumulativeSocial, cumulativeDe
  */
 function calculateMonthlyTax(params) {
   const {
-    grossSalary,         // 税前工资
-    socialSecurity,      // 社保公积金
-    specialDeductions,   // 专项附加扣除
-    month = 1            // 当前月份（用于累计预扣法）
+    grossSalary, // 税前工资
+    socialSecurity, // 社保公积金
+    specialDeductions, // 专项附加扣除
+    month = 1, // 当前月份（用于累计预扣法）
   } = params;
 
   // 累计收入
@@ -99,7 +118,11 @@ function calculateMonthlyTax(params) {
   const cumulativeThreshold = TAX_CONFIG_2026.taxThreshold * month;
 
   // 累计应纳税所得额
-  const taxableIncome = cumulativeIncome - cumulativeSocial - cumulativeDeduction - cumulativeThreshold;
+  const taxableIncome =
+    cumulativeIncome -
+    cumulativeSocial -
+    cumulativeDeduction -
+    cumulativeThreshold;
 
   if (taxableIncome <= 0) {
     return {
@@ -116,17 +139,20 @@ function calculateMonthlyTax(params) {
         cumulativeThreshold,
         taxableIncome: 0,
         applicableRate: 0,
-        quickDeduction: 0
-      }
+        quickDeduction: 0,
+      },
     };
   }
 
   // 查找适用税率
-  const bracket = TAX_CONFIG_2026.taxBrackets.find(b => taxableIncome >= b.min && taxableIncome < b.max);
+  const bracket = TAX_CONFIG_2026.taxBrackets.find(
+    (b) => taxableIncome >= b.min && taxableIncome < b.max,
+  );
 
   // Cumulative withholding method:
   // Step 1: Calculate cumulative tax up to current month
-  const cumulativeTax = taxableIncome * (bracket.rate / 100) - bracket.deduction;
+  const cumulativeTax =
+    taxableIncome * (bracket.rate / 100) - bracket.deduction;
 
   // Step 2: Calculate cumulative tax up to previous month (month - 1)
   let previousCumulativeTax = 0;
@@ -138,9 +164,12 @@ function calculateMonthlyTax(params) {
     const prevTaxable = prevIncome - prevSocial - prevDeduction - prevThreshold;
 
     if (prevTaxable > 0) {
-      const prevBracket = TAX_CONFIG_2026.taxBrackets.find(b => prevTaxable >= b.min && prevTaxable < b.max);
+      const prevBracket = TAX_CONFIG_2026.taxBrackets.find(
+        (b) => prevTaxable >= b.min && prevTaxable < b.max,
+      );
       if (prevBracket) {
-        previousCumulativeTax = prevTaxable * (prevBracket.rate / 100) - prevBracket.deduction;
+        previousCumulativeTax =
+          prevTaxable * (prevBracket.rate / 100) - prevBracket.deduction;
       }
     }
   }
@@ -165,8 +194,8 @@ function calculateMonthlyTax(params) {
       cumulativeThreshold: Math.round(cumulativeThreshold * 100) / 100,
       taxableIncome: Math.round(taxableIncome * 100) / 100,
       applicableRate: bracket.rate,
-      quickDeduction: bracket.deduction
-    }
+      quickDeduction: bracket.deduction,
+    },
   };
 }
 
@@ -182,39 +211,40 @@ function calculateBonusTax(bonus) {
       tax: 0,
       netBonus: bonus,
       effectiveRate: 0,
-      isCritical: false
+      isCritical: false,
     };
   }
 
   // 年终奖除以12,找对应的月度税率档位
   const monthlyBonus = bonus / 12;
 
-  // 用月均年终奖查找适用税率(注意:这里要用月度档位)
-  const bracket = TAX_CONFIG_2026.taxBrackets.find(b =>
-    monthlyBonus >= b.min && monthlyBonus < b.max
+  // 用月均年终奖查找适用税率(使用年终奖专用月度档位表)
+  // 使用 <= max 使边界值落入低档位（中国税法：不超过X = ≤X）
+  const bracket = BONUS_TAX_BRACKETS.find(
+    (b) => monthlyBonus >= b.min && monthlyBonus <= b.max,
   );
 
   if (!bracket) {
     // 超过最高档位,使用45%税率
-    const highestBracket = TAX_CONFIG_2026.taxBrackets[TAX_CONFIG_2026.taxBrackets.length - 1];
+    const highestBracket = BONUS_TAX_BRACKETS[BONUS_TAX_BRACKETS.length - 1];
     const tax = bonus * (highestBracket.rate / 100) - highestBracket.deduction;
     const netBonus = bonus - tax;
     return {
       bonus,
       tax: Math.round(tax * 100) / 100,
       netBonus: Math.round(netBonus * 100) / 100,
-      effectiveRate: parseFloat((tax / bonus * 100).toFixed(2)),
-      isCritical: false
+      effectiveRate: parseFloat(((tax / bonus) * 100).toFixed(2)),
+      isCritical: false,
     };
   }
 
   // 年终奖个税 = 年终奖总额 × 税率 - 速算扣除数
   const tax = bonus * (bracket.rate / 100) - bracket.deduction;
   const netBonus = bonus - tax;
-  const effectiveRate = (tax / bonus * 100).toFixed(2);
+  const effectiveRate = ((tax / bonus) * 100).toFixed(2);
 
   // 检查是否在临界点附近（多发1元，多扣很多税）
-  const nearCritical = BONUS_CRITICAL_POINTS.find(point => {
+  const nearCritical = BONUS_CRITICAL_POINTS.find((point) => {
     return bonus >= point.point - 1000 && bonus <= point.point + 1000;
   });
 
@@ -225,15 +255,18 @@ function calculateBonusTax(bonus) {
     effectiveRate: parseFloat(effectiveRate),
     bracket: {
       rate: bracket.rate,
-      deduction: bracket.deduction
+      deduction: bracket.deduction,
     },
     isCritical: !!nearCritical,
-    criticalWarning: nearCritical ? {
-      point: nearCritical.point,
-      suggestion: bonus > nearCritical.point ?
-        `⚠️ 超过临界点 ${nearCritical.point}元，建议调整至 ${nearCritical.point}元以下，可节省 ${Math.round(nearCritical.diff)}元税！` :
-        `✅ 未超过临界点 ${nearCritical.point}元，继续保持`
-    } : null
+    criticalWarning: nearCritical
+      ? {
+          point: nearCritical.point,
+          suggestion:
+            bonus > nearCritical.point
+              ? `⚠️ 超过临界点 ${nearCritical.point}元，建议调整至 ${nearCritical.point}元以下，可节省 ${Math.round(nearCritical.diff)}元税！`
+              : `✅ 未超过临界点 ${nearCritical.point}元，继续保持`,
+        }
+      : null,
   };
 }
 
@@ -244,9 +277,9 @@ function calculateBonusTax(bonus) {
  */
 function calculateGrossFromNet(params) {
   const {
-    netSalary,           // 期望税后工资
-    socialSecurity,      // 社保公积金（需要提前计算）
-    specialDeductions    // 专项附加扣除
+    netSalary, // 期望税后工资
+    socialSecurity, // 社保公积金（需要提前计算）
+    specialDeductions, // 专项附加扣除
   } = params;
 
   // 采用二分法逐步逼近
@@ -265,7 +298,7 @@ function calculateGrossFromNet(params) {
       grossSalary: mid,
       socialSecurity,
       specialDeductions,
-      month: 1
+      month: 1,
     });
 
     const diff = result.netSalary - netSalary;
@@ -291,7 +324,7 @@ function calculateGrossFromNet(params) {
     grossSalary,
     socialSecurity,
     specialDeductions,
-    month: 1
+    month: 1,
   });
 
   return {
@@ -301,7 +334,7 @@ function calculateGrossFromNet(params) {
     tax: finalResult.tax,
     specialDeductions,
     totalDeduction: finalResult.socialSecurity + finalResult.tax,
-    iterations
+    iterations,
   };
 }
 
@@ -317,7 +350,7 @@ function optimizeBonusTax(totalBonus) {
   let nearestCritical = null;
   let minDistance = Infinity;
 
-  BONUS_CRITICAL_POINTS.forEach(point => {
+  BONUS_CRITICAL_POINTS.forEach((point) => {
     const distance = Math.abs(totalBonus - point.point);
     if (distance < minDistance && totalBonus > point.point) {
       minDistance = distance;
@@ -330,7 +363,7 @@ function optimizeBonusTax(totalBonus) {
       original: directResult,
       optimized: directResult,
       saved: 0,
-      suggestion: '✅ 当前金额无需优化'
+      suggestion: "✅ 当前金额无需优化",
     };
   }
 
@@ -344,7 +377,7 @@ function optimizeBonusTax(totalBonus) {
       original: directResult,
       optimized: optimizedResult,
       saved: Math.round(saved * 100) / 100,
-      suggestion: `💡 建议将年终奖调整为 ${optimizedBonus}元，可节省 ${Math.round(saved)}元税！`
+      suggestion: `💡 建议将年终奖调整为 ${optimizedBonus}元，可节省 ${Math.round(saved)}元税！`,
     };
   }
 
@@ -352,7 +385,7 @@ function optimizeBonusTax(totalBonus) {
     original: directResult,
     optimized: directResult,
     saved: 0,
-    suggestion: '✅ 当前金额已是较优方案'
+    suggestion: "✅ 当前金额已是较优方案",
   };
 }
 
@@ -363,9 +396,9 @@ function optimizeBonusTax(totalBonus) {
  */
 function calculate12MonthsTax(params) {
   const {
-    monthlyGrossSalary,  // 每月税前工资
-    socialSecurity,      // 每月社保公积金
-    specialDeductions    // 每月专项附加扣除
+    monthlyGrossSalary, // 每月税前工资
+    socialSecurity, // 每月社保公积金
+    specialDeductions, // 每月专项附加扣除
   } = params;
 
   const schedule = [];
@@ -381,7 +414,7 @@ function calculate12MonthsTax(params) {
       cumulativeSocial,
       cumulativeDeduction,
       cumulativePaidTax,
-      month
+      month,
     );
 
     cumulativePaidTax += monthlyTax;
@@ -394,7 +427,7 @@ function calculate12MonthsTax(params) {
       socialSecurity: Math.round(socialSecurity.total * 100) / 100,
       tax: Math.round(monthlyTax * 100) / 100,
       netSalary: Math.round(netSalary * 100) / 100,
-      cumulativeTax: Math.round(cumulativePaidTax * 100) / 100
+      cumulativeTax: Math.round(cumulativePaidTax * 100) / 100,
     });
   }
 
@@ -412,10 +445,10 @@ function calculateYearlyTotal(monthlyDetails, totalMonths = 12) {
 
   if (months.length === 0) {
     return {
-      grossIncome: '0.00',
-      totalTax: '0.00',
-      netIncome: '0.00',
-      effectiveRate: '0.00'
+      grossIncome: "0.00",
+      totalTax: "0.00",
+      netIncome: "0.00",
+      effectiveRate: "0.00",
     };
   }
 
@@ -433,16 +466,15 @@ function calculateYearlyTotal(monthlyDetails, totalMonths = 12) {
 
   const netIncome = grossIncome - totalSocial - totalTax;
 
-  const effectiveRate = grossIncome > 0
-    ? ((totalTax / grossIncome) * 100).toFixed(2)
-    : '0.00';
+  const effectiveRate =
+    grossIncome > 0 ? ((totalTax / grossIncome) * 100).toFixed(2) : "0.00";
 
   return {
     grossIncome: grossIncome.toFixed(2),
     totalTax: totalTax.toFixed(2),
     totalSocial: totalSocial.toFixed(2),
     netIncome: netIncome.toFixed(2),
-    effectiveRate
+    effectiveRate,
   };
 }
 
@@ -455,7 +487,7 @@ function calculateByAnnualBracket(taxableIncome) {
   if (taxableIncome <= 0) return 0;
 
   const bracket = TAX_CONFIG_2026.taxBrackets.find(
-    b => taxableIncome >= b.min && taxableIncome < b.max
+    (b) => taxableIncome >= b.min && taxableIncome < b.max,
   );
 
   if (!bracket) return 0;
@@ -470,17 +502,18 @@ function calculateByAnnualBracket(taxableIncome) {
  */
 function calculateAnnualSettlement(params) {
   const {
-    totalSalary,      // Total salary income for the year
-    bonus,            // Annual bonus
-    otherIncome,      // Other income (freelance, royalties, etc.)
-    paidTax,          // Total tax already paid during the year
-    totalSocial,      // Total social security paid during the year
-    totalDeduction,   // Total special deductions during the year
-    bonusMerged       // Whether bonus is merged into comprehensive income
+    totalSalary, // Total salary income for the year
+    bonus, // Annual bonus
+    otherIncome, // Other income (freelance, royalties, etc.)
+    paidTax, // Total tax already paid during the year
+    totalSocial, // Total social security paid during the year
+    totalDeduction, // Total special deductions during the year
+    bonusMerged, // Whether bonus is merged into comprehensive income
   } = params;
 
   // Total comprehensive income
-  const totalIncome = totalSalary + (bonusMerged ? (bonus || 0) : 0) + (otherIncome || 0);
+  const totalIncome =
+    totalSalary + (bonusMerged ? bonus || 0 : 0) + (otherIncome || 0);
 
   // Annual taxable income = total income - 60000 threshold - social security - special deductions
   const taxableIncome = totalIncome - 60000 - totalSocial - totalDeduction;
@@ -504,7 +537,7 @@ function calculateAnnualSettlement(params) {
   // Find applicable bracket for display
   const effectiveTaxableIncome = Math.max(taxableIncome, 0);
   const bracket = TAX_CONFIG_2026.taxBrackets.find(
-    b => effectiveTaxableIncome >= b.min && effectiveTaxableIncome < b.max
+    (b) => effectiveTaxableIncome >= b.min && effectiveTaxableIncome < b.max,
   );
 
   return {
@@ -518,7 +551,9 @@ function calculateAnnualSettlement(params) {
     isRefund: settlement < 0,
     refundAmount: settlement < 0 ? Math.abs(settlement) : 0,
     supplementAmount: settlement > 0 ? settlement : 0,
-    bracket: bracket ? { rate: bracket.rate, deduction: bracket.deduction } : null,
+    bracket: bracket
+      ? { rate: bracket.rate, deduction: bracket.deduction }
+      : null,
     breakdown: {
       totalSalary: Math.round(totalSalary * 100) / 100,
       bonus: Math.round((bonus || 0) * 100) / 100,
@@ -526,8 +561,8 @@ function calculateAnnualSettlement(params) {
       threshold: 60000,
       totalSocial: Math.round(totalSocial * 100) / 100,
       totalDeduction: Math.round(totalDeduction * 100) / 100,
-      bonusMerged: !!bonusMerged
-    }
+      bonusMerged: !!bonusMerged,
+    },
   };
 }
 
@@ -541,5 +576,5 @@ module.exports = {
   calculate12MonthsTax,
   calculateYearlyTotal,
   calculateAnnualSettlement,
-  calculateByAnnualBracket
+  calculateByAnnualBracket,
 };

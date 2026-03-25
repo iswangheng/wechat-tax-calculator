@@ -20,23 +20,6 @@ App({
       },
     });
 
-    // 获取用户信息
-    wx.getSetting({
-      success: (res) => {
-        if (res.authSetting["scope.userInfo"]) {
-          wx.getUserInfo({
-            success: (res) => {
-              this.globalData.userInfo = res.userInfo;
-
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res);
-              }
-            },
-          });
-        }
-      },
-    });
-
     // Analytics: track app launch
     try {
       wx.reportAnalytics("app_launch", { timestamp: Date.now() });

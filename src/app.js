@@ -32,9 +32,9 @@ App({
       this.globalData.selectedCity = lastCity;
     }
 
-    // 加载专项扣除配置
+    // 加载专项扣除配置（确保是数组格式）
     const savedDeductions = wx.getStorageSync("specialDeductions");
-    if (savedDeductions) {
+    if (Array.isArray(savedDeductions)) {
       this.globalData.deductionItems = savedDeductions;
     }
   },

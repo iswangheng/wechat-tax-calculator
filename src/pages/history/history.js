@@ -62,7 +62,7 @@ Page({
   onTouchEnd(e) {
     const touchEndX = e.changedTouches[0].clientX;
     const diff = this.data.touchStartX - touchEndX;
-    const id = e.currentTarget.dataset.id;
+    const id = Number(e.currentTarget.dataset.id);
 
     if (diff > 60) {
       // Left swipe - show delete button
@@ -79,7 +79,7 @@ Page({
 
   // Tap on card - navigate to index with restored params
   onTapRecord(e) {
-    const id = e.currentTarget.dataset.id;
+    const id = Number(e.currentTarget.dataset.id);
 
     // If swiped, ignore tap
     if (this.data.activeSwipeId === id) {
@@ -110,7 +110,7 @@ Page({
 
   // Delete single record
   onDeleteRecord(e) {
-    const id = e.currentTarget.dataset.id;
+    const id = Number(e.currentTarget.dataset.id);
 
     wx.showModal({
       title: "确认删除",
@@ -128,7 +128,7 @@ Page({
 
   // Long press to delete
   onLongPressRecord(e) {
-    const id = e.currentTarget.dataset.id;
+    const id = Number(e.currentTarget.dataset.id);
 
     wx.showActionSheet({
       itemList: ["删除此记录"],

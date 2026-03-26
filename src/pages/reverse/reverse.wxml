@@ -65,6 +65,20 @@
     </view>
   </view>
 
+  <!-- Month selector -->
+  <view class="section">
+    <view class="section-title">📅 计算月份</view>
+    <view class="input-group">
+      <text class="label">当前月份</text>
+      <picker mode="selector" range="{{monthOptions}}" value="{{monthIndex}}" bindchange="onMonthChange">
+        <view class="picker-value">{{monthOptions[monthIndex]}} ▼</view>
+      </picker>
+    </view>
+    <view class="info-tip">
+      💡 累计预扣法下，不同月份税额不同，年末月份税前工资会更高
+    </view>
+  </view>
+
   <!-- Action buttons -->
   <view class="btn-group">
     <button class="btn-calculate" bindtap="onCalculate">开始反推</button>

@@ -140,7 +140,7 @@
   <!-- Chart: Bonus cliff visualization -->
   <view class="chart-section" wx:if="{{result}}">
     <view class="chart-title">年终奖临界点可视化</view>
-    <view class="chart-desc">红色区域为断崖区间，紫色标记为您的年终奖位置</view>
+    <view class="chart-desc">红色区域为断崖区间，绿色标记为您的年终奖位置</view>
     <view class="chart-box">
       <canvas type="2d" id="cliffCanvas" class="cvs-cliff"></canvas>
     </view>

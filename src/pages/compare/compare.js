@@ -277,6 +277,7 @@ Page({
     });
 
     // Monthly averages from schedule
+    if (!schedule || schedule.length < 12) return null;
     const totalAnnualTax = schedule[11].cumulativeTax;
     const avgMonthlyTax = Math.round((totalAnnualTax / 12) * 100) / 100;
 

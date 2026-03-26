@@ -268,6 +268,18 @@ Page({
 
       this.setData({ result });
 
+      // Scroll to result section after render
+      setTimeout(() => {
+        wx.createSelectorQuery()
+          .select("#resultSection")
+          .boundingClientRect((rect) => {
+            if (rect) {
+              wx.pageScrollTo({ scrollTop: rect.top - 20, duration: 300 });
+            }
+          })
+          .exec();
+      }, 100);
+
       // Save monthly salary for annual settlement quick fill
       wx.setStorageSync("last_monthly_salary", parseFloat(grossSalary));
 

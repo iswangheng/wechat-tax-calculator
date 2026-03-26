@@ -158,7 +158,7 @@
   </view>
 
   <!-- 结果展示 -->
-  <view class="result-section" wx:if="{{result}}">
+  <view id="resultSection" class="result-section" wx:if="{{result}}">
     <view class="result-title">📈 计算结果</view>
 
     <!-- 核心数据 -->

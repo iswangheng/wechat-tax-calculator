@@ -47,13 +47,12 @@ const CITY_SOCIAL_CONFIG_2026 = {
     },
     socialRate: {
       pension: 0.08, // 养老保险 8%
-      medical: 0.02, // 医疗保险 2%
-      medicalExtra: 3, // 医疗保险额外 3元
+      medical: 0.02, // 医疗保险 2%（上海个人无额外费用）
       unemployment: 0.005, // 失业保险 0.5%
     },
     fundRate: {
-      min: 0.05, // 公积金最低 5%
-      max: 0.07, // 公积金最高 7%
+      min: 5, // 公积金最低 5%
+      max: 7, // 公积金最高 7%（上海仅支持5%/6%/7%）
     },
     totalRate: 0.105 + 0.06, // 社保10.5% + 公积金6%（常见）= 16.5%
     rentDeduction: 1500, // 房租扣除（一线城市）
@@ -73,8 +72,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002, // 北京失业保险更低
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12, // 北京公积金可到12%
+      min: 5,
+      max: 12, // 北京公积金可到12%
     },
     totalRate: 0.102 + 0.12, // 22.2%
     rentDeduction: 1500,
@@ -93,8 +92,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003, // 0.3%
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.1, // 20.3%
     rentDeduction: 1500,
@@ -113,8 +112,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.102 + 0.05, // 15.2%（广州社保率最低）
     rentDeduction: 1500,
@@ -133,8 +132,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1500,
@@ -153,8 +152,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.06,
-      max: 0.12,
+      min: 6,
+      max: 12,
     },
     totalRate: 0.104 + 0.12, // 22.4%
     rentDeduction: 1500,
@@ -173,8 +172,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.08,
-      max: 0.12,
+      min: 8,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1500,
@@ -193,8 +192,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.08,
-      max: 0.12,
+      min: 8,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1500,
@@ -213,8 +212,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.08,
-      max: 0.12,
+      min: 8,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -233,8 +232,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1500,
@@ -253,8 +252,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -273,8 +272,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -293,8 +292,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -313,8 +312,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -333,8 +332,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.08,
-      max: 0.12,
+      min: 8,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1500,
@@ -353,8 +352,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1500,
@@ -373,8 +372,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -393,8 +392,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -413,8 +412,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -433,8 +432,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -453,8 +452,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -473,8 +472,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -493,8 +492,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -513,8 +512,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -533,8 +532,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -553,8 +552,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -573,8 +572,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -593,8 +592,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -613,8 +612,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -633,8 +632,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.12, // 22.3%
     rentDeduction: 1100,
@@ -653,8 +652,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -673,8 +672,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.105 + 0.12, // 22.5%
     rentDeduction: 1100,
@@ -693,8 +692,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.102 + 0.08, // 18.2%
     rentDeduction: 1100,
@@ -713,8 +712,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.102 + 0.08, // 18.2%
     rentDeduction: 1100,
@@ -734,8 +733,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -754,8 +753,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -774,8 +773,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -794,8 +793,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -814,8 +813,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -834,8 +833,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -854,8 +853,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -875,8 +874,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.20500000000000002, // 20.5%
     rentDeduction: 1100,
@@ -895,8 +894,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.20500000000000002, // 20.5%
     rentDeduction: 1100,
@@ -915,8 +914,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.20500000000000002, // 20.5%
     rentDeduction: 1100,
@@ -935,8 +934,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.20500000000000002, // 20.5%
     rentDeduction: 1100,
@@ -955,8 +954,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.20500000000000002, // 20.5%
     rentDeduction: 1100,
@@ -975,8 +974,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.20500000000000002, // 20.5%
     rentDeduction: 1100,
@@ -995,8 +994,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.20500000000000002, // 20.5%
     rentDeduction: 1100,
@@ -1016,8 +1015,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1036,8 +1035,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1056,8 +1055,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1076,8 +1075,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1096,8 +1095,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1116,8 +1115,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1136,8 +1135,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1156,8 +1155,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1176,8 +1175,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1196,8 +1195,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1216,8 +1215,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1236,8 +1235,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1257,8 +1256,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1277,8 +1276,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1297,8 +1296,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1317,8 +1316,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1337,8 +1336,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1357,8 +1356,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1377,8 +1376,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1397,8 +1396,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1417,8 +1416,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1437,8 +1436,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1457,8 +1456,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1478,8 +1477,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1498,8 +1497,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1518,8 +1517,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1538,8 +1537,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1558,8 +1557,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1578,8 +1577,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1598,8 +1597,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1619,8 +1618,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1639,8 +1638,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1659,8 +1658,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1679,8 +1678,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1699,8 +1698,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1719,8 +1718,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1739,8 +1738,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1759,8 +1758,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1779,8 +1778,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1799,8 +1798,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -1820,8 +1819,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1840,8 +1839,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1860,8 +1859,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1880,8 +1879,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1900,8 +1899,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1920,8 +1919,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1940,8 +1939,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1960,8 +1959,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -1980,8 +1979,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -2000,8 +1999,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -2021,8 +2020,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2041,8 +2040,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2061,8 +2060,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2081,8 +2080,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2101,8 +2100,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2121,8 +2120,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2141,8 +2140,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2161,8 +2160,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2181,8 +2180,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2201,8 +2200,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2221,8 +2220,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2241,8 +2240,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2261,8 +2260,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2281,8 +2280,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2301,8 +2300,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2321,8 +2320,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -2342,8 +2341,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2362,8 +2361,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2382,8 +2381,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2402,8 +2401,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2422,8 +2421,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2442,8 +2441,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2462,8 +2461,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2482,8 +2481,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2502,8 +2501,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2522,8 +2521,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2543,8 +2542,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2563,8 +2562,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2583,8 +2582,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2603,8 +2602,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2623,8 +2622,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2643,8 +2642,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2663,8 +2662,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2683,8 +2682,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -2704,8 +2703,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2724,8 +2723,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2744,8 +2743,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2764,8 +2763,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2784,8 +2783,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2804,8 +2803,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2824,8 +2823,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2844,8 +2843,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2864,8 +2863,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2884,8 +2883,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2904,8 +2903,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2924,8 +2923,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2944,8 +2943,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2964,8 +2963,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -2984,8 +2983,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -3004,8 +3003,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.002,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.202, // 20.2%
     rentDeduction: 1100,
@@ -3025,8 +3024,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3045,8 +3044,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3065,8 +3064,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3085,8 +3084,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3105,8 +3104,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3125,8 +3124,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3145,8 +3144,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3165,8 +3164,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3185,8 +3184,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3205,8 +3204,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3225,8 +3224,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3245,8 +3244,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3265,8 +3264,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3286,8 +3285,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3306,8 +3305,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3326,8 +3325,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3346,8 +3345,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3366,8 +3365,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3386,8 +3385,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3406,8 +3405,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3426,8 +3425,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -3447,8 +3446,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3467,8 +3466,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3487,8 +3486,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3507,8 +3506,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3527,8 +3526,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3547,8 +3546,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3567,8 +3566,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3587,8 +3586,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3607,8 +3606,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3627,8 +3626,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3647,8 +3646,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3668,8 +3667,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3688,8 +3687,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3708,8 +3707,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3728,8 +3727,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3748,8 +3747,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3768,8 +3767,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3788,8 +3787,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3808,8 +3807,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3828,8 +3827,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3848,8 +3847,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3868,8 +3867,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3888,8 +3887,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -3909,8 +3908,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -3929,8 +3928,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -3949,8 +3948,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -3969,8 +3968,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -3989,8 +3988,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4009,8 +4008,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4029,8 +4028,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4049,8 +4048,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4069,8 +4068,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4089,8 +4088,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4109,8 +4108,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4129,8 +4128,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4149,8 +4148,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4169,8 +4168,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4189,8 +4188,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4209,8 +4208,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4229,8 +4228,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.004,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.184, // 18.4%
     rentDeduction: 1100,
@@ -4250,8 +4249,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4270,8 +4269,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4290,8 +4289,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4310,8 +4309,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4330,8 +4329,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4351,8 +4350,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4371,8 +4370,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4391,8 +4390,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4411,8 +4410,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4431,8 +4430,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4451,8 +4450,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4471,8 +4470,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -4492,8 +4491,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4512,8 +4511,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4532,8 +4531,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4552,8 +4551,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4572,8 +4571,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4592,8 +4591,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4612,8 +4611,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4632,8 +4631,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4652,8 +4651,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.183, // 18.3%
     rentDeduction: 1100,
@@ -4673,8 +4672,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4693,8 +4692,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4713,8 +4712,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4733,8 +4732,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4753,8 +4752,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4773,8 +4772,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4793,8 +4792,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4813,8 +4812,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4833,8 +4832,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4853,8 +4852,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4873,8 +4872,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4894,8 +4893,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4914,8 +4913,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4935,8 +4934,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4955,8 +4954,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4975,8 +4974,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -4995,8 +4994,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5015,8 +5014,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5036,8 +5035,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5056,8 +5055,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5076,8 +5075,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5096,8 +5095,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5116,8 +5115,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5136,8 +5135,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5156,8 +5155,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5176,8 +5175,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5196,8 +5195,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5217,8 +5216,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5237,8 +5236,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5257,8 +5256,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5277,8 +5276,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5297,8 +5296,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5317,8 +5316,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5337,8 +5336,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5357,8 +5356,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5377,8 +5376,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5397,8 +5396,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5417,8 +5416,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5437,8 +5436,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 1100,
@@ -5458,8 +5457,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5478,8 +5477,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5498,8 +5497,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5518,8 +5517,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5538,8 +5537,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5558,8 +5557,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5578,8 +5577,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5599,8 +5598,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5619,8 +5618,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5639,8 +5638,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5659,8 +5658,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5679,8 +5678,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5699,8 +5698,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5719,8 +5718,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5739,8 +5738,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5759,8 +5758,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5779,8 +5778,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5799,8 +5798,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.005,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.185, // 18.5%
     rentDeduction: 800,
@@ -5820,8 +5819,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
       unemployment: 0.003,
     },
     fundRate: {
-      min: 0.05,
-      max: 0.12,
+      min: 5,
+      max: 12,
     },
     totalRate: 0.103 + 0.08, // 18.3%
     rentDeduction: 800,

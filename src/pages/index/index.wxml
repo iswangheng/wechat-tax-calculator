@@ -2,16 +2,14 @@
 <view class="container">
 
   <!-- 数据更新时间提示 -->
-  <view class="data-freshness-banner">
-    <view class="freshness-row-top">
-      <text class="freshness-text">数据更新: {{dataUpdateDate}}</text>
+  <view class="data-freshness-bar">
+    <view class="freshness-left">
       <text class="freshness-tag {{dataFreshness.status}}">{{dataFreshness.label}}</text>
+      <text class="freshness-date">{{dataUpdateDate}}</text>
     </view>
-    <view class="freshness-row-bottom">
-      <text class="freshness-sub">2026年社保公积金数据</text>
-      <view class="data-source-btn" bindtap="onShowDataSource">
-        <text class="source-text">查看来源</text>
-      </view>
+    <view class="data-source-link" bindtap="onShowDataSource">
+      <text class="source-link-text">数据来源</text>
+      <text class="source-arrow">›</text>
     </view>
   </view>
 

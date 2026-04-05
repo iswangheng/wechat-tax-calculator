@@ -432,17 +432,17 @@
   border-radius: 10rpx;
 }
 
-.cost-hint.cost-高 {
+.cost-hint.cost-high {
   background: #fff3e0;
   color: #e65100;
 }
 
-.cost-hint.cost-中等 {
+.cost-hint.cost-medium {
   background: #e8f5e9;
   color: #2e7d32;
 }
 
-.cost-hint.cost-低 {
+.cost-hint.cost-low {
   background: #e3f2fd;
   color: #1565c0;
 }

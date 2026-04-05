@@ -247,7 +247,7 @@
         <view class="table-row">
           <view class="table-cell label-cell">生活成本</view>
           <view class="table-cell {{item.isBest ? 'best-cell' : ''}}" wx:for="{{comparisonResult}}" wx:key="index">
-            <text class="cost-hint cost-{{item.costHint}}">{{item.costHint}}</text>
+            <text class="cost-hint cost-{{item.costHintClass}}">{{item.costHint}}</text>
           </view>
         </view>
 

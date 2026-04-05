@@ -303,6 +303,7 @@ Page({
     // Cost of living hint
     const costIndex = CITY_COST_INDEX[plan.city] || 1.0;
     const costHint = costIndex > 1.1 ? "高" : costIndex < 0.95 ? "低" : "中等";
+    const costHintClass = costIndex > 1.1 ? "high" : costIndex < 0.95 ? "low" : "medium";
 
     return {
       name: plan.name,
@@ -322,6 +323,7 @@ Page({
       fundRatio: plan.fundRatio,
       costIndex,
       costHint,
+      costHintClass,
       diffFromBest: 0,
       isBest: false,
     };

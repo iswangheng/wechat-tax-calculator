@@ -2,7 +2,7 @@
 <view class="agreement-container">
   <view class="agreement-header">
     <text class="agreement-title">用户协议</text>
-    <text class="update-date">更新日期: 2026年3月25日</text>
+    <text class="update-date">更新日期: 2026年4月5日</text>
   </view>
 
   <scroll-view class="agreement-content" scroll-y>

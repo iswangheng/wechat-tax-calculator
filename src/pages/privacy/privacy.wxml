@@ -2,7 +2,7 @@
 <view class="privacy-container">
   <view class="privacy-header">
     <text class="privacy-title">隐私政策</text>
-    <text class="update-date">更新日期: 2026年3月25日</text>
+    <text class="update-date">更新日期: 2026年4月5日</text>
   </view>
 
   <scroll-view class="privacy-content" scroll-y>

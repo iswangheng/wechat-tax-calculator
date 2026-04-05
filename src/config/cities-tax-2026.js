@@ -5868,6 +5868,12 @@ const DATA_METADATA = {
   policyEffectiveDate: "2026-01-01",
   updateLog: [
     {
+      date: "2026-04-05",
+      changes: "全量更新38个城市社保基数至2025年7月最新官方数据，修正上海医保额外费用",
+      affectedCities: 38,
+      type: "data",
+    },
+    {
       date: "2026-03-24",
       changes: "新增253个地级市社保配置",
       affectedCities: 253,
@@ -5881,7 +5887,7 @@ const DATA_METADATA = {
     },
     {
       date: "2025-07-01",
-      changes: "上海市社保基数上限调整至37310元",
+      changes: "上海市社保基数调整至7460-37302元",
       affectedCities: ["上海"],
       type: "data",
     },

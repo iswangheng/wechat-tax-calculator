@@ -158,6 +158,79 @@
     <button class="btn-reset" bindtap="onReset">重置</button>
   </view>
 
+  <!-- 数据来源自定义弹窗 -->
+  <view class="modal-overlay" wx:if="{{showDataSourceModal}}" bindtap="onCloseDataSource">
+    <view class="modal-card" catchtap="">
+      <view class="modal-title">数据来源与说明</view>
+
+      <view class="modal-group">
+        <view class="modal-group-title">数据来源</view>
+        <view class="modal-item">
+          <text class="modal-item-label">税率表</text>
+          <text class="modal-item-value">国家税务总局官网</text>
+        </view>
+        <view class="modal-item">
+          <text class="modal-item-label">社保数据</text>
+          <text class="modal-item-value">各地人社局官网</text>
+        </view>
+        <view class="modal-item">
+          <text class="modal-item-label">公积金</text>
+          <text class="modal-item-value">各地公积金中心</text>
+        </view>
+        <view class="modal-item">
+          <text class="modal-item-label">专项扣除</text>
+          <text class="modal-item-value">国务院暂行办法</text>
+        </view>
+      </view>
+
+      <view class="modal-group" wx:if="{{dataSourceInfo}}">
+        <view class="modal-group-title">版本信息</view>
+        <view class="modal-item">
+          <text class="modal-item-label">数据版本</text>
+          <text class="modal-item-value">{{dataSourceInfo.version}}</text>
+        </view>
+        <view class="modal-item">
+          <text class="modal-item-label">更新日期</text>
+          <text class="modal-item-value">{{dataSourceInfo.updateDate}}</text>
+        </view>
+        <view class="modal-item">
+          <text class="modal-item-label">下次更新</text>
+          <text class="modal-item-value">{{dataSourceInfo.nextUpdate}}</text>
+        </view>
+      </view>
+
+      <view class="modal-group" wx:if="{{dataSourceInfo}}">
+        <view class="modal-group-title">覆盖范围</view>
+        <view class="modal-item">
+          <text class="modal-item-label">城市</text>
+          <text class="modal-item-value">{{dataSourceInfo.cityCount}}个城市 / {{dataSourceInfo.provinces}}个省份</text>
+        </view>
+      </view>
+
+      <view class="modal-group">
+        <view class="modal-group-title">精度说明</view>
+        <view class="modal-item">
+          <text class="modal-item-label">一线/新一线</text>
+          <text class="modal-item-value accuracy-high">高精度</text>
+        </view>
+        <view class="modal-item">
+          <text class="modal-item-label">二线城市</text>
+          <text class="modal-item-value accuracy-mid">中等精度</text>
+        </view>
+        <view class="modal-item">
+          <text class="modal-item-label">三四线</text>
+          <text class="modal-item-value accuracy-low">省份模板</text>
+        </view>
+      </view>
+
+      <view class="modal-footer">
+        <text class="modal-disclaimer">以上数据仅供参考，实际以税务机关核定为准</text>
+      </view>
+
+      <view class="modal-close-btn" bindtap="onCloseDataSource">我知道了</view>
+    </view>
+  </view>
+
   <!-- 结果展示 -->
   <view id="resultSection" class="result-section" wx:if="{{result}}">
     <view class="result-title">📈 计算结果</view>

@@ -49,6 +49,10 @@ Page({
     ],
     monthIndex: 0, // 当前月份索引
 
+    // 数据来源弹窗
+    showDataSourceModal: false,
+    dataSourceInfo: null,
+
     // 计算结果
     result: null,
   },
@@ -84,34 +88,26 @@ Page({
     }
   },
 
-  // 显示数据来源
+  // 显示数据来源（自定义弹窗）
   onShowDataSource() {
     const metadata = getDataMetadata();
     const dateOnly = (metadata.lastUpdate || "").split(" ")[0];
 
-    const content =
-      `【数据来源】\n` +
-      `税率表 - 国家税务总局官网\n` +
-      `社保 - 各地人社局官网\n` +
-      `公积金 - 各地公积金中心\n` +
-      `专项扣除 - 国务院暂行办法\n\n` +
-      `【版本信息】\n` +
-      `版本 ${metadata.version}\n` +
-      `更新于 ${dateOnly}\n` +
-      `下次更新 ${metadata.nextScheduledUpdate}\n\n` +
-      `【覆盖范围】\n` +
-      `${metadata.cityCount}个城市 / ${metadata.coverageProvinces}个省份\n\n` +
-      `【精度说明】\n` +
-      `一线/新一线: 高精度\n` +
-      `二线城市: 中等精度\n` +
-      `三四线: 基于省份模板`;
-
-    wx.showModal({
-      title: "数据来源与说明",
-      content: content,
-      showCancel: false,
-      confirmText: "我知道了",
+    this.setData({
+      showDataSourceModal: true,
+      dataSourceInfo: {
+        version: metadata.version,
+        updateDate: dateOnly,
+        nextUpdate: metadata.nextScheduledUpdate,
+        cityCount: metadata.cityCount,
+        provinces: metadata.coverageProvinces,
+      },
     });
+  },
+
+  // 关闭数据来源弹窗
+  onCloseDataSource() {
+    this.setData({ showDataSourceModal: false });
   },
 
   // 加载城市配置

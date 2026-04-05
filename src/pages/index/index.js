@@ -25,9 +25,7 @@ Page({
     grossSalary: "", // 税前工资
 
     // 五险一金
-    fundRatio: 6, // 公积金比例
-    fundMin: 5, // 公积金最低比例（按城市）
-    fundMax: 12, // 公积金最高比例（按城市）
+    fundRatio: 6, // 公积金比例（含补充公积金可达12%）
     socialSecurity: null, // 社保公积金明细
 
     // 专项附加扣除
@@ -116,22 +114,12 @@ Page({
   loadCityConfig() {
     const cityConfig = getCitySocialConfig(this.data.cityName);
 
-    // Cap fund ratio to city's allowed range
-    const fundMin = cityConfig.fundRate.min;
-    const fundMax = cityConfig.fundRate.max;
-    let fundRatio = this.data.fundRatio;
-    if (fundRatio > fundMax) fundRatio = fundMax;
-    if (fundRatio < fundMin) fundRatio = fundMin;
-
     this.setData({
       cityLevel: cityConfig.level,
       cityInfo: {
         socialBase: cityConfig.socialBase,
         totalRate: (cityConfig.totalRate * 100).toFixed(1),
       },
-      fundMin,
-      fundMax,
-      fundRatio,
     });
   },
 

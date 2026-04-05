@@ -17,8 +17,6 @@ Page({
 
     // Social insurance
     fundRatio: 6, // housing fund ratio
-    fundMin: 5,
-    fundMax: 12,
     socialSecurity: null, // social security breakdown
 
     // Special deductions
@@ -86,21 +84,12 @@ Page({
   loadCityConfig() {
     const cityConfig = getCitySocialConfig(this.data.cityName);
 
-    const fundMin = cityConfig.fundRate.min;
-    const fundMax = cityConfig.fundRate.max;
-    let fundRatio = this.data.fundRatio;
-    if (fundRatio > fundMax) fundRatio = fundMax;
-    if (fundRatio < fundMin) fundRatio = fundMin;
-
     this.setData({
       cityLevel: cityConfig.level,
       cityInfo: {
         socialBase: cityConfig.socialBase,
         totalRate: (cityConfig.totalRate * 100).toFixed(1),
       },
-      fundMin,
-      fundMax,
-      fundRatio,
     });
   },
 

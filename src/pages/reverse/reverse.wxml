@@ -39,8 +39,8 @@
       <text class="label">公积金比例</text>
       <slider
         value="{{fundRatio}}"
-        min="{{fundMin}}"
-        max="{{fundMax}}"
+        min="5"
+        max="12"
         step="1"
         show-value
         bindchange="onFundRatioChange"

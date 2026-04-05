@@ -1,4 +1,6 @@
 // app.js
+const taxDataService = require('./services/tax-data-service');
+
 App({
   globalData: {
     userInfo: null,
@@ -8,6 +10,16 @@ App({
   },
 
   onLaunch() {
+    // Initialize cloud environment
+    if (wx.cloud) {
+      wx.cloud.init({
+        traceUser: true,
+      });
+    }
+
+    // Start background data refresh from cloud (non-blocking)
+    taxDataService.init();
+
     // 显示本地存储能力
     const logs = wx.getStorageSync("logs") || [];
     logs.unshift(Date.now());

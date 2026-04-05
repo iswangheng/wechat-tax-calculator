@@ -1,5 +1,5 @@
 // Reverse calculation page: calculate gross salary from desired net salary
-const { getCitySocialConfig } = require("../../config/cities-tax-2026");
+const { getCitySocialConfig } = require("../../services/tax-data-service");
 const {
   calculateSocialSecurity,
   calculateGrossFromNet,

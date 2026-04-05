@@ -2,7 +2,7 @@
 const {
   getCitySocialConfig,
   getCityList,
-} = require("../../config/cities-tax-2026");
+} = require("../../services/tax-data-service");
 const {
   calculateSocialSecurity,
   calculateMonthlyTax,

@@ -1,0 +1,9 @@
+{
+  "name": "updateTaxConfig",
+  "version": "1.0.0",
+  "description": "Admin function to update tax config data",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

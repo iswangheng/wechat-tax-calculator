@@ -1,5 +1,5 @@
 // 专项附加扣除编辑页面
-const { TAX_CONFIG_2026 } = require('../../config/cities-tax-2026');
+const { TAX_CONFIG_2026 } = require('../../services/tax-data-service');
 
 Page({
   data: {

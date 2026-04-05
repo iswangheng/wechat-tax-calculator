@@ -3,7 +3,7 @@ const {
   getCityList,
   getCitiesByLevel,
   getCitySocialConfig
-} = require('../../config/cities-tax-2026');
+} = require('../../services/tax-data-service');
 
 Page({
   data: {

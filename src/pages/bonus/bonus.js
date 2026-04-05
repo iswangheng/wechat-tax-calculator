@@ -3,7 +3,7 @@ const {
   calculateBonusTax,
   optimizeBonusTax,
 } = require("../../utils/tax-calculator");
-const { BONUS_CRITICAL_POINTS } = require("../../config/cities-tax-2026");
+const { BONUS_CRITICAL_POINTS } = require("../../services/tax-data-service");
 const { saveHistory } = require("../../utils/history-manager");
 const { drawBonusCliffChart, initCanvas } = require("../../utils/chart-utils");
 

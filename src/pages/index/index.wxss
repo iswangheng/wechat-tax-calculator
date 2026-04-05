@@ -3,31 +3,34 @@
 /* ========== 数据更新时间横幅 ========== */
 .data-freshness-banner {
   background: linear-gradient(135deg, #07C160 0%, #059048 100%);
-  padding: 20rpx 30rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20rpx 28rpx;
   border-radius: 16rpx;
   margin: 20rpx;
   box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
 }
 
-.freshness-content {
+.freshness-row-top {
   display: flex;
   align-items: center;
-  flex: 1;
+  justify-content: space-between;
 }
 
-.freshness-icon {
-  font-size: 32rpx;
-  margin-right: 12rpx;
+.freshness-row-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12rpx;
 }
 
 .freshness-text {
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: #ffffff;
-  opacity: 0.95;
-  margin-right: 12rpx;
+  font-weight: 600;
+}
+
+.freshness-sub {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .freshness-tag {
@@ -36,6 +39,7 @@
   font-size: 20rpx;
   font-weight: bold;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 .freshness-tag.fresh {
@@ -66,22 +70,17 @@
 .data-source-btn {
   display: flex;
   align-items: center;
-  padding: 8rpx 20rpx;
+  padding: 6rpx 20rpx;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 20rpx;
   border: 1rpx solid rgba(255, 255, 255, 0.3);
-  margin-left: 20rpx;
-}
-
-.source-icon {
-  font-size: 24rpx;
-  margin-right: 6rpx;
 }
 
 .source-text {
   font-size: 22rpx;
   color: #ffffff;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 /* ========== History entry ========== */

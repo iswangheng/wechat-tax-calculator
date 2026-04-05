@@ -66,8 +66,11 @@ Page({
     const metadata = getDataMetadata();
     const freshness = checkDataFreshness();
 
+    // Only show date part (e.g. "2026-03-24"), drop the time portion
+    const dateOnly = (metadata.lastUpdate || "").split(" ")[0];
     this.setData({
       dataUpdateTime: metadata.lastUpdate,
+      dataUpdateDate: dateOnly,
       dataFreshness: freshness,
     });
 
@@ -84,24 +87,27 @@ Page({
   // 显示数据来源
   onShowDataSource() {
     const metadata = getDataMetadata();
+    const dateOnly = (metadata.lastUpdate || "").split(" ")[0];
 
-    let content = "📊 数据来源\n\n";
-    content += `• 税率表: ${metadata.dataSource.taxBrackets}\n`;
-    content += `• 社保数据: ${metadata.dataSource.socialSecurity}\n`;
-    content += `• 公积金数据: ${metadata.dataSource.fundRates}\n`;
-    content += `• 专项扣除: ${metadata.dataSource.specialDeductions}\n\n`;
-    content += `📅 数据版本: ${metadata.version}\n`;
-    content += `📅 最后更新: ${metadata.lastUpdate}\n`;
-    content += `📅 下次更新: ${metadata.nextScheduledUpdate}\n\n`;
-    content += `📈 覆盖范围:\n`;
-    content += `   ${metadata.cityCount}个城市 / ${metadata.coverageProvinces}个省份\n\n`;
-    content += `⚠️ 数据质量说明:\n`;
-    content += `   • 一线/新一线: 高精度官方数据\n`;
-    content += `   • 二线城市: 中等精度\n`;
-    content += `   • 三四线城市: 基于省份模板`;
+    const content =
+      `【数据来源】\n` +
+      `税率表 - 国家税务总局官网\n` +
+      `社保 - 各地人社局官网\n` +
+      `公积金 - 各地公积金中心\n` +
+      `专项扣除 - 国务院暂行办法\n\n` +
+      `【版本信息】\n` +
+      `版本 ${metadata.version}\n` +
+      `更新于 ${dateOnly}\n` +
+      `下次更新 ${metadata.nextScheduledUpdate}\n\n` +
+      `【覆盖范围】\n` +
+      `${metadata.cityCount}个城市 / ${metadata.coverageProvinces}个省份\n\n` +
+      `【精度说明】\n` +
+      `一线/新一线: 高精度\n` +
+      `二线城市: 中等精度\n` +
+      `三四线: 基于省份模板`;
 
     wx.showModal({
-      title: "数据来源",
+      title: "数据来源与说明",
       content: content,
       showCancel: false,
       confirmText: "我知道了",

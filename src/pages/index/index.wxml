@@ -3,14 +3,15 @@
 
   <!-- 数据更新时间提示 -->
   <view class="data-freshness-banner">
-    <view class="freshness-content">
-      <text class="freshness-icon">📅</text>
-      <text class="freshness-text">数据更新于: {{dataUpdateTime}}</text>
+    <view class="freshness-row-top">
+      <text class="freshness-text">数据更新: {{dataUpdateDate}}</text>
       <text class="freshness-tag {{dataFreshness.status}}">{{dataFreshness.label}}</text>
     </view>
-    <view class="data-source-btn" bindtap="onShowDataSource">
-      <text class="source-icon">ℹ️</text>
-      <text class="source-text">数据来源</text>
+    <view class="freshness-row-bottom">
+      <text class="freshness-sub">2026年社保公积金数据</text>
+      <view class="data-source-btn" bindtap="onShowDataSource">
+        <text class="source-text">查看来源</text>
+      </view>
     </view>
   </view>
 

@@ -1,6 +1,6 @@
 // 2026年中国主要城市社保公积金配置
-// Data Source: 各地人社局、公积金中心官网（2026年1月数据）
-// Last Update: 2026-03-24
+// Data Source: 各地人社局、公积金中心官网（2025年7月起执行数据）
+// Last Update: 2026-04-05
 
 const TAX_CONFIG_2026 = {
   // 个税全国统一标准
@@ -42,8 +42,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "上海",
     level: "一线",
     socialBase: {
-      min: 7310, // 最低基数
-      max: 37310, // 最高基数（2026年7月调整）
+      min: 7460, // 最低基数（2025.7起）
+      max: 37302, // 最高基数（2025.7起）
     },
     socialRate: {
       pension: 0.08, // 养老保险 8%
@@ -62,8 +62,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "北京",
     level: "一线",
     socialBase: {
-      min: 6326,
-      max: 36549, // 2026年最新
+      min: 7162,
+      max: 35811, // 2025.7起
     },
     socialRate: {
       pension: 0.08,
@@ -83,8 +83,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "深圳",
     level: "一线",
     socialBase: {
-      min: 2360, // 深圳最低基数较低
-      max: 36549,
+      min: 4492, // 养老保险基数（2025.7起）
+      max: 27549, // 广东省统一上限
     },
     socialRate: {
       pension: 0.08,
@@ -103,8 +103,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "广州",
     level: "一线",
     socialBase: {
-      min: 2300,
-      max: 38082, // 广州基数上限最高
+      min: 5510,
+      max: 27549, // 广东省统一上限（2025.7起）
     },
     socialRate: {
       pension: 0.08,
@@ -123,8 +123,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "杭州",
     level: "新一线",
     socialBase: {
-      min: 3957,
-      max: 19784,
+      min: 4986,
+      max: 25299,
     },
     socialRate: {
       pension: 0.08,
@@ -143,8 +143,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "成都",
     level: "新一线",
     socialBase: {
-      min: 4246,
-      max: 21228,
+      min: 4588,
+      max: 22938,
     },
     socialRate: {
       pension: 0.08,
@@ -163,8 +163,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "南京",
     level: "新一线",
     socialBase: {
-      min: 4494,
-      max: 24042,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -183,8 +183,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "武汉",
     level: "新一线",
     socialBase: {
-      min: 3739,
-      max: 18693,
+      min: 4498,
+      max: 22488,
     },
     socialRate: {
       pension: 0.08,
@@ -203,8 +203,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "苏州",
     level: "新一线",
     socialBase: {
-      min: 4494,
-      max: 24042,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -223,8 +223,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "西安",
     level: "新一线",
     socialBase: {
-      min: 4172,
-      max: 20860,
+      min: 4559,
+      max: 22794,
     },
     socialRate: {
       pension: 0.08,
@@ -243,8 +243,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "郑州",
     level: "二线",
     socialBase: {
-      min: 3179,
-      max: 18993,
+      min: 3987,
+      max: 19935,
     },
     socialRate: {
       pension: 0.08,
@@ -263,8 +263,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "长沙",
     level: "二线",
     socialBase: {
-      min: 3575,
-      max: 19623,
+      min: 4072,
+      max: 20361,
     },
     socialRate: {
       pension: 0.08,
@@ -283,8 +283,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "青岛",
     level: "二线",
     socialBase: {
-      min: 4121,
-      max: 23442,
+      min: 4416,
+      max: 22078,
     },
     socialRate: {
       pension: 0.08,
@@ -303,8 +303,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "宁波",
     level: "二线",
     socialBase: {
-      min: 4006,
-      max: 20028,
+      min: 4986,
+      max: 25299,
     },
     socialRate: {
       pension: 0.08,
@@ -323,8 +323,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "天津",
     level: "直辖市",
     socialBase: {
-      min: 4400,
-      max: 22434,
+      min: 5124,
+      max: 25620,
     },
     socialRate: {
       pension: 0.08,
@@ -343,8 +343,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "重庆",
     level: "直辖市",
     socialBase: {
-      min: 3699,
-      max: 18495,
+      min: 4403,
+      max: 22017,
     },
     socialRate: {
       pension: 0.08,
@@ -363,8 +363,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "厦门",
     level: "二线",
     socialBase: {
-      min: 2301,
-      max: 23508,
+      min: 4378,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -383,8 +383,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "合肥",
     level: "二线",
     socialBase: {
-      min: 3800,
-      max: 19000,
+      min: 4311,
+      max: 21556,
     },
     socialRate: {
       pension: 0.08,
@@ -403,8 +403,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "沈阳",
     level: "二线",
     socialBase: {
-      min: 3782,
-      max: 19410,
+      min: 4304,
+      max: 21522,
     },
     socialRate: {
       pension: 0.08,
@@ -423,8 +423,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "大连",
     level: "二线",
     socialBase: {
-      min: 3456,
-      max: 20730,
+      min: 4304,
+      max: 21522,
     },
     socialRate: {
       pension: 0.08,
@@ -443,8 +443,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "济南",
     level: "二线",
     socialBase: {
-      min: 4121,
-      max: 22383,
+      min: 4416,
+      max: 22078,
     },
     socialRate: {
       pension: 0.08,
@@ -463,8 +463,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "福州",
     level: "二线",
     socialBase: {
-      min: 2030,
-      max: 20682,
+      min: 4378,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -483,8 +483,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "石家庄",
     level: "二线",
     socialBase: {
-      min: 3849,
-      max: 19245,
+      min: 4007,
+      max: 20034,
     },
     socialRate: {
       pension: 0.08,
@@ -503,8 +503,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "昆明",
     level: "二线",
     socialBase: {
-      min: 3770,
-      max: 18849,
+      min: 4199,
+      max: 20994,
     },
     socialRate: {
       pension: 0.08,
@@ -523,8 +523,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "南昌",
     level: "二线",
     socialBase: {
-      min: 2830,
-      max: 21222,
+      min: 4015,
+      max: 20076,
     },
     socialRate: {
       pension: 0.08,
@@ -543,8 +543,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "太原",
     level: "二线",
     socialBase: {
-      min: 3739,
-      max: 18693,
+      min: 4198,
+      max: 20991,
     },
     socialRate: {
       pension: 0.08,
@@ -563,8 +563,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "贵阳",
     level: "二线",
     socialBase: {
-      min: 3840,
-      max: 19200,
+      min: 4281,
+      max: 21405,
     },
     socialRate: {
       pension: 0.08,
@@ -583,8 +583,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "南宁",
     level: "二线",
     socialBase: {
-      min: 3488,
-      max: 20928,
+      min: 3900,
+      max: 19500,
     },
     socialRate: {
       pension: 0.08,
@@ -603,8 +603,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "哈尔滨",
     level: "二线",
     socialBase: {
-      min: 3368,
-      max: 16839,
+      min: 3938,
+      max: 19689,
     },
     socialRate: {
       pension: 0.08,
@@ -623,8 +623,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "兰州",
     level: "二线",
     socialBase: {
-      min: 3672,
-      max: 18360,
+      min: 4240,
+      max: 21198,
     },
     socialRate: {
       pension: 0.08,
@@ -643,8 +643,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "乌鲁木齐",
     level: "二线",
     socialBase: {
-      min: 3800,
-      max: 19000,
+      min: 4500,
+      max: 22500,
     },
     socialRate: {
       pension: 0.08,
@@ -663,8 +663,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "海口",
     level: "二线",
     socialBase: {
-      min: 2200,
-      max: 20982,
+      min: 4152,
+      max: 20760,
     },
     socialRate: {
       pension: 0.08,
@@ -683,8 +683,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "东莞",
     level: "三线",
     socialBase: {
-      min: 2300,
-      max: 30876,
+      min: 4775,
+      max: 27549,
     },
     socialRate: {
       pension: 0.08,
@@ -703,8 +703,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "佛山",
     level: "三线",
     socialBase: {
-      min: 2300,
-      max: 36072,
+      min: 4775,
+      max: 27549,
     },
     socialRate: {
       pension: 0.08,
@@ -724,8 +724,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "镇江",
     level: "三线",
     socialBase: {
-      min: 2280,
-      max: 25800,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -744,8 +744,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "扬州",
     level: "三线",
     socialBase: {
-      min: 2280,
-      max: 25800,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -764,8 +764,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "泰州",
     level: "三线",
     socialBase: {
-      min: 2280,
-      max: 25800,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -784,8 +784,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "盐城",
     level: "三线",
     socialBase: {
-      min: 2280,
-      max: 25800,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -804,8 +804,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "淮安",
     level: "三线",
     socialBase: {
-      min: 2280,
-      max: 25800,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -824,8 +824,8 @@ const CITY_SOCIAL_CONFIG_2026 = {
     name: "宿迁",
     level: "三线",
     socialBase: {
-      min: 2280,
-      max: 25800,
+      min: 4952,
+      max: 24762,
     },
     socialRate: {
       pension: 0.08,
@@ -5853,8 +5853,8 @@ const BONUS_CRITICAL_POINTS = [
 
 // 数据元信息（Metadata）
 const DATA_METADATA = {
-  version: "2026.03.24",
-  lastUpdate: "2026-03-24 23:35:00",
+  version: "2026.04.05",
+  lastUpdate: "2026-04-05",
   dataSource: {
     taxBrackets: "国家税务总局官网 (www.chinatax.gov.cn)",
     specialDeductions: "国务院关于个人所得税专项附加扣除暂行办法",
@@ -5862,9 +5862,9 @@ const DATA_METADATA = {
     fundRates: "各地住房公积金管理中心官网",
     socialBase: "各地人社局年度社保基数公告",
   },
-  cityCount: 288,
+  cityCount: 287,
   coverageProvinces: 26,
-  nextScheduledUpdate: "2026-07-01", // 社保基数通常每年7月调整
+  nextScheduledUpdate: "2026-07-15", // 下一次社保年度调整预计7月
   policyEffectiveDate: "2026-01-01",
   updateLog: [
     {

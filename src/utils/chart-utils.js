@@ -2,6 +2,8 @@
 // Uses Canvas 2D API (type="2d") for rendering pie and line charts
 // Color scheme: green finance series (#07C160 WeChat green as primary)
 
+var { BONUS_TAX_BRACKETS } = require("../config/cities-tax-2026");
+
 /**
  * Draw a pie chart with center text and legend
  * @param {CanvasRenderingContext2D} ctx - Canvas 2D context
@@ -548,26 +550,17 @@ function drawBonusCliffChart(ctx, width, height, config) {
 
 /**
  * Calculate net income for a given bonus amount (standalone taxation)
+ * Uses BONUS_TAX_BRACKETS from config to stay in sync with tax-calculator.js
  */
 function calcBonusNet(bonus) {
   if (bonus <= 0) return 0;
 
   var monthlyAvg = bonus / 12;
 
-  var brackets = [
-    { min: 0, max: 3000, rate: 3, deduction: 0 },
-    { min: 3000, max: 12000, rate: 10, deduction: 210 },
-    { min: 12000, max: 25000, rate: 20, deduction: 1410 },
-    { min: 25000, max: 35000, rate: 25, deduction: 2660 },
-    { min: 35000, max: 55000, rate: 30, deduction: 4410 },
-    { min: 55000, max: 80000, rate: 35, deduction: 7160 },
-    { min: 80000, max: Infinity, rate: 45, deduction: 15160 },
-  ];
-
   var bracket = null;
-  for (var i = 0; i < brackets.length; i++) {
-    if (monthlyAvg >= brackets[i].min && monthlyAvg <= brackets[i].max) {
-      bracket = brackets[i];
+  for (var i = 0; i < BONUS_TAX_BRACKETS.length; i++) {
+    if (monthlyAvg >= BONUS_TAX_BRACKETS[i].min && monthlyAvg <= BONUS_TAX_BRACKETS[i].max) {
+      bracket = BONUS_TAX_BRACKETS[i];
       break;
     }
   }
@@ -630,6 +623,7 @@ function formatShortNumber(num) {
  * Format number with comma separators
  */
 function formatNumber(num) {
+  if (num === undefined || num === null || isNaN(num)) return "0.00";
   return num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 

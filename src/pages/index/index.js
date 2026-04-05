@@ -431,7 +431,7 @@ Page({
       }
     }
 
-    // 从专项扣除页面返回时更新数据
+    // 从专项扣除页面返回时更新数据（仅在扣除金额变化时清空结果）
     if (app.globalData && app.globalData.deductionItems) {
       const deductionItems = app.globalData.deductionItems;
       const specialDeductions = deductionItems.reduce(
@@ -439,10 +439,11 @@ Page({
         0,
       );
 
+      const changed = specialDeductions !== this.data.specialDeductions;
       this.setData({
         deductionItems,
         specialDeductions,
-        result: null,
+        result: changed ? null : this.data.result,
       });
     }
 

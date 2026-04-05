@@ -155,42 +155,52 @@ Page({
     }
 
     try {
-      // Calculate social security based on an estimated gross salary
       const cityConfig = getCitySocialConfig(cityName);
-      const estimatedGross = salaryValue * 1.3; // rough estimate for social security calc
-      const socialSecurity = calculateSocialSecurity(
-        estimatedGross,
+
+      // Iterative convergence: social security depends on gross, which depends on social security.
+      // Repeat until the gross salary stabilizes (usually converges in 3-4 rounds).
+      let prevGross = salaryValue * 1.3; // initial estimate
+      let socialSecurity = calculateSocialSecurity(
+        prevGross,
         cityConfig.socialBase,
         cityConfig.socialRate,
         fundRatio,
       );
+      let finalResult = null;
 
-      // Reverse calculate gross from net
-      const result = calculateGrossFromNet({
+      for (let i = 0; i < 10; i++) {
+        finalResult = calculateGrossFromNet({
+          netSalary: salaryValue,
+          socialSecurity,
+          specialDeductions,
+          month,
+        });
+
+        // Recalculate social security with the new gross
+        socialSecurity = calculateSocialSecurity(
+          finalResult.grossSalary,
+          cityConfig.socialBase,
+          cityConfig.socialRate,
+          fundRatio,
+        );
+
+        // Check convergence (gross salary change < 0.01)
+        if (Math.abs(finalResult.grossSalary - prevGross) < 0.01) {
+          break;
+        }
+        prevGross = finalResult.grossSalary;
+      }
+
+      // Final pass with converged social security
+      finalResult = calculateGrossFromNet({
         netSalary: salaryValue,
         socialSecurity,
         specialDeductions,
         month,
       });
 
-      // Recalculate social security with actual gross salary
-      const actualSocial = calculateSocialSecurity(
-        result.grossSalary,
-        cityConfig.socialBase,
-        cityConfig.socialRate,
-        fundRatio,
-      );
-
-      // Run reverse calculation again with corrected social security
-      const finalResult = calculateGrossFromNet({
-        netSalary: salaryValue,
-        socialSecurity: actualSocial,
-        specialDeductions,
-        month,
-      });
-
       this.setData({
-        socialSecurity: actualSocial,
+        socialSecurity: socialSecurity,
         result: finalResult,
       });
 

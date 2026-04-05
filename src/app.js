@@ -39,11 +39,52 @@ App({
       console.error("读取城市缓存失败:", e);
     }
 
-    // 加载专项扣除配置（确保是数组格式）
+    // 加载专项扣除配置（从 deductions 页面保存的对象格式还原为数组）
     try {
-      const savedDeductions = wx.getStorageSync("specialDeductions");
-      if (Array.isArray(savedDeductions)) {
-        this.globalData.deductionItems = savedDeductions;
+      const saved = wx.getStorageSync("specialDeductions");
+      if (saved && typeof saved === "object" && !Array.isArray(saved)) {
+        // Rebuild deductionItems array from saved object
+        const items = [];
+        if (saved.childCount > 0) {
+          items.push({
+            name: "子女教育",
+            amount: saved.childCount * 1000 * ((saved.childRatio || 100) / 100),
+          });
+        }
+        if (saved.infantCount > 0) {
+          items.push({
+            name: "婴幼儿照护",
+            amount: saved.infantCount * 1000 * ((saved.infantRatio || 100) / 100),
+          });
+        }
+        if (saved.hasContinuingEducation) {
+          items.push({ name: "继续教育", amount: 400 });
+        }
+        if (saved.hasHousingLoan) {
+          items.push({
+            name: "住房贷款利息",
+            amount: 1000 * ((saved.loanRatio || 100) / 100),
+          });
+        }
+        if (saved.hasHousingRent && !saved.hasHousingLoan) {
+          const rentAmounts = [1500, 1100, 800];
+          items.push({
+            name: "住房租金",
+            amount: rentAmounts[saved.rentCityIndex || 0],
+          });
+        }
+        if (saved.hasElderCare) {
+          items.push({
+            name: "赡养老人",
+            amount:
+              saved.elderType === "only"
+                ? 2000
+                : Math.min(saved.elderShareAmount || 1000, 1000),
+          });
+        }
+        this.globalData.deductionItems = items;
+      } else if (Array.isArray(saved)) {
+        this.globalData.deductionItems = saved;
       }
     } catch (e) {
       console.error("读取扣除配置失败:", e);

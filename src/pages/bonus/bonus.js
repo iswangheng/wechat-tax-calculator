@@ -174,4 +174,23 @@ Page({
       criticalPoints,
     });
   },
+
+  onShow() {
+    // Restore from history record if available
+    const app = getApp();
+    if (app.globalData && app.globalData.restoreFromHistory) {
+      const record = app.globalData.restoreFromHistory;
+      delete app.globalData.restoreFromHistory;
+
+      if (record.type === "bonus" && record.inputData) {
+        this.setData({
+          bonus: record.inputData.bonus.toString(),
+          result: null,
+          optimization: null,
+        });
+
+        wx.showToast({ title: "已恢复参数", icon: "success" });
+      }
+    }
+  },
 });

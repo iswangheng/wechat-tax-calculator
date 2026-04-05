@@ -102,10 +102,16 @@ Page({
     app.globalData = app.globalData || {};
     app.globalData.restoreFromHistory = record;
 
-    // Navigate back to index (switchTab for tabBar page)
-    wx.switchTab({
-      url: "/pages/index/index",
-    });
+    // Navigate to the correct tab based on record type
+    if (record.type === "bonus") {
+      wx.switchTab({
+        url: "/pages/bonus/bonus",
+      });
+    } else {
+      wx.switchTab({
+        url: "/pages/index/index",
+      });
+    }
   },
 
   // Delete single record

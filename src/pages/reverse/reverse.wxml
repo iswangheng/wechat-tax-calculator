@@ -1,4 +1,5 @@
 <!-- Reverse calculation page: net salary -> gross salary -->
+<wxs src="../../utils/format.wxs" module="fmt" />
 <view class="container">
 
   <!-- City selection -->
@@ -56,10 +57,10 @@
       <text class="edit-btn" bindtap="onEditDeductions">编辑</text>
     </view>
     <view class="deduction-summary">
-      <text class="summary-text">本月可扣除: ¥{{specialDeductions}}</text>
+      <text class="summary-text">本月可扣除: ¥{{fmt.moneyInt(specialDeductions)}}</text>
       <view class="deduction-items" wx:if="{{deductionItems && deductionItems.length > 0}}">
         <text class="item" wx:for="{{deductionItems}}" wx:key="name">
-          {{item.name}} ¥{{item.amount}}
+          {{item.name}} ¥{{fmt.moneyInt(item.amount)}}
         </text>
       </view>
     </view>
@@ -93,10 +94,10 @@
     <view class="result-highlight">
       <view class="highlight-item">
         <text class="highlight-label">需要税前工资</text>
-        <text class="highlight-value red">¥{{result.grossSalary}}</text>
+        <text class="highlight-value red">¥{{fmt.money(result.grossSalary)}}</text>
       </view>
       <view class="highlight-desc">
-        税后到手 ¥{{result.netSalary}}
+        税后到手 ¥{{fmt.money(result.netSalary)}}
       </view>
     </view>
 
@@ -105,23 +106,23 @@
       <view class="breakdown-title">扣除明细</view>
       <view class="breakdown-item">
         <text class="breakdown-label">税前工资</text>
-        <text class="breakdown-value">¥{{result.grossSalary}}</text>
+        <text class="breakdown-value">¥{{fmt.money(result.grossSalary)}}</text>
       </view>
       <view class="breakdown-item">
         <text class="breakdown-label">五险一金</text>
-        <text class="breakdown-value red">- ¥{{result.socialSecurity}}</text>
+        <text class="breakdown-value red">- ¥{{fmt.money(result.socialSecurity)}}</text>
       </view>
       <view class="breakdown-item">
         <text class="breakdown-label">个人所得税</text>
-        <text class="breakdown-value red">- ¥{{result.tax}}</text>
+        <text class="breakdown-value red">- ¥{{fmt.money(result.tax)}}</text>
       </view>
       <view class="breakdown-item total">
         <text class="breakdown-label">扣除合计</text>
-        <text class="breakdown-value red">- ¥{{result.totalDeduction}}</text>
+        <text class="breakdown-value red">- ¥{{fmt.money(result.totalDeduction)}}</text>
       </view>
       <view class="breakdown-item result-net">
         <text class="breakdown-label">税后到手</text>
-        <text class="breakdown-value green">¥{{result.netSalary}}</text>
+        <text class="breakdown-value green">¥{{fmt.money(result.netSalary)}}</text>
       </view>
     </view>
 
@@ -130,23 +131,23 @@
       <view class="detail-title">五险一金明细</view>
       <view class="detail-row">
         <text class="detail-label">养老保险 (8%)</text>
-        <text class="detail-value">¥{{socialSecurity.pension}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.pension)}}</text>
       </view>
       <view class="detail-row">
         <text class="detail-label">医疗保险 (2%)</text>
-        <text class="detail-value">¥{{socialSecurity.medical}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.medical)}}</text>
       </view>
       <view class="detail-row">
         <text class="detail-label">失业保险</text>
-        <text class="detail-value">¥{{socialSecurity.unemployment}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.unemployment)}}</text>
       </view>
       <view class="detail-row">
         <text class="detail-label">公积金 ({{fundRatio}}%)</text>
-        <text class="detail-value">¥{{socialSecurity.fund}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.fund)}}</text>
       </view>
       <view class="detail-row total">
         <text class="detail-label">五险一金合计</text>
-        <text class="detail-value">¥{{socialSecurity.total}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.total)}}</text>
       </view>
     </view>
   </view>

@@ -1,4 +1,5 @@
 <!-- 个税计算器主页面 -->
+<wxs src="../../utils/format.wxs" module="fmt" />
 <view class="container">
 
   <!-- 数据更新时间提示 -->
@@ -87,27 +88,27 @@
     <view class="social-detail" wx:if="{{socialSecurity}}">
       <view class="detail-row">
         <text class="detail-label">养老保险 (8%)</text>
-        <text class="detail-value">¥{{socialSecurity.pension}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.pension)}}</text>
       </view>
       <view class="detail-row">
         <text class="detail-label">医疗保险 (2%)</text>
-        <text class="detail-value">¥{{socialSecurity.medical}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.medical)}}</text>
       </view>
       <view class="detail-row">
         <text class="detail-label">失业保险</text>
-        <text class="detail-value">¥{{socialSecurity.unemployment}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.unemployment)}}</text>
       </view>
       <view class="detail-row highlight">
         <text class="detail-label">社保小计</text>
-        <text class="detail-value">¥{{socialSecurity.totalSocial}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.totalSocial)}}</text>
       </view>
       <view class="detail-row">
         <text class="detail-label">公积金 ({{fundRatio}}%)</text>
-        <text class="detail-value">¥{{socialSecurity.fund}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.fund)}}</text>
       </view>
       <view class="detail-row total">
         <text class="detail-label">五险一金合计</text>
-        <text class="detail-value">¥{{socialSecurity.total}}</text>
+        <text class="detail-value">¥{{fmt.money(socialSecurity.total)}}</text>
       </view>
       <view class="tip-text">
         💡 五险一金为未来投资，不是白扣！
@@ -123,10 +124,10 @@
       <text class="edit-btn" bindtap="onEditDeductions">编辑</text>
     </view>
     <view class="deduction-summary">
-      <text class="summary-text">本月可扣除: ¥{{specialDeductions}}</text>
+      <text class="summary-text">本月可扣除: ¥{{fmt.moneyInt(specialDeductions)}}</text>
       <view class="deduction-items" wx:if="{{deductionItems && deductionItems.length > 0}}">
         <text class="item" wx:for="{{deductionItems}}" wx:key="name">
-          {{item.name}} ¥{{item.amount}}
+          {{item.name}} ¥{{fmt.moneyInt(item.amount)}}
         </text>
       </view>
     </view>
@@ -237,10 +238,10 @@
     <view class="result-highlight">
       <view class="highlight-item">
         <text class="highlight-label">税后到手</text>
-        <text class="highlight-value green">¥{{result.netSalary}}</text>
+        <text class="highlight-value green">¥{{fmt.money(result.netSalary)}}</text>
       </view>
       <view class="highlight-desc">
-        比税前少了 ¥{{result.totalDeduction}}
+        比税前少了 ¥{{fmt.money(result.totalDeduction)}}
       </view>
     </view>
 
@@ -249,17 +250,17 @@
       <view class="breakdown-title">扣除明细</view>
       <view class="breakdown-item">
         <text class="breakdown-label">五险一金</text>
-        <text class="breakdown-value">- ¥{{result.socialSecurity}}</text>
+        <text class="breakdown-value">- ¥{{fmt.money(result.socialSecurity)}}</text>
         <text class="breakdown-tip">为未来投资 💰</text>
       </view>
       <view class="breakdown-item">
         <text class="breakdown-label">个人所得税</text>
-        <text class="breakdown-value">- ¥{{result.tax}}</text>
+        <text class="breakdown-value">- ¥{{fmt.money(result.tax)}}</text>
         <text class="breakdown-tip">贡献国家建设 🏛️</text>
       </view>
       <view class="breakdown-item" wx:if="{{result.specialDeductions > 0}}">
         <text class="breakdown-label">专项扣除</text>
-        <text class="breakdown-value green">- ¥{{result.specialDeductions}}</text>
+        <text class="breakdown-value green">- ¥{{fmt.money(result.specialDeductions)}}</text>
         <text class="breakdown-tip">减免税款 ✅</text>
       </view>
     </view>
@@ -268,7 +269,7 @@
     <view class="tax-info">
       <view class="info-row">
         <text class="info-label">应纳税所得额</text>
-        <text class="info-value">¥{{result.taxableIncome}}</text>
+        <text class="info-value">¥{{fmt.money(result.taxableIncome)}}</text>
       </view>
       <view class="info-row">
         <text class="info-label">适用税率</text>
@@ -276,7 +277,7 @@
       </view>
       <view class="info-row">
         <text class="info-label">速算扣除数</text>
-        <text class="info-value">¥{{result.breakdown.quickDeduction}}</text>
+        <text class="info-value">¥{{fmt.money(result.breakdown.quickDeduction)}}</text>
       </view>
     </view>
 

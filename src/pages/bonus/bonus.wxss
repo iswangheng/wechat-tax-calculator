@@ -258,6 +258,7 @@
   font-size: 52rpx;
   font-weight: bold;
   margin-bottom: 12rpx;
+  word-break: break-all;
 }
 
 .highlight-value.red {

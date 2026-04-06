@@ -232,13 +232,11 @@ Page({
     const MAX_SALARY = 1000000; // 最高工资：100万元
     const MIN_SALARY = 1; // 最低工资：1元
 
-    if (!grossSalary || grossSalary <= 0) {
+    const salaryValue = parseFloat(grossSalary);
+    if (!grossSalary || isNaN(salaryValue) || salaryValue <= 0) {
       wx.showToast({ title: "请输入税前工资", icon: "none" });
       return;
     }
-
-    // Validate salary range
-    const salaryValue = parseFloat(grossSalary);
     if (salaryValue < MIN_SALARY || salaryValue > MAX_SALARY) {
       wx.showToast({
         title: `工资必须在${MIN_SALARY}-${MAX_SALARY}元之间`,

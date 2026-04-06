@@ -1,0 +1,70 @@
+// WXS module for number formatting in WXML templates
+// WXS runs in the view layer, more efficient than setData for formatting
+
+/**
+ * Format money: 12345.6 -> "12,345.60"
+ * Ensures 2 decimal places and thousand separators
+ */
+function money(num) {
+  if (num === undefined || num === null || num !== num) return '0.00';
+  var n = parseFloat(num);
+  if (n !== n) return '0.00';
+  var fixed = n.toFixed(2);
+  var parts = fixed.split('.');
+  var intPart = parts[0];
+  var decPart = parts[1];
+  // Add thousand separators
+  var result = '';
+  var sign = '';
+  if (intPart.charAt(0) === '-') {
+    sign = '-';
+    intPart = intPart.substring(1);
+  }
+  var len = intPart.length;
+  for (var i = 0; i < len; i++) {
+    if (i > 0 && (len - i) % 3 === 0) {
+      result = result + ',';
+    }
+    result = result + intPart.charAt(i);
+  }
+  return sign + result + '.' + decPart;
+}
+
+/**
+ * Format integer money: 12345 -> "12,345"
+ * No decimal places, with thousand separators
+ */
+function moneyInt(num) {
+  if (num === undefined || num === null || num !== num) return '0';
+  var n = parseInt(num);
+  if (n !== n) return '0';
+  var str = '' + n;
+  var sign = '';
+  if (str.charAt(0) === '-') {
+    sign = '-';
+    str = str.substring(1);
+  }
+  var result = '';
+  var len = str.length;
+  for (var i = 0; i < len; i++) {
+    if (i > 0 && (len - i) % 3 === 0) {
+      result = result + ',';
+    }
+    result = result + str.charAt(i);
+  }
+  return sign + result;
+}
+
+/**
+ * Format percentage: 3 -> "3.00", 10.5 -> "10.50"
+ */
+function pct(num) {
+  if (num === undefined || num === null || num !== num) return '0.00';
+  return parseFloat(num).toFixed(2);
+}
+
+module.exports = {
+  money: money,
+  moneyInt: moneyInt,
+  pct: pct
+};

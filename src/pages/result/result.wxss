@@ -295,6 +295,7 @@
   display: block;
   font-size: 44rpx;
   font-weight: bold;
+  word-break: break-all;
 }
 
 .highlight-value.green {

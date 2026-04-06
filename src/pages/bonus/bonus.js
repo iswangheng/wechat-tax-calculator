@@ -28,12 +28,11 @@ Page({
   onCalculate() {
     const { bonus } = this.data;
 
-    if (!bonus || parseFloat(bonus) <= 0) {
+    const bonusAmount = parseFloat(bonus);
+    if (!bonus || isNaN(bonusAmount) || bonusAmount <= 0) {
       wx.showToast({ title: "请输入年终奖金额", icon: "none" });
       return;
     }
-
-    const bonusAmount = parseFloat(bonus);
     if (bonusAmount > 10000000) {
       wx.showToast({ title: "年终奖金额不能超过1000万元", icon: "none" });
       return;

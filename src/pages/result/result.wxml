@@ -1,4 +1,5 @@
 <!-- 12个月工资明细页面 -->
+<wxs src="../../utils/format.wxs" module="fmt" />
 <view class="container">
   <!-- 顶部导航栏 -->
   <view class="header">
@@ -92,17 +93,17 @@
           <view class="table-cell cell-month">
             <text class="month-label">{{item.month}}月</text>
           </view>
-          <view class="table-cell cell-salary">{{item.grossSalary}}</view>
-          <view class="table-cell cell-social">{{item.socialInsurance}}</view>
-          <view class="table-cell cell-deduction">{{item.specialDeduction}}</view>
-          <view class="table-cell cell-taxable">{{item.taxableIncome}}</view>
-          <view class="table-cell cell-tax">{{item.cumulativeTax}}</view>
-          <view class="table-cell cell-paid">{{item.paidTax}}</view>
+          <view class="table-cell cell-salary">{{fmt.money(item.grossSalary)}}</view>
+          <view class="table-cell cell-social">{{fmt.money(item.socialInsurance)}}</view>
+          <view class="table-cell cell-deduction">{{fmt.money(item.specialDeduction)}}</view>
+          <view class="table-cell cell-taxable">{{fmt.money(item.taxableIncome)}}</view>
+          <view class="table-cell cell-tax">{{fmt.money(item.cumulativeTax)}}</view>
+          <view class="table-cell cell-paid">{{fmt.money(item.paidTax)}}</view>
           <view class="table-cell cell-this-month">
-            <text class="highlight-tax">{{item.currentMonthTax}}</text>
+            <text class="highlight-tax">{{fmt.money(item.currentMonthTax)}}</text>
           </view>
           <view class="table-cell cell-net">
-            <text class="highlight-net">{{item.netSalary}}</text>
+            <text class="highlight-net">{{fmt.money(item.netSalary)}}</text>
           </view>
         </view>
       </view>
@@ -130,12 +131,12 @@
       <view class="card-highlight">
         <view class="highlight-item">
           <text class="highlight-label">实发工资</text>
-          <text class="highlight-value green">{{item.netSalary}}</text>
+          <text class="highlight-value green">{{fmt.money(item.netSalary)}}</text>
         </view>
         <view class="card-divider"></view>
         <view class="highlight-item">
           <text class="highlight-label">本月应缴</text>
-          <text class="highlight-value red">{{item.currentMonthTax}}</text>
+          <text class="highlight-value red">{{fmt.money(item.currentMonthTax)}}</text>
         </view>
       </view>
 
@@ -143,27 +144,27 @@
       <view class="card-details">
         <view class="detail-row">
           <text class="detail-label">应发工资</text>
-          <text class="detail-value">{{item.grossSalary}}</text>
+          <text class="detail-value">{{fmt.money(item.grossSalary)}}</text>
         </view>
         <view class="detail-row">
           <text class="detail-label">五险一金</text>
-          <text class="detail-value">-{{item.socialInsurance}}</text>
+          <text class="detail-value">-{{fmt.money(item.socialInsurance)}}</text>
         </view>
         <view class="detail-row">
           <text class="detail-label">专项扣除</text>
-          <text class="detail-value">-{{item.specialDeduction}}</text>
+          <text class="detail-value">-{{fmt.money(item.specialDeduction)}}</text>
         </view>
         <view class="detail-row">
           <text class="detail-label">应纳税所得额</text>
-          <text class="detail-value">{{item.taxableIncome}}</text>
+          <text class="detail-value">{{fmt.money(item.taxableIncome)}}</text>
         </view>
         <view class="detail-row highlight-row">
           <text class="detail-label">累计应纳税额</text>
-          <text class="detail-value">{{item.cumulativeTax}}</text>
+          <text class="detail-value">{{fmt.money(item.cumulativeTax)}}</text>
         </view>
         <view class="detail-row">
           <text class="detail-label">累计已缴</text>
-          <text class="detail-value">{{item.paidTax}}</text>
+          <text class="detail-value">{{fmt.money(item.paidTax)}}</text>
         </view>
       </view>
     </view>
@@ -184,7 +185,7 @@
       </view>
       <view class="analysis-item">
         <text class="analysis-label">月均税款</text>
-        <text class="analysis-value">{{analysis.avgMonthlyTax}}</text>
+        <text class="analysis-value">{{fmt.money(analysis.avgMonthlyTax)}}</text>
       </view>
     </view>
 
@@ -214,19 +215,19 @@
     <view class="deduction-card">
       <view class="deduction-row">
         <text class="deduction-label">起征点</text>
-        <text class="deduction-value">{{deductions.threshold}} 元/月</text>
+        <text class="deduction-value">{{fmt.moneyInt(deductions.threshold)}} 元/月</text>
       </view>
       <view class="deduction-row">
         <text class="deduction-label">五险一金</text>
-        <text class="deduction-value">{{deductions.socialInsurance}} 元/月</text>
+        <text class="deduction-value">{{fmt.money(deductions.socialInsurance)}} 元/月</text>
       </view>
       <view class="deduction-row">
         <text class="deduction-label">专项附加扣除</text>
-        <text class="deduction-value">{{deductions.specialDeduction}} 元/月</text>
+        <text class="deduction-value">{{fmt.money(deductions.specialDeduction)}} 元/月</text>
       </view>
       <view class="deduction-row total-row">
         <text class="deduction-label">月度扣除合计</text>
-        <text class="deduction-value">{{deductions.total}} 元</text>
+        <text class="deduction-value">{{fmt.money(deductions.total)}} 元</text>
       </view>
     </view>
 
@@ -234,7 +235,7 @@
       <view class="breakdown-title">专项扣除明细</view>
       <view class="breakdown-tags">
         <view class="tag" wx:for="{{deductions.items}}" wx:key="name">
-          {{item.name}} {{item.amount}}元
+          {{item.name}} {{fmt.moneyInt(item.amount)}}元
         </view>
       </view>
     </view>

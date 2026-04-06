@@ -233,7 +233,7 @@ function calculateBonusTax(bonus) {
       bonus,
       tax: Math.round(tax * 100) / 100,
       netBonus: Math.round(netBonus * 100) / 100,
-      effectiveRate: parseFloat(((tax / bonus) * 100).toFixed(2)),
+      effectiveRate: ((tax / bonus) * 100).toFixed(2),
       isCritical: false,
     };
   }
@@ -252,7 +252,7 @@ function calculateBonusTax(bonus) {
     bonus,
     tax: Math.round(tax * 100) / 100,
     netBonus: Math.round(netBonus * 100) / 100,
-    effectiveRate: parseFloat(effectiveRate),
+    effectiveRate: effectiveRate,
     bracket: {
       rate: bracket.rate,
       deduction: bracket.deduction,
@@ -284,9 +284,10 @@ function calculateGrossFromNet(params) {
   } = params;
 
   // 采用二分法逐步逼近
+  // high = netSalary * 3 to handle high tax brackets (45%) + social security
   let low = netSalary;
-  let high = netSalary * 2;
-  let grossSalary = 0;
+  let high = netSalary * 3;
+  let grossSalary = netSalary; // default to netSalary instead of 0 for safety
   let iterations = 0;
   const maxIterations = 100;
   const tolerance = 0.01; // 精度容差
@@ -334,7 +335,7 @@ function calculateGrossFromNet(params) {
     socialSecurity: finalResult.socialSecurity,
     tax: finalResult.tax,
     specialDeductions,
-    totalDeduction: finalResult.socialSecurity + finalResult.tax,
+    totalDeduction: Math.round((finalResult.socialSecurity + finalResult.tax) * 100) / 100,
     iterations,
   };
 }

@@ -216,6 +216,7 @@
   font-size: 48rpx;
   font-weight: bold;
   display: block;
+  word-break: break-all;
 }
 
 .refund-text {

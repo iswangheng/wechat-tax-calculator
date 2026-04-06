@@ -139,12 +139,11 @@ Page({
     const MAX_SALARY = 1000000;
     const MIN_SALARY = 1;
 
-    if (!netSalary || parseFloat(netSalary) <= 0) {
+    const salaryValue = parseFloat(netSalary);
+    if (!netSalary || isNaN(salaryValue) || salaryValue <= 0) {
       wx.showToast({ title: "请输入期望税后工资", icon: "none" });
       return;
     }
-
-    const salaryValue = parseFloat(netSalary);
     if (salaryValue < MIN_SALARY || salaryValue > MAX_SALARY) {
       wx.showToast({
         title: `金额必须在${MIN_SALARY}-${MAX_SALARY}元之间`,

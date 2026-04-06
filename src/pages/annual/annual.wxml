@@ -1,4 +1,5 @@
 <!-- Annual tax settlement simulation page -->
+<wxs src="../../utils/format.wxs" module="fmt" />
 <view class="container">
 
   <!-- Header -->
@@ -149,13 +150,13 @@
       </view>
       <view class="result-amount">
         <text wx:if="{{result.isRefund}}" class="amount-text refund-text">
-          应退税 {{result.refundAmount}} 元
+          应退税 {{fmt.money(result.refundAmount)}} 元
         </text>
         <text wx:elif="{{result.settlement === 0}}" class="amount-text balanced-text">
           不补不退
         </text>
         <text wx:else class="amount-text supplement-text">
-          应补税 {{result.supplementAmount}} 元
+          应补税 {{fmt.money(result.supplementAmount)}} 元
         </text>
       </view>
       <view class="result-note" wx:if="{{result.isRefund}}">
@@ -179,22 +180,22 @@
           <view class="detail-group-title">收入汇总</view>
           <view class="detail-item">
             <text class="detail-label">工资薪金收入</text>
-            <text class="detail-value">{{result.breakdown.totalSalary}} 元</text>
+            <text class="detail-value">{{fmt.money(result.breakdown.totalSalary)}} 元</text>
           </view>
           <view class="detail-item" wx:if="{{result.breakdown.bonus > 0}}">
             <text class="detail-label">年终奖</text>
             <text class="detail-value">
-              {{result.breakdown.bonus}} 元
+              {{fmt.money(result.breakdown.bonus)}} 元
               {{result.breakdown.bonusMerged ? '(已并入)' : '(单独计税)'}}
             </text>
           </view>
           <view class="detail-item" wx:if="{{result.breakdown.otherIncome > 0}}">
             <text class="detail-label">其他收入</text>
-            <text class="detail-value">{{result.breakdown.otherIncome}} 元</text>
+            <text class="detail-value">{{fmt.money(result.breakdown.otherIncome)}} 元</text>
           </view>
           <view class="detail-item total-item">
             <text class="detail-label">综合所得合计</text>
-            <text class="detail-value">{{result.totalIncome}} 元</text>
+            <text class="detail-value">{{fmt.money(result.totalIncome)}} 元</text>
           </view>
         </view>
 
@@ -203,15 +204,15 @@
           <view class="detail-group-title">扣除项目</view>
           <view class="detail-item">
             <text class="detail-label">基本减除费用（起征点）</text>
-            <text class="detail-value">- {{result.breakdown.threshold}} 元</text>
+            <text class="detail-value">- {{fmt.moneyInt(result.breakdown.threshold)}} 元</text>
           </view>
           <view class="detail-item">
             <text class="detail-label">五险一金</text>
-            <text class="detail-value">- {{result.breakdown.totalSocial}} 元</text>
+            <text class="detail-value">- {{fmt.money(result.breakdown.totalSocial)}} 元</text>
           </view>
           <view class="detail-item">
             <text class="detail-label">专项附加扣除</text>
-            <text class="detail-value">- {{result.breakdown.totalDeduction}} 元</text>
+            <text class="detail-value">- {{fmt.money(result.breakdown.totalDeduction)}} 元</text>
           </view>
         </view>
 
@@ -220,7 +221,7 @@
           <view class="detail-group-title">税额计算</view>
           <view class="detail-item">
             <text class="detail-label">应纳税所得额</text>
-            <text class="detail-value">{{result.taxableIncome}} 元</text>
+            <text class="detail-value">{{fmt.money(result.taxableIncome)}} 元</text>
           </view>
           <view class="detail-item" wx:if="{{result.bracket}}">
             <text class="detail-label">适用税率</text>
@@ -228,23 +229,23 @@
           </view>
           <view class="detail-item" wx:if="{{result.bracket}}">
             <text class="detail-label">速算扣除数</text>
-            <text class="detail-value">{{result.bracket.deduction}} 元</text>
+            <text class="detail-value">{{fmt.money(result.bracket.deduction)}} 元</text>
           </view>
           <view class="detail-item">
             <text class="detail-label">综合所得应纳税额</text>
-            <text class="detail-value">{{result.annualTax}} 元</text>
+            <text class="detail-value">{{fmt.money(result.annualTax)}} 元</text>
           </view>
           <view class="detail-item" wx:if="{{result.bonusTax > 0}}">
             <text class="detail-label">年终奖单独计税</text>
-            <text class="detail-value">{{result.bonusTax}} 元</text>
+            <text class="detail-value">{{fmt.money(result.bonusTax)}} 元</text>
           </view>
           <view class="detail-item total-item">
             <text class="detail-label">全年应纳税额合计</text>
-            <text class="detail-value">{{result.totalAnnualTax}} 元</text>
+            <text class="detail-value">{{fmt.money(result.totalAnnualTax)}} 元</text>
           </view>
           <view class="detail-item">
             <text class="detail-label">全年已预缴税额</text>
-            <text class="detail-value">{{result.paidTax}} 元</text>
+            <text class="detail-value">{{fmt.money(result.paidTax)}} 元</text>
           </view>
         </view>
 
@@ -254,7 +255,7 @@
           <view class="detail-item settlement-item">
             <text class="detail-label">应纳税额 - 已预缴税额</text>
             <text class="detail-value {{result.isRefund ? 'refund-text' : 'supplement-text'}}">
-              {{result.settlement}} 元
+              {{fmt.money(result.settlement)}} 元
             </text>
           </view>
         </view>
@@ -271,15 +272,15 @@
         <view class="optimization-compare" wx:if="{{optimization.hasSuggestion}}">
           <view class="compare-item">
             <text class="compare-label">单独计税：</text>
-            <text class="compare-value">{{optimization.separateTax}} 元</text>
+            <text class="compare-value">{{fmt.money(optimization.separateTax)}} 元</text>
           </view>
           <view class="compare-item">
             <text class="compare-label">并入综合所得：</text>
-            <text class="compare-value">{{optimization.mergedTax}} 元</text>
+            <text class="compare-value">{{fmt.money(optimization.mergedTax)}} 元</text>
           </view>
           <view class="compare-item saved">
             <text class="compare-label">可节省：</text>
-            <text class="compare-value highlight-green">{{optimization.savedAmount}} 元</text>
+            <text class="compare-value highlight-green">{{fmt.money(optimization.savedAmount)}} 元</text>
           </view>
         </view>
       </view>

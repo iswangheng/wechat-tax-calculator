@@ -444,6 +444,7 @@
 .highlight-value {
   font-size: 48rpx;
   font-weight: bold;
+  word-break: break-all;
 }
 
 .highlight-value.green {
@@ -454,6 +455,7 @@
   margin-top: 16rpx;
   font-size: 24rpx;
   color: #999999;
+  word-break: break-all;
 }
 
 .deduction-breakdown {
